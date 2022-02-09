@@ -1,7 +1,7 @@
 import React from "react";
 
 function Store(){
-    return <div>Hi From Store</div>
+    return <div className="comp-cont-1">Hi From Store</div>
 }
 
 export default Store

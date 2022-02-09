@@ -1,10 +1,19 @@
-#App-Contianer{
+/* APP */
+#app-contianer{
   display: flex;
   justify-content: center;
 }
 
-#App-div-1{
+/* COMPONENT CLASS CONTAINER TRIAL!! */
+.comp-cont-1{
   position: absolute;
   top: 200px;
   font-size: 25;
+
+}
+
+/* NAVBAR */
+#navbar{
+  position: absolute;
+  top: 0px
 }
