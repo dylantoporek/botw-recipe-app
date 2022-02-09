@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom"
 import Navbar from './Navbar';
-import Store from './Store';
-import Cookbook from './Cookbook';
-import Home from './Home';
+import Store from '../Pages/Store';
+import Cookbook from '../Pages/Cookbook';
+import Home from '../Pages/Home';
 import '../App.css';
 
 
