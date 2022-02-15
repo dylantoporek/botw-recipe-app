@@ -10,6 +10,9 @@ import Login from './Login';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [recipeList, setRecipeList] = useState([])
+  const [ingredientList, setIngredientList] = useState([])
+  const [pantry, setPantry] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -17,11 +20,30 @@ function App() {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else{
-        r.json().then((data)=> console.log(data))
+        r.json().then((data) => console.log(data))
       }
     });
+
+    // ALL Ingredients
+    fetch('/ingredients').then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setIngredientList(data))
+      } else{
+        r.json().then((data) => console.log(data))
+      }
+    })
+
+    // All Recipes
+    fetch('/recipes').then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setRecipeList(data))
+      } else{
+        r.json().then((data) => console.log(data))
+      }
+    })
     
   }, []);
+
 
   if (!user){
     return <Login onLogin={setUser} user={user} />;
@@ -30,8 +52,8 @@ function App() {
       <div id='app-contianer'>
         <Navbar setUser={setUser}/>
         <Routes>
-          <Route path='/store' element={<Store/>}/>
-          <Route path='/cookbook' element={<Cookbook/>}/>
+          <Route path='/store' element={<Store ingredientList={ingredientList}/>}/>
+          <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
           <Route path='/' element={<Home/>}/>
         </Routes>
       </div>
