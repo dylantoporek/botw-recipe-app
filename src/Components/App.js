@@ -25,7 +25,7 @@ function App() {
     });
 
     // ALL Ingredients
-    fetch('/ingredients').then((r) => {
+    fetch('http://localhost:3001/ingredients').then((r) => {
       if (r.ok) {
         r.json().then((data) => setIngredientList(data))
       } else{
@@ -34,7 +34,7 @@ function App() {
     })
 
     // All Recipes
-    fetch('/recipes').then((r) => {
+    fetch('http://localhost:3001/recipes').then((r) => {
       if (r.ok) {
         r.json().then((data) => setRecipeList(data))
       } else{
@@ -43,7 +43,7 @@ function App() {
     })
 
     // Pantries from DB
-    fetch('/pantries').then((r) => {
+    fetch('http://localhost:3001/pantries').then((r) => {
       if (r.ok) {
         r.json().then((data) => setPantry(data))
       } else{
