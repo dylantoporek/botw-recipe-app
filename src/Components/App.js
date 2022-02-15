@@ -41,9 +41,18 @@ function App() {
         r.json().then((data) => console.log(data))
       }
     })
+
+    // Pantries from DB
+    fetch('/pantries').then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setPantry(data))
+      } else{
+        r.json().then((data) => console.log(data))
+      }
+    })
     
   }, []);
-
+console.log(ingredientList, recipeList, pantry)
 
   if (!user){
     return <Login onLogin={setUser} user={user} />;
