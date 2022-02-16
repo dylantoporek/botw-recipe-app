@@ -52,7 +52,8 @@ function App() {
     })
     
   }, []);
-console.log(ingredientList, recipeList, pantry)
+
+
 
   if (!user){
     return <Login onLogin={setUser} user={user} />;

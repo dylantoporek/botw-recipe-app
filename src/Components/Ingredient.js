@@ -2,12 +2,12 @@ import React from "react";
 
 function Ingredient({ing}){
 
-    console.log(ing)
+
     let ingDisplay
     if (ing.name !==null){
-        ingDisplay = <div>
+        ingDisplay = <div className='ingredient'>
             <p>{ing.name}</p>
-            <img src={ing.image}></img>
+            <img src={ing.image} />
             <p>{ing.description}</p>
         </div>
     }
