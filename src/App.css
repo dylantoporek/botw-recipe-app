@@ -11,7 +11,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 1000px;
+  width: max-content;
+  height: max-content;
 
 }
 
@@ -24,7 +25,12 @@
 /* INGREDIENT */
 .ingredient{
   flex: auto;
-  max-width: 200px;
-  max-height: 200px;
-  padding: 15%;
+  max-width: 300px;
+  max-height: 300px;
+  padding: 20%;
+}
+
+.ing-img{
+  max-height: 50px;
+  max-width: 50px;
 }

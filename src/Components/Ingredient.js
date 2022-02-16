@@ -7,7 +7,7 @@ function Ingredient({ing}){
     if (ing.name !==null){
         ingDisplay = <div className='ingredient'>
             <p>{ing.name}</p>
-            <img src={ing.image} />
+            <img className="ing-img" src={ing.image} />
             <p>{ing.description}</p>
         </div>
     }

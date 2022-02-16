@@ -10,7 +10,7 @@ function Store({ingredientList}){
     })
 
     return <div className="comp-cont-1">
-            <h1>Hi From Store</h1>
+            <h1>Hi from Store</h1>
             {ingredientDisplay}
         </div>
 }
