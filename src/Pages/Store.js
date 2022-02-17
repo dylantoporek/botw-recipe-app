@@ -1,11 +1,14 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
 
 
-function Store({ingredientList}){
+function Store({ingredientList, addItemToCart}){
     const [categoryFilter, setCategoryFilter] = useState("All")
     const [nameFilter, setNameFilter] = useState("")
+
+    const navigate = useNavigate()
 
 
     const filteredByCategory = ingredientList.filter((ing)=>{
@@ -27,7 +30,7 @@ function Store({ingredientList}){
     })
 
     const ingredientDisplay = filteredByName.map((ing)=>{
-        return <Ingredient key={ing.id} ing={ing}/>
+        return <Ingredient key={ing.id} ing={ing} addItemToCart={addItemToCart}/>
     })
 
     return <div className="comp-cont-1">

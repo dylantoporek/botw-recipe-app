@@ -13,6 +13,7 @@ function Navbar({setUser}){
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/cookbook'>Cookbook</NavLink>
         <NavLink to='/store'>Store</NavLink>
+        <NavLink to='/cart'></NavLink>
         <button onClick={handleLogoutClick}>Sign Out</button>
     </div>
 }

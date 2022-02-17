@@ -6,6 +6,7 @@ import Cookbook from '../Pages/Cookbook';
 import Home from '../Pages/Home';
 import '../App.css';
 import Login from './Login';
+import Cart from '../Pages/Cart';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [recipeList, setRecipeList] = useState([])
   const [ingredientList, setIngredientList] = useState([])
   const [pantry, setPantry] = useState([])
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -44,8 +46,18 @@ function App() {
     
   }, []);
 
-  console.log(pantry)
+  function addItemToCart(item){
+    let newCart = [...cart, item]
+    setCart(newCart)
+  }
 
+  function deleteItemFromCart(item){
+    let newCart = cart.filter((inv) => inv.id !== item.id)
+    setCart(newCart)
+  }
+
+  console.log(cart)
+  
   if (!user){
     return <Login onLogin={setUser} user={user} />;
   } else {
@@ -53,8 +65,9 @@ function App() {
       <div id='app-contianer'>
         <Navbar setUser={setUser}/>
         <Routes>
-          <Route path='/store' element={<Store ingredientList={ingredientList}/>}/>
+          <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
+          <Route path='/cart' element={<Cart cart={cart} deleteItemFromCart={deleteItemFromCart}/>}/>
           <Route path='/' element={<Home setPantry={setPantry}/>}/>
         </Routes>
       </div>

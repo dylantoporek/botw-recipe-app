@@ -18,6 +18,19 @@
   
 }
 
+.comp-cont-2{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  top: 50px;
+}
+
+/* STORE PAGE */
+
 #store-nav{
   width: 90%;
   height: 100px;
@@ -35,6 +48,44 @@
   position: relative;
   top: 20%;
   left: 1%;
+}
+
+#to-cart-button{
+  position: fixed;
+  top: 10%;
+  left: 86%; 
+}
+
+/* CART PAGE */
+
+#to-store{
+  position: fixed;
+  top: 10%;
+  left: 86%;
+  max-width: 200px; 
+}
+
+#checkout{
+  position: fixed;
+  top: 80%;
+  left: 86%;
+  max-width: 200px; 
+}
+
+#cart-items-cont{
+  position: relative;
+  top: 50px;
+}
+
+.cart-item{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: gainsboro;
+  flex: auto;
+  align-items: center;
+  width: 400px;
+  height: 250px;
 }
 
 /* NAVBAR */

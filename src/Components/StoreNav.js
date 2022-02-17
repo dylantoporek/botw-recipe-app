@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 function StoreNav({name, category, setNameFilter, setCategoryFilter}){
 
+    const navigate = useNavigate()
     function handleSearchByName(e){
         setNameFilter(e.target.value)
     }
@@ -9,6 +11,11 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
     function handleFilterChange(e){
         setCategoryFilter(e.target.value)
     }
+
+    function handleNavToCart(){
+        navigate('/cart')
+    }
+
     return (
         <div id='store-nav'>
             <input id='search-by-name' type="text" value={name} onChange={handleSearchByName}></input>
@@ -25,6 +32,7 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
                 <option value="Crab">Crabs</option>
                 <option value="Snail">Snails</option>
             </select>
+            <button id='to-cart-button' onClick={handleNavToCart}>Cart</button>
         </div>
     )
 }
