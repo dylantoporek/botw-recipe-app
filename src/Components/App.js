@@ -41,19 +41,10 @@ function App() {
         r.json().then((data) => console.log(data))
       }
     })
-
-    // Pantries from DB
-    fetch('http://localhost:3001/pantries').then((r) => {
-      if (r.ok) {
-        r.json().then((data) => setPantry(data))
-      } else{
-        r.json().then((data) => console.log(data))
-      }
-    })
     
   }, []);
-console.log(ingredientList)
-console.log(recipeList)
+
+  console.log(pantry)
 
   if (!user){
     return <Login onLogin={setUser} user={user} />;
@@ -64,7 +55,7 @@ console.log(recipeList)
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Home setPantry={setPantry}/>}/>
         </Routes>
       </div>
     );

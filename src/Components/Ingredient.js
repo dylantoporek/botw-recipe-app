@@ -6,9 +6,9 @@ function Ingredient({ing}){
     let ingDisplay
     if (ing.name !==null){
         ingDisplay = <div className='ingredient'>
-            <p>{ing.name}</p>
+            <p className="ing-name">{ing.name}</p>
             <img className="ing-img" src={ing.image} />
-            <p>{ing.description}</p>
+            <button className='ing-button'>add to cart</button>
         </div>
     }
     

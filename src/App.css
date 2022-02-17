@@ -5,15 +5,36 @@
   justify-content: center;
 }
 
-/* COMPONENT CLASS CONTAINER TRIAL!! */
+/* COMPONENT CONTAINER TRIAL!! */
 .comp-cont-1{
   display: flex;
+  position: relative;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: max-content;
-  height: max-content;
+  width: 90%;
+  height: fit-content;
+  top: 50px;
+  
+}
 
+#store-nav{
+  width: 90%;
+  height: 100px;
+  background-color: ghostwhite;
+  align-content: center;
+}
+
+#search-by-category{
+  position: relative;
+  top: 20%;
+  left: 5%;
+}
+
+#search-by-name{
+  position: relative;
+  top: 20%;
+  left: 1%;
 }
 
 /* NAVBAR */
@@ -24,13 +45,33 @@
 
 /* INGREDIENT */
 .ingredient{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: gainsboro;
   flex: auto;
-  max-width: 300px;
-  max-height: 300px;
-  padding: 20%;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  
+}
+
+.ing-name{
+  position: relative;
+  font-size: small;
+  left: 10%;
 }
 
 .ing-img{
+  position: relative;
   max-height: 50px;
   max-width: 50px;
+  left: 30%;
+  z-index: 1;
+}
+
+.ing-button{
+  position: relative;
+  top: 30%;
+  left: 10%;
 }
