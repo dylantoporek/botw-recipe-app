@@ -28,11 +28,11 @@ function Details({ing, setTogDetails, addItemToCart}){
     const totalPrice = ing.price * quantity
     const infoDisplay = <div id='details-cont'>
         
-            <button id='to-shop' onClick={closeDetails}>back to shop</button>
+            <button id='to-shop' onClick={closeDetails}>keep shopping</button>
 
             <p id='details-name'>{ing.name}</p>
             <img id='details-img' src={ing.image}/>
-            
+            <p id='description-label'>Description:</p>
             <p id='details-description'>{ing.description}</p>
             <p id='details-price'>Price: {ing.price}</p>
         

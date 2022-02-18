@@ -49,12 +49,6 @@
   left: 1%;
 }
 
-#to-cart-button{
-  position: relative;
-  top: 10%;
-  right: -60% 
-}
-
 /* STORE DETAILS */
 
 #details-cont{
@@ -83,15 +77,23 @@
   left: 40%;
 }
 
+#description-label{
+  position: relative;
+  left: 2%;
+  top: 3%
+}
+
 #details-description{
   position: relative;
   left: 2%;
-  top: 2%;
+  top: 0%;
+  width: 60%;
 }
 
 #details-price{
   position: relative;
-  left: 81%;
+  left: 2%;
+  top: 8%;
 }
 
 #quantity-form-cont{
@@ -129,6 +131,7 @@
 
 #details-add-to-cart{
   position: relative;
+  top: 10%;
   left: 45%;
 }
 
@@ -166,8 +169,52 @@
 
 /* NAVBAR */
 #navbar{
-  position: absolute;
-  top: 0px
+  position: fixed;
+  top: 0px;
+  z-index: 5;
+  background-color: white;
+  width: 100%;
+}
+
+#nav-links-cont{
+  position: relative;
+  left: 2%;
+}
+
+#nav-to-home{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#nav-to-cookbook{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#nav-to-store{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#signout-button{
+  position: relative;
+  left: 86%;
+  top: -33px;
+}
+
+#to-cart-button{
+  position: relative;
+  top: -33px;
+  left: 45%; 
+}
+
+#user-bank-display{
+  position: relative;
+  top: -17px;
+  left: 40%;
 }
 
 /* INGREDIENT */

@@ -12,9 +12,7 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
         setCategoryFilter(e.target.value)
     }
 
-    function handleNavToCart(){
-        navigate('/cart')
-    }
+    
 
     return (
         <div id='store-nav'>
@@ -32,7 +30,7 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
                 <option value="Crab">Crabs</option>
                 <option value="Snail">Snails</option>
             </select>
-            <button id='to-cart-button' onClick={handleNavToCart}>Cart</button>
+            
         </div>
     )
 }

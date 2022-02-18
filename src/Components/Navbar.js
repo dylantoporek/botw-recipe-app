@@ -1,7 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-function Navbar({setUser}){
+function Navbar({user, setUser}){
+    const navigate = useNavigate()
     function handleLogoutClick() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
@@ -9,12 +11,21 @@ function Navbar({setUser}){
           }
         });
       }
+
+      function handleNavToCart(){
+        navigate('/cart')
+    }
     return <div id='navbar'>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/cookbook'>Cookbook</NavLink>
-        <NavLink to='/store'>Store</NavLink>
-        <NavLink to='/cart'></NavLink>
-        <button onClick={handleLogoutClick}>Sign Out</button>
+        <div id='nav-links-cont'>
+            <NavLink id='nav-to-home' to='/'>Home</NavLink>
+            <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook</NavLink>
+            <NavLink id='nav-to-store' to='/store'>Store</NavLink>
+            <NavLink to='/cart'></NavLink>
+        </div>
+        
+        <div id='user-bank-display'>Bank: {user.bank}</div>
+        <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
+        <button id='to-cart-button' onClick={handleNavToCart}>Cart</button>
     </div>
 }
 

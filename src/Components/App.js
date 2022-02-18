@@ -13,7 +13,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipeList, setRecipeList] = useState([])
   const [ingredientList, setIngredientList] = useState([])
-  const [pantry, setPantry] = useState([])
   const [cart, setCart] = useState([])
 
   useEffect(() => {
@@ -76,12 +75,12 @@ function App() {
   } else {
     return (
       <div id='app-contianer'>
-        <Navbar setUser={setUser}/>
+        <Navbar user={user} setUser={setUser}/>
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
           <Route path='/cart' element={<Cart cart={cart} deleteItemFromCart={deleteItemFromCart}/>}/>
-          <Route path='/' element={<Home setPantry={setPantry}/>}/>
+          <Route path='/' element={<Home />}/>
         </Routes>
       </div>
     );
