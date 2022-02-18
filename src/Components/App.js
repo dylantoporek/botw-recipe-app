@@ -47,18 +47,18 @@ function App() {
   }, []);
 
   function addItemToCart(item){
-    if (!cart.includes(item)){
+    let cartCheck = cart.filter((cartItem)=> cartItem.id === item.id)
+    if (cartCheck.length === 0){
       let newItem = {
         ...item,
-        quantity: 1
       }
     let newCart = [...cart, newItem]
     setCart(newCart)
-    } if (cart.includes(item)){
-      let filteredCart = cart.filter((thing) => thing.id !== item.id)
+    } if (cartCheck.length === 1){
+      let filteredCart = cart.filter((cartItem) => cartItem.id !== item.id)
       let updatedItem = {
         ...item,
-        quantity: item.quantity + 1
+        quantity: item.quantity + cartCheck[0].quantity
       }
       let newCart = [...filteredCart, updatedItem]
       setCart(newCart)
@@ -70,7 +70,6 @@ function App() {
     setCart(newCart)
   }
 
-  console.log(cart)
 
   if (!user){
     return <Login onLogin={setUser} user={user} />;

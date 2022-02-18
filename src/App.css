@@ -51,9 +51,84 @@
 }
 
 #to-cart-button{
-  position: fixed;
+  position: relative;
   top: 10%;
-  left: 86%; 
+  right: -60% 
+}
+
+/* STORE DETAILS */
+
+#details-cont{
+  position: fixed;
+  width: 70%;
+  height: 70%;
+  z-index: 10;
+  background-color: ghostwhite;
+}
+
+#to-shop{
+  position: relative;
+  left: 80%;
+  top: 5%;
+}
+
+#details-name{
+  position: relative;
+  left: 2%;
+}
+
+#details-img{
+  position: relative;
+  height: 130px;
+  width: 130px;
+  left: 40%;
+}
+
+#details-description{
+  position: relative;
+  left: 2%;
+  top: 2%;
+}
+
+#details-price{
+  position: relative;
+  left: 81%;
+}
+
+#quantity-form-cont{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  left: 80%;
+}
+
+#minus{
+  position: relative;
+  top: 15px;
+  width: 40px;
+  height: 20px;
+  left: -10px;
+}
+
+#quantity{
+  position: relative;
+}
+
+#add{
+  position: relative;
+  width: 40px;
+  height: 20px;
+  top: 15px;
+  left: 10px;
+}
+
+#details-total{
+  position: relative;
+  left: 81.5%;
+}
+#details-add-to-cart{
+  position: relative;
+  left: 45%;
 }
 
 /* CART PAGE */

@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 
-function Ingredient({ing, addItemToCart}){
-    const [togDetails, setTogDetails] = useState(false)
+function Ingredient({ing, setTogDetails, setSpecificIng}){
+    
 
     function putInCart(){
+        
+        setSpecificIng(ing)
         setTogDetails(true)
-        // alert("item added to cart")
-        // addItemToCart(ing)
     }
 
     let ingDisplay
@@ -18,14 +18,8 @@ function Ingredient({ing, addItemToCart}){
         </div>
     }
     
-    if(!togDetails){
-        return <div>{ingDisplay}</div>
-    } else {
-        return <div>
-            <div>{ing.name}</div>
-            {ingDisplay}
-        </div>
-    }
+    return <div>{ingDisplay}</div>
+    
     
 }
 

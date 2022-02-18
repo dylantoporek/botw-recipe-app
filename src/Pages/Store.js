@@ -2,11 +2,15 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
+import Details from "../Components/Details";
+
 
 
 function Store({ingredientList, addItemToCart}){
     const [categoryFilter, setCategoryFilter] = useState("All")
     const [nameFilter, setNameFilter] = useState("")
+    const [togDetails, setTogDetails] = useState(false)
+    const [specificIng, setSpecificIng] = useState(null)
 
     const navigate = useNavigate()
 
@@ -30,18 +34,35 @@ function Store({ingredientList, addItemToCart}){
     })
 
     const ingredientDisplay = filteredByName.map((ing)=>{
-        return <Ingredient key={ing.id} ing={ing} addItemToCart={addItemToCart}/>
+        return <Ingredient key={ing.id} ing={ing} setTogDetails={setTogDetails} setSpecificIng={setSpecificIng} />
     })
 
-    return <div className="comp-cont-1">
-            <StoreNav 
-                name={nameFilter} 
-                category={categoryFilter} 
-                setCategoryFilter={setCategoryFilter}
-                setNameFilter={setNameFilter}
-            />
-            {ingredientDisplay}
-        </div>
+    const detailsDisplay = specificIng ? <Details addItemToCart={addItemToCart} setTogDetails={setTogDetails} ing={specificIng}/> : null
+    
+    
+    if(!togDetails){
+        return <div className="comp-cont-1">
+        <StoreNav 
+            name={nameFilter} 
+            category={categoryFilter} 
+            setCategoryFilter={setCategoryFilter}
+            setNameFilter={setNameFilter}
+        />
+        {ingredientDisplay}
+    </div>
+    } else{
+        return <div className="comp-cont-1">
+        <StoreNav 
+            name={nameFilter} 
+            category={categoryFilter} 
+            setCategoryFilter={setCategoryFilter}
+            setNameFilter={setNameFilter}
+        />
+        {detailsDisplay}
+        {ingredientDisplay}
+    </div>
+    }
+    
 }
 
 export default Store
