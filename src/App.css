@@ -15,7 +15,6 @@
   width: 90%;
   height: fit-content;
   top: 50px;
-  
 }
 
 .comp-cont-2{
@@ -124,8 +123,10 @@
 
 #details-total{
   position: relative;
-  left: 81.5%;
+  top: 50px;
+  left: -70px;
 }
+
 #details-add-to-cart{
   position: relative;
   left: 45%;
