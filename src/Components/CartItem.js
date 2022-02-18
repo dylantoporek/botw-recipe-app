@@ -11,6 +11,7 @@ function CartItem({item, deleteItemFromCart}){
             <p className="ing-name">{item.name}</p>
             <img className="ing-img" src={item.image}/>
             <p>Price: {item.price}</p>
+            <p>Quantity: {item.quantity}</p>
             <button onClick={removeFromCart} value={item.id}>remove from cart</button>
         </div>
     )
