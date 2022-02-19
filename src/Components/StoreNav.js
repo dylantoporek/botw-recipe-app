@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+
 
 function StoreNav({name, category, setNameFilter, setCategoryFilter}){
 
-    const navigate = useNavigate()
+
     function handleSearchByName(e){
         setNameFilter(e.target.value)
     }

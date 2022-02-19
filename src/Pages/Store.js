@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
 import Details from "../Components/Details";
@@ -11,8 +10,6 @@ function Store({ingredientList, addItemToCart}){
     const [nameFilter, setNameFilter] = useState("")
     const [togDetails, setTogDetails] = useState(false)
     const [specificIng, setSpecificIng] = useState(null)
-
-    const navigate = useNavigate()
 
 
     const filteredByCategory = ingredientList.filter((ing)=>{

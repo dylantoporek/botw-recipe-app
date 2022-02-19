@@ -249,3 +249,18 @@
   top: 30%;
   left: 10%;
 }
+
+/* COOKBOOK PAGE */
+
+#cookbook-nav{
+  width: 90%;
+  height: 100px;
+  background-color: ghostwhite;
+  align-content: center;
+}
+
+#search-by-type{
+  position: relative;
+  left: 10%;
+  top: 20px;
+}
