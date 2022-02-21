@@ -339,3 +339,32 @@
   position: relative;
   left: 35%;
 }
+
+/* HOME PAGE */
+
+
+/* PANTRY */
+
+#pantry-items-cont{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: whitesmoke;
+}
+
+#pantry-item{
+  position: relative;
+  width: 120px;
+  background-color: antiquewhite;
+}
+
+/* POT */
+
+#pot-items-cont{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: whitesmoke;
+}
