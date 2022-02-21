@@ -20,12 +20,16 @@ function Navbar({user, setUser}){
             <NavLink id='nav-to-home' to='/'>Home</NavLink>
             <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook</NavLink>
             <NavLink id='nav-to-store' to='/store'>Store</NavLink>
-            <NavLink to='/cart'></NavLink>
+            <NavLink id='nav-to-cart' to='/cart'>Cart</NavLink>
+            
         </div>
         
-        <div id='user-bank-display'>Bank: {user.bank}</div>
+      <div id='user-container-display'> 
+        <p id='user-display'>User: {user.username}</p>
+        <p id='user-bank'>Bank: {user.bank}</p>
+      </div>
         <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
-        <button id='to-cart-button' onClick={handleNavToCart}>Cart</button>
+      
     </div>
 }
 

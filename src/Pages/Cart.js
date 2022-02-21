@@ -1,36 +1,40 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
 import CartItem from "../Components/CartItem";
 
 
-function Cart({cart, deleteItemFromCart}){
-    const navigate = useNavigate()
+function Cart({user, cart, deleteItemFromCart}){
 
-    function handleNavToStore(){
-        navigate('/store')
+  const [total, setTotal] = useState(0)
+
+    let tallyTotal = 0
+    const tallyItems = cart.map((item)=> {
+     return tallyTotal = tallyTotal + (item.price * item.quantity)
+    })
+
+    function checkCost(cart){
+      
     }
-
     function checkoutItems(){
         cart.forEach((item)=> {
             let pantry = {
-                item_id: item.id,
+                ingredient_id: item.id,
                 quantity: item.quantity
             }
-            fetch("http://localhost:3001/pantries", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  pantry
-                }),
-              }).then((r) => {
-                if (r.ok) {
-                  r.json().then((data)=> console.log(data))
-                } else {
-                  r.json().then((data) => console.log(data))
-                }
-              });
+            // fetch("http://localhost:3001/pantries", {
+            //     method: "POST",
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({
+            //       pantry
+            //     }),
+            //   }).then((r) => {
+            //     if (r.ok) {
+            //       r.json().then((data)=> console.log(data))
+            //     } else {
+            //       r.json().then((data) => console.log(data))
+            //     }
+            //   });
         })
     }
 
@@ -40,10 +44,10 @@ function Cart({cart, deleteItemFromCart}){
 
     return (
         <div className="comp-cont-2">
-            <button id='to-store' onClick={handleNavToStore}>keep shopping</button>
             <div id='cart-items-cont'>
             {cartDisplay}
             </div>
+            <div id="total-cost">Total: {tallyTotal}</div>
             <button id='checkout' onClick={checkoutItems}>Checkout</button>
         </div>
     )

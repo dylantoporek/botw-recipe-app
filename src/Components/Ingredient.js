@@ -14,7 +14,7 @@ function Ingredient({ing, setTogDetails, setSpecificIng}){
         ingDisplay = <div className='ingredient'>
             <p className="ing-name">{ing.name}</p>
             <img className="ing-img" src={ing.image} />
-            <button onClick={putInCart} className='ing-button' value={ing.id}>add to cart</button>
+            <button onClick={putInCart} className='ing-button' value={ing.id}>Details</button>
         </div>
     }
     

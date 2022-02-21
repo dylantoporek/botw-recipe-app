@@ -8,11 +8,14 @@ function CartItem({item, deleteItemFromCart}){
     }
     return (
         <div className="cart-item" key={item.id}>
-            <p className="ing-name">{item.name}</p>
-            <img className="ing-img" src={item.image}/>
-            <p>Price: {item.price}</p>
-            <p>Quantity: {item.quantity}</p>
-            <button onClick={removeFromCart} value={item.id}>remove from cart</button>
+            <img className="cart-ing-img" src={item.image}/>
+            <div id='cart-item-info'>
+                <p className="cart-ing-name">{item.name}</p>
+                <p className="cart-ing-price">Price: {item.price}</p>
+                <p className="cart-quantity">Quantity: {item.quantity}</p>
+            </div>
+            
+            <button id="remove-from-cart" onClick={removeFromCart} value={item.id}>remove from cart</button>
         </div>
     )
 }

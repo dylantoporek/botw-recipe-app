@@ -16,16 +16,16 @@ function openDetails(){
 
     let recipeDisplay
     if (recipe.name !== null){
-        recipeDisplay = <div className="recipe">
+        recipeDisplay = <div>
             <p className="recipe-name">{recipe.name}</p>
             <img className="recipe-img" src={recipe.image}/>
             <p className="recipe-value">Value: {priceRewrite}</p>
-            <button onClick={openDetails}>Details</button>
+            <button className='recipe-details' onClick={openDetails}>Details</button>
         </div>
     }
 
     return(
-        <div>{recipeDisplay}</div>
+        <div className="recipe">{recipeDisplay}</div>
     ) 
 }
 

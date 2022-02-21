@@ -154,17 +154,60 @@
 #cart-items-cont{
   position: relative;
   top: 50px;
+  
 }
 
 .cart-item{
+  position: relative;
   border-color: black;
   border-width: 2px;
   border-style: solid;
   background-color: gainsboro;
-  flex: auto;
+  display: flex;
   align-items: center;
-  width: 400px;
-  height: 250px;
+  width: 60%;
+  height: 22%;
+  top: 2%;
+  left: 20%;
+  
+}
+
+#cart-item-info{
+  position: relative;
+  left: 10%;
+}
+.cart-ing-name{
+  position: relative;
+  left: 5%;
+}
+
+.cart-ing-img{
+  position: relative;
+  width: 7%;
+  left: 5%;
+}
+
+.cart-ing-price{
+  position: relative;
+  left: 5%;
+}
+
+.cart-quantity{
+  position: relative;
+  left: 5%;
+}
+
+#remove-from-cart{
+  position: relative;
+  left: 55%;
+  top: 30px;
+  
+}
+
+#total-cost{
+  position: fixed;
+  top: 70%;
+  left: 86%;
 }
 
 /* NAVBAR */
@@ -174,6 +217,7 @@
   z-index: 5;
   background-color: white;
   width: 100%;
+  height: 5%;
 }
 
 #nav-links-cont{
@@ -199,10 +243,16 @@
   text-decoration: none;
 }
 
+#nav-to-cart{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
 #signout-button{
   position: relative;
   left: 86%;
-  top: -33px;
+  top: -68px;
 }
 
 #to-cart-button{
@@ -211,10 +261,23 @@
   left: 45%; 
 }
 
-#user-bank-display{
+#user-container-display{
+  display: flex;
+  flex-direction: row;
   position: relative;
   top: -17px;
-  left: 40%;
+  left: 70%;
+}
+
+#user-display{
+ position: relative;
+ top: -18px;
+}
+
+#user-bank{
+  position: relative;
+  left: 20px;
+  top: -18px;
 }
 
 /* INGREDIENT */
@@ -263,4 +326,16 @@
   position: relative;
   left: 10%;
   top: 20px;
+}
+
+.recipe{
+  width: 15%;
+  background-color: aqua;
+  padding: 5px;
+  border-style: groove;
+}
+
+.recipe-details{
+  position: relative;
+  left: 35%;
 }
