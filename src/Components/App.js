@@ -27,7 +27,7 @@ function App() {
     });
 
     // ALL Ingredients
-    fetch('http://localhost:3001/ingredients').then((r) => {
+    fetch('/ingredients').then((r) => {
       if (r.ok) {
         r.json().then((data) => setIngredientList(data))
       } else{
@@ -36,7 +36,7 @@ function App() {
     })
 
     // All Recipes
-    fetch('http://localhost:3001/recipes').then((r) => {
+    fetch('/recipes').then((r) => {
       if (r.ok) {
         r.json().then((data) => setRecipeList(data))
       } else{
@@ -46,25 +46,43 @@ function App() {
     
   }, []);
 
+
   function addItemToPantry(item){
-    let pantryCheck = pantry.filter((pantryItem)=> pantryItem.id === item.id)
+    let pantryCheck = pantry.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
     if (pantryCheck.length === 0){
       let newItem = {
-        ...item
+        ingredient_id: item.id,
+        quantity: item.quantity
       }
-      // POST FOR NEW PANTRY
-      let newPantry = [...pantry, newItem]
-      setPantry(newPantry)
+      fetch('/pantries', {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                newItem
+              }),
+            }).then((r) => {
+              if (r.ok) {
+                r.json().then((data)=> console.log(data))
+              } else {
+                r.json().then((data) => console.log(data))
+              }
+            });
+      
+      // let newPantry = [...pantry, newItem]
+      // setPantry(newPantry)
     } if (pantryCheck.length === 1){
      
-      let filteredPantry = pantry.filter((pantryItem)=> pantryItem.id !== item.id)
-      let updatedItem = {
-        ...item,
-        quantity: item.quantity + pantryCheck[0].quantity
-      }
+      let filteredPantry = pantry.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
+      console.log(filteredPantry)
+      // let updatedItem = {
+      //   ...item,
+      //   quantity: item.quantity + pantryCheck[0].quantity
+      // }
       // UPDATE FOR PANTRY ITEM
-      let newPantry = [...filteredPantry, updatedItem]
-      setPantry(newPantry)
+      // let newPantry = [...filteredPantry, updatedItem]
+      // setPantry(newPantry)
     }
   }
 
@@ -102,7 +120,7 @@ function App() {
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} addItemToPantry={addItemToPantry}/>}/>
+          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} addItemToPantry={addItemToPantry}/>}/>
           <Route path='/' element={<Home pantry={pantry} setPantry={setPantry} recipeList={recipeList}/>}/>
         </Routes>
       </div>

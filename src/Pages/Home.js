@@ -35,20 +35,20 @@ function Home({pantry, recipeList, setPantry}){
 
     
 
-    console.log(pot)
-    // useEffect(()=>{
-    //     // Pantries from DB
-    //     fetch('http://localhost:3001/pantries').then((r) => {
-    //         if (r.ok) {
-    //         r.json().then((data) => setPantry(data))
-    //         } else{
-    //         r.json().then((data) => console.log(data))
-    //         }
-    //     })
-    // }, [])
+    
+    useEffect(()=>{
+        // Pantries from DB
+        fetch('/pantries').then((r) => {
+            if (r.ok) {
+            r.json().then((data) => setPantry(data))
+            } else{
+            r.json().then((data) => console.log(data))
+            }
+        })
+    }, [])
 
     // pantry display && potDisplay && dishesDisplay
-    
+    console.log(pantry)
     return <div className="comp-cont-2">
     
             <h3>Ingredients</h3>

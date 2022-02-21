@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import CartItem from "../Components/CartItem";
 
 
-function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart}){
+function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart, setUser}){
 
 
     let tallyTotal = 0
@@ -13,26 +13,22 @@ function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart}){
     
     function checkoutItems(){
         if (user.bank > tallyTotal){
-          cart.forEach((item)=> addItemToPantry(item))
+          // UPDATE USER BANK
+          let newBankStatement = user.bank - tallyTotal
+          // CHECK PANTRY TO SEE IF POST OR UPDATE
+          cart.forEach((item)=> {
+            addItemToPantry(item)
+            
+          })
           setCart([])
+          setUser({
+            ...user,
+            bank: newBankStatement
+          })
         } else {
           alert("Not enough money")
         }
-            // fetch("http://localhost:3001/pantries", {
-            //     method: "POST",
-            //     headers: {
-            //       "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //       pantry
-            //     }),
-            //   }).then((r) => {
-            //     if (r.ok) {
-            //       r.json().then((data)=> console.log(data))
-            //     } else {
-            //       r.json().then((data) => console.log(data))
-            //     }
-            //   });
+            
     }
 
     const cartDisplay = cart.map((item) => {
