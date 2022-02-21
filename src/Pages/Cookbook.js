@@ -38,7 +38,7 @@ function Cookbook({recipeList}){
     })
 
     const recipeDisplay = filteredByName.map((recipe)=>{
-        return <Recipe recipe={recipe} setTogDetails={setTogDetails} setSpecificRecipe={setSpecificRecipe}/>
+        return <Recipe key={recipe.id} recipe={recipe} setTogDetails={setTogDetails} setSpecificRecipe={setSpecificRecipe}/> 
     })
 
     const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails}/> : null

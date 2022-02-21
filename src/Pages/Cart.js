@@ -2,24 +2,22 @@ import React, {useState} from "react";
 import CartItem from "../Components/CartItem";
 
 
-function Cart({user, cart, deleteItemFromCart}){
+function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart}){
 
-  const [total, setTotal] = useState(0)
 
     let tallyTotal = 0
     const tallyItems = cart.map((item)=> {
      return tallyTotal = tallyTotal + (item.price * item.quantity)
     })
 
-    function checkCost(cart){
-      
-    }
+    
     function checkoutItems(){
-        cart.forEach((item)=> {
-            let pantry = {
-                ingredient_id: item.id,
-                quantity: item.quantity
-            }
+        if (user.bank > tallyTotal){
+          cart.forEach((item)=> addItemToPantry(item))
+          setCart([])
+        } else {
+          alert("Not enough money")
+        }
             // fetch("http://localhost:3001/pantries", {
             //     method: "POST",
             //     headers: {
@@ -35,11 +33,10 @@ function Cart({user, cart, deleteItemFromCart}){
             //       r.json().then((data) => console.log(data))
             //     }
             //   });
-        })
     }
 
     const cartDisplay = cart.map((item) => {
-        return <CartItem item={item} deleteItemFromCart={deleteItemFromCart}/>
+        return <CartItem key={item.id} item={item} deleteItemFromCart={deleteItemFromCart}/>
     })
 
     return (

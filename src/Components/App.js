@@ -14,6 +14,7 @@ function App() {
   const [recipeList, setRecipeList] = useState([])
   const [ingredientList, setIngredientList] = useState([])
   const [cart, setCart] = useState([])
+  const [pantry, setPantry] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -44,6 +45,28 @@ function App() {
     })
     
   }, []);
+
+  function addItemToPantry(item){
+    let pantryCheck = pantry.filter((pantryItem)=> pantryItem.id === item.id)
+    if (pantryCheck.length === 0){
+      let newItem = {
+        ...item
+      }
+      // POST FOR NEW PANTRY
+      let newPantry = [...pantry, newItem]
+      setPantry(newPantry)
+    } if (pantryCheck.length === 1){
+     
+      let filteredPantry = pantry.filter((pantryItem)=> pantryItem.id !== item.id)
+      let updatedItem = {
+        ...item,
+        quantity: item.quantity + pantryCheck[0].quantity
+      }
+      // UPDATE FOR PANTRY ITEM
+      let newPantry = [...filteredPantry, updatedItem]
+      setPantry(newPantry)
+    }
+  }
 
   function addItemToCart(item){
     let cartCheck = cart.filter((cartItem)=> cartItem.id === item.id)
@@ -79,8 +102,8 @@ function App() {
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} deleteItemFromCart={deleteItemFromCart}/>}/>
-          <Route path='/' element={<Home />}/>
+          <Route path='/cart' element={<Cart user={user} cart={cart} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} addItemToPantry={addItemToPantry}/>}/>
+          <Route path='/' element={<Home pantry={pantry} setPantry={setPantry} recipeList={recipeList}/>}/>
         </Routes>
       </div>
     );
