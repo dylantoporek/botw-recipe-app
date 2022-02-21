@@ -10,13 +10,21 @@ function Home({pantry, recipeList, setPantry}){
 
 
 
-    const pantryDisplay = pantry.length > 0 ? pantry.map((item)=> <Pantry key={item.id} item={item} addItemToPot={addItemToPot}/>) : null
+    const pantryDisplay = pantry.length > 0 ? pantry.map((item)=> <Pantry key={item.ingredient.id} item={item} addItemToPot={addItemToPot}/>) : null
     const potDisplay = pot.length > 0 ? pot.map((item) => <Pot item={item} pot={pot} removeFromPot={removeFromPot}/>) : null
     
     function addItemToPot(item){
         if (pot.length < 5){
             let newPot = [...pot, item]
+            let pantryItemUpdate = {
+                ...item,
+                quantity: item.quantity - 1
+            }
+            let filteredPantry = pantry.filter((pantryItem)=> pantryItem.ingredient.id !== item.ingredient.id)
+            console.log(filteredPantry)
+            // setPantry([...filteredPantry, pantryItemUpdate])
             setPot(newPot)
+            
             // Update quantity in pantry (take one away)
         } if (pot.length === 5){
             alert("Pot already has 5 ingredients")
@@ -36,19 +44,18 @@ function Home({pantry, recipeList, setPantry}){
     
 
     
-    useEffect(()=>{
-        // Pantries from DB
-        fetch('/pantries').then((r) => {
-            if (r.ok) {
-            r.json().then((data) => setPantry(data))
-            } else{
-            r.json().then((data) => console.log(data))
-            }
-        })
-    }, [])
+    // useEffect(()=>{
+    //     // Pantries from DB
+    //     fetch('/pantries').then((r) => {
+    //         if (r.ok) {
+    //         r.json().then((data) => setPantry(data))
+    //         } else{
+    //         r.json().then((data) => console.log(data))
+    //         }
+    //     })
+    // }, [])
 
     // pantry display && potDisplay && dishesDisplay
-    console.log(pantry)
     return <div className="comp-cont-2">
     
             <h3>Ingredients</h3>

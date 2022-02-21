@@ -46,43 +46,46 @@ function App() {
     
   }, []);
 
-
+// BUG WITH ADDING MULTIPLE ITEMS FROM CART
   function addItemToPantry(item){
     let pantryCheck = pantry.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
     if (pantryCheck.length === 0){
       let newItem = {
         ingredient_id: item.id,
-        quantity: item.quantity
+        quantity: item.quantity,
+        ingredient: item
       }
-      fetch('/pantries', {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                newItem
-              }),
-            }).then((r) => {
-              if (r.ok) {
-                r.json().then((data)=> console.log(data))
-              } else {
-                r.json().then((data) => console.log(data))
-              }
-            });
+      // fetch('/pantries', {
+      //         method: "POST",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //         body: JSON.stringify({
+      //           newItem
+      //         }),
+      //       }).then((r) => {
+      //         if (r.ok) {
+      //           r.json().then((data)=> console.log(data))
+      //         } else {
+      //           r.json().then((data) => console.log(data))
+      //         }
+      //       });
       
-      // let newPantry = [...pantry, newItem]
-      // setPantry(newPantry)
+      let newPantry = [...pantry, newItem]
+      // console.log(pantry)
+      // console.log(newPantry)
+      setPantry(newPantry)
     } if (pantryCheck.length === 1){
      
       let filteredPantry = pantry.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
-      console.log(filteredPantry)
-      // let updatedItem = {
-      //   ...item,
-      //   quantity: item.quantity + pantryCheck[0].quantity
-      // }
+      let updatedItem = {
+        ingredient_id: item.id,
+        quantity: item.quantity + pantryCheck[0].quantity,
+        ingredient: item
+      }
       // UPDATE FOR PANTRY ITEM
-      // let newPantry = [...filteredPantry, updatedItem]
-      // setPantry(newPantry)
+      let newPantry = [...filteredPantry, updatedItem]
+      setPantry(newPantry)
     }
   }
 

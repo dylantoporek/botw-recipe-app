@@ -15,11 +15,11 @@ function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart, setUser
         if (user.bank > tallyTotal){
           // UPDATE USER BANK
           let newBankStatement = user.bank - tallyTotal
-          // CHECK PANTRY TO SEE IF POST OR UPDATE
-          cart.forEach((item)=> {
+          
+          cart.forEach((item) => {
             addItemToPantry(item)
-            
           })
+          alert("You have checked out your items. Happy cooking!")
           setCart([])
           setUser({
             ...user,

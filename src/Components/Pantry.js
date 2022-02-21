@@ -1,5 +1,5 @@
 import React from "react";
-import Pot from "./Pot";
+
 
 function Pantry({item, addItemToPot}){
     function addToPot(){
