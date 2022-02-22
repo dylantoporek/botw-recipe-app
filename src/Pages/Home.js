@@ -4,23 +4,23 @@ import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
 
 
-function Home({pantry, recipeList, setPantry}){
+function Home({pantries, recipeList, setPantries, user, setUser}){
 
     const [pot, setPot] = useState([])
     const [dishes, setDishes] = useState([])
 
-    // useEffect(()=>{
-    //     // Pantries from DB
-    //     fetch('/pantries').then((r) => {
-    //         if (r.ok) {
-    //         r.json().then((data) => setPantry(data))
-    //         } else{
-    //         r.json().then((data) => console.log(data))
-    //         }
-    //     })
-    // }, [])
+    useEffect(()=>{
+        // Pantries from DB
+        fetch('/pantries').then((r) => {
+            if (r.ok) {
+            r.json().then((data) => setPantries(data))
+            } else{
+            r.json().then((data) => console.log(data))
+            }
+        })
+    }, [])
 
-    const pantryDisplay = pantry.length > 0 ? pantry.map((item)=> <Pantry 
+    const pantryDisplay = pantries.length > 0 ? pantries.map((item)=> <Pantry 
                                                                     key={item.ingredient.id}
                                                                     pot={pot} 
                                                                     item={item}
@@ -32,7 +32,11 @@ function Home({pantry, recipeList, setPantry}){
                                                             pot={pot} 
                                                             startCookingProcess={startCookingProcess}/>) : null
 
-    const dishDisplay = dishes.length > 0 ? dishes.map((item)=> <Dish item={item} />) : null
+    const dishDisplay = dishes.length > 0 ? dishes.map((item)=> <Dish 
+                                                                    item={item} 
+                                                                    sellRecipe={sellRecipe} 
+                                                                    user={user} 
+                                                                    setUser={setUser}/>) : null
 
     
     // Must UPDATE BACKEND WITH QUANTITY CHANGES//////////////////////////////////////////
@@ -131,6 +135,14 @@ function Home({pantry, recipeList, setPantry}){
             setPot([])
         }
             
+    }
+
+    function sellRecipe(item){
+        let found = dishes.find((dish)=> dish.id === item.id)
+        let foundIndex = dishes.indexOf(found)
+        dishes.splice(foundIndex, 1)
+        let newDishArr = [...dishes]
+        setDishes(newDishArr)
     }
     
     // pantry display && potDisplay && dishesDisplay

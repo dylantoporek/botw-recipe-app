@@ -14,7 +14,7 @@ function App() {
   const [recipeList, setRecipeList] = useState([])
   const [ingredientList, setIngredientList] = useState([])
   const [cart, setCart] = useState([])
-  const [pantry, setPantry] = useState([])
+  const [pantries, setPantries] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -53,14 +53,14 @@ function App() {
       quantity: item.quantity,
       ingredient: item
     }
-    let newPantry = [...pantry, newItem]
-    setPantry(newPantry)
+    let newPantry = [...pantries, newItem]
+    setPantries(newPantry)
   }
 
   
 // BUG WITH ADDING MULTIPLE ITEMS FROM CART
   function checkPantryItems(item){
-    let pantryCheck = pantry.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
+    let pantryCheck = pantries.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
     if (pantryCheck.length === 0){
       const pantryPromise = (callback, obj) => {
         return new Promise(function(resolve){
@@ -70,31 +70,32 @@ function App() {
       }
       pantryPromise(addItemToPantry, item)
 
-      // let pantry = {
-      //   ingredient_id: item.id,
-      //   quantity: item.quantity
-      // }
+      let pantry = {
+        ingredient_id: item.id,
+        quantity: item.quantity
+      }
 
-      // fetch('/pantries', {
-      //         method: "POST",
-      //         headers: {
-      //           "Content-Type": "application/json",
-      //         },
-      //         body: JSON.stringify({
-      //           pantry
-      //         }),
-      //       }).then((r) => {
-      //         if (r.ok) {
-      //           r.json().then((data)=> console.log(data))
-      //         } else {
-      //           r.json().then((data) => console.log(data))
-      //         }
-      //       });
+
+      fetch('/pantries', {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                pantry
+              }),
+            }).then((r) => {
+              if (r.ok) {
+                r.json().then((data)=> console.log(data))
+              } else {
+                r.json().catch((data) => console.log(data))
+              }
+            });
       
       
     } if (pantryCheck.length === 1){
      
-      let filteredPantry = pantry.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
+      let filteredPantry = pantries.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
       let updatedItem = {
         ingredient_id: item.id,
         quantity: item.quantity + pantryCheck[0].quantity,
@@ -102,7 +103,7 @@ function App() {
       }
       // UPDATE FOR PANTRY ITEM
       let newPantry = [...filteredPantry, updatedItem]
-      setPantry(newPantry)
+      setPantries(newPantry)
     }
   }
 
@@ -141,8 +142,8 @@ function App() {
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} checkPantryItems={checkPantryItems}/>}/>
-          <Route path='/' element={<Home pantry={pantry} setPantry={setPantry} recipeList={recipeList}/>}/>
+          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems}/>}/>
+          <Route path='/' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList}/>}/>
         </Routes>
       </div>
     );

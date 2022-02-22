@@ -31,9 +31,9 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             
     }
 
-    const cartDisplay = cart.map((item) => {
+    const cartDisplay = cart.length > 0 ? cart.map((item) => {
         return <CartItem key={item.id} item={item} deleteItemFromCart={deleteItemFromCart}/>
-    })
+    }) : <div>Cart is empty</div>
 
     return (
         <div className="comp-cont-2">
