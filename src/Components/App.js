@@ -46,29 +46,11 @@ function App() {
     
   }, []);
 
-  function addItemToPantry(item){
-    // console.log(item)
-    let newItem = {
-      ingredient_id: item.id,
-      quantity: item.quantity,
-      ingredient: item
-    }
-    let newPantry = [...pantries, newItem]
-    setPantries(newPantry)
-  }
-
   
-// BUG WITH ADDING MULTIPLE ITEMS FROM CART
+
   function checkPantryItems(item){
     let pantryCheck = pantries.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
     if (pantryCheck.length === 0){
-      const pantryPromise = (callback, obj) => {
-        return new Promise(function(resolve){
-          callback(obj)
-          resolve("resolved")
-        })
-      }
-      pantryPromise(addItemToPantry, item)
 
       let pantry = {
         ingredient_id: item.id,
@@ -77,33 +59,42 @@ function App() {
 
 
       fetch('/pantries', {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pantry
-              }),
-            }).then((r) => {
-              if (r.ok) {
-                r.json().then((data)=> console.log(data))
-              } else {
-                r.json().catch((data) => console.log(data))
-              }
-            });
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({pantry}),
+        }).then((r) => {
+        if (r.ok) {
+          r.json().then((data)=> console.log(data))
+        } else {
+          r.json().catch((data) => console.log(data))
+        }
+      });
       
       
     } if (pantryCheck.length === 1){
-     
-      let filteredPantry = pantries.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
-      let updatedItem = {
-        ingredient_id: item.id,
-        quantity: item.quantity + pantryCheck[0].quantity,
-        ingredient: item
+     console.log(pantryCheck)
+     let quantityUpdate = pantryCheck[0].quantity + item.quantity
+     fetch(`/pantries/${pantryCheck[0].id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        quantity: quantityUpdate
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data)=> {
+          let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
+          let updatedPantry = [...filteredPantry, data]
+          setPantries(updatedPantry)
+        })
+      } else {
+        r.json().catch((data) => console.log(data))
       }
-      // UPDATE FOR PANTRY ITEM
-      let newPantry = [...filteredPantry, updatedItem]
-      setPantries(newPantry)
+    });
     }
   }
 
