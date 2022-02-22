@@ -18,6 +18,15 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             r.json().then((data) => console.log(data))
             }
         })
+
+        fetch('/dishes').then((r) => {
+            if (r.ok) {
+            r.json().then((data) => setDishes(data))
+            } else{
+            r.json().then((data) => console.log(data))
+            }
+        })
+
     }, [])
 
     const pantryDisplay = pantries.length > 0 ? pantries.map((item)=> <Pantry 
@@ -127,8 +136,27 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         })
         if (foundRecipe !== undefined){
             let targetedRecipe = recipeList.find((recipe)=> recipe.id === foundRecipe.id)
-            let newDishArr = [...dishes, targetedRecipe]
-            setDishes(newDishArr)
+            let dish = {
+                recipe_id: foundRecipe.id,
+                quantity: 1
+            }
+            fetch('/dishes', {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({dish}),
+                }).then((r) => {
+                if (r.ok) {
+                  r.json().then((data)=> {
+                    let newDishArr = [...dishes, data]
+                    setDishes(newDishArr)
+                  })
+                } else {
+                  r.json().catch((data) => console.log(data))
+                }
+              });
+            
             setPot([])
         } else {
             alert('That mix is not edible!')
@@ -143,14 +171,26 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         dishes.splice(foundIndex, 1)
         let newDishArr = [...dishes]
         setDishes(newDishArr)
+        // /////////////////////////fetch delete for dish by id///////////////////////////
+        fetch(`/dishes/${item.id}`, {
+            method: 'DELETE',
+          })
+          .then((res) => {
+            if (res.ok) {
+              console.log("file deleted")
+            } else {
+              res.json().then((data)=> console.log(data))
+            }
+          })
     }
+    
     
     // pantry display && potDisplay && dishesDisplay
     return <div className="comp-cont-2">
     
             <h3>Ingredients</h3>
             <div id='pantry-items-cont'>
-            {pantryDisplay}
+                {pantryDisplay}
             </div>
 
             <h3>Pot</h3>
@@ -162,10 +202,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             <h3>Dishes</h3>
             <div>
                 {dishDisplay}
-            </div>
-            
-        
-        
+            </div>  
     </div>
 }
 

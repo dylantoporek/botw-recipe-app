@@ -2,7 +2,7 @@ import React from "react";
 
 function Dish({item, sellRecipe, user, setUser}){
     
-    let priceRewrite = item.price
+    let priceRewrite = item.recipe.price
     if (priceRewrite === 0){
         priceRewrite = 25
     }
@@ -29,12 +29,13 @@ function Dish({item, sellRecipe, user, setUser}){
             } else {
               r.json().catch((data) => console.log(data))
             }
-          }); 
+          });
+           
     }
 
     let itemDisplay = <div>
-        <p>{item.name}</p>
-        <img src={item.image}/>
+        <p>{item.recipe.name}</p>
+        <img src={item.recipe.image}/>
         <p>Value: {priceRewrite}</p>
         <button onClick={handleSellItem}>Sell</button>
     </div>
