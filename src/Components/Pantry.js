@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 
 
-function Pantry({item, addItemToPot}){
+
+function Pantry({item, pot, addItemToPot, removeFromPot}){
+    const [quantity, setQuantity] = useState(item.quantity)
+    
+
     function addToPot(){
-        addItemToPot(item)
+        if (quantity > 0 && pot.length < 5){
+            addItemToPot(item)
+            let newQuantity = quantity - 1
+            setQuantity(newQuantity)
+        } if(quantity === 0){
+            alert(`You are out of ${item.ingredient.name}. Go buy more from the store.`)
+        } if (pot.length === 5){
+            alert('Pot already full')
+        }
+        
+    }
+
+    function handleRemoveFromPot(){
+        if(pot.includes(item)){
+            removeFromPot(item)
+            let newQuantity = quantity + 1
+            setQuantity(newQuantity)
+        } else {
+            alert('nothing to remove from pot')
+        }
+        
     }
     
     let itemDisplay
@@ -11,8 +35,9 @@ function Pantry({item, addItemToPot}){
         itemDisplay = <div id='pantry-item'>
             <p>{item.ingredient.name}</p>
             <img className="ing-img" src={item.ingredient.image}/>
-            <p>x{item.quantity}</p>
+            <p>x{quantity}</p>
             <button onClick={addToPot}>add to pot</button>
+            <button onClick={handleRemoveFromPot}>remove from pot</button>
         </div>
     }
     return(

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import CartItem from "../Components/CartItem";
 
 
-function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart, setUser}){
+function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser}){
 
 
     let tallyTotal = 0
@@ -17,7 +17,7 @@ function Cart({user, cart, deleteItemFromCart, addItemToPantry, setCart, setUser
           let newBankStatement = user.bank - tallyTotal
           
           cart.forEach((item) => {
-            addItemToPantry(item)
+            checkPantryItems(item)
           })
           alert("You have checked out your items. Happy cooking!")
           setCart([])

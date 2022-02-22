@@ -46,22 +46,42 @@ function App() {
     
   }, []);
 
-// BUG WITH ADDING MULTIPLE ITEMS FROM CART
   function addItemToPantry(item){
+    // console.log(item)
+    let newItem = {
+      ingredient_id: item.id,
+      quantity: item.quantity,
+      ingredient: item
+    }
+    let newPantry = [...pantry, newItem]
+    setPantry(newPantry)
+  }
+
+  
+// BUG WITH ADDING MULTIPLE ITEMS FROM CART
+  function checkPantryItems(item){
     let pantryCheck = pantry.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
     if (pantryCheck.length === 0){
-      let newItem = {
-        ingredient_id: item.id,
-        quantity: item.quantity,
-        ingredient: item
+      const pantryPromise = (callback, obj) => {
+        return new Promise(function(resolve){
+          callback(obj)
+          resolve("resolved")
+        })
       }
+      pantryPromise(addItemToPantry, item)
+
+      // let pantry = {
+      //   ingredient_id: item.id,
+      //   quantity: item.quantity
+      // }
+
       // fetch('/pantries', {
       //         method: "POST",
       //         headers: {
       //           "Content-Type": "application/json",
       //         },
       //         body: JSON.stringify({
-      //           newItem
+      //           pantry
       //         }),
       //       }).then((r) => {
       //         if (r.ok) {
@@ -71,10 +91,7 @@ function App() {
       //         }
       //       });
       
-      let newPantry = [...pantry, newItem]
-      // console.log(pantry)
-      // console.log(newPantry)
-      setPantry(newPantry)
+      
     } if (pantryCheck.length === 1){
      
       let filteredPantry = pantry.filter((pantryItem)=> pantryItem.ingredient.id !== item.id)
@@ -114,6 +131,7 @@ function App() {
   }
 
 
+
   if (!user){
     return <Login onLogin={setUser} user={user} />;
   } else {
@@ -123,7 +141,7 @@ function App() {
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} addItemToPantry={addItemToPantry}/>}/>
+          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} pantry={pantry} checkPantryItems={checkPantryItems}/>}/>
           <Route path='/' element={<Home pantry={pantry} setPantry={setPantry} recipeList={recipeList}/>}/>
         </Routes>
       </div>
