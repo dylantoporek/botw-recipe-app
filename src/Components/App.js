@@ -74,8 +74,9 @@ function App() {
       
       
     } if (pantryCheck.length === 1){
-     console.log(pantryCheck)
+
      let quantityUpdate = pantryCheck[0].quantity + item.quantity
+     
      fetch(`/pantries/${pantryCheck[0].id}`, {
       method: "PATCH",
       headers: {
@@ -84,7 +85,7 @@ function App() {
       body: JSON.stringify({
         quantity: quantityUpdate
       }),
-    }).then((r) => {
+      }).then((r) => {
       if (r.ok) {
         r.json().then((data)=> {
           let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)

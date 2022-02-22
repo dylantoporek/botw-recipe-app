@@ -13,18 +13,39 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
     
     function checkoutItems(){
         if (user.bank > tallyTotal){
-          // UPDATE USER BANK
           let newBankStatement = user.bank - tallyTotal
+          // UPDATE USER BANK
+          fetch(`/users/${user.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              bank: newBankStatement
+            }),
+          }).then((r) => {
+            if (r.ok) {
+              r.json().then((data)=> {
+                setUser({
+                  ...user,
+                  bank: data.bank
+                })
+              })
+            } else {
+              r.json().catch((data) => console.log(data))
+            }
+          });
+          
           
           cart.forEach((item) => {
             checkPantryItems(item)
           })
           alert("You have checked out your items. Happy cooking!")
           setCart([])
-          setUser({
-            ...user,
-            bank: newBankStatement
-          })
+          // setUser({
+          //   ...user,
+          //   bank: newBankStatement
+          // })
         } else {
           alert("Not enough money")
         }
