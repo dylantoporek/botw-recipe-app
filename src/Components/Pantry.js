@@ -8,7 +8,7 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
 
     function addToPot(){
         if (quantity > 0 && pot.length < 5){
-            addItemToPot(item)
+            addItemToPot(item, quantity)
             let newQuantity = quantity - 1
             setQuantity(newQuantity)
         } if(quantity === 0){
@@ -20,8 +20,11 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
     }
 
     function handleRemoveFromPot(){
-        if(pot.includes(item)){
-            removeFromPot(item)
+       let potCheck 
+        potCheck = pot.find((ing)=> ing.id === item.id)
+        console.log(potCheck)
+        if(potCheck !== undefined){
+            removeFromPot(item, quantity)
             let newQuantity = quantity + 1
             setQuantity(newQuantity)
         } else {

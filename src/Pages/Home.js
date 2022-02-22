@@ -29,48 +29,91 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
 
     }, [])
 
-    const pantryDisplay = pantries.length > 0 ? pantries.map((item)=> <Pantry 
-                                                                    key={item.ingredient.id}
-                                                                    pot={pot} 
-                                                                    item={item}
-                                                                    removeFromPot={removeFromPot} 
-                                                                    addItemToPot={addItemToPot}/>) : null
+    const pantryDisplay = pantries.length > 0 ? pantries.map((item)=>{
+       return <Pantry 
+            key={item.ingredient.id}
+            pot={pot} 
+            item={item}
+            removeFromPot={removeFromPot} 
+            addItemToPot={addItemToPot}/>
+    }) : null
 
-    const potDisplay = pot.length > 0 ? pot.map((item) => <Pot 
-                                                            item={item} 
-                                                            pot={pot} 
-                                                            startCookingProcess={startCookingProcess}/>) : null
+    const potDisplay = pot.length > 0 ? pot.map((item) =>{
+       return <Pot 
+            item={item} 
+            pot={pot} 
+            startCookingProcess={startCookingProcess}/>
+    }) : null
 
-    const dishDisplay = dishes.length > 0 ? dishes.map((item)=> <Dish 
-                                                                    item={item} 
-                                                                    sellRecipe={sellRecipe} 
-                                                                    user={user} 
-                                                                    setUser={setUser}/>) : null
+    const dishDisplay = dishes.length > 0 ? dishes.map((item)=> {
+       return <Dish 
+            item={item} 
+            sellRecipe={sellRecipe} 
+            user={user} 
+            setUser={setUser}/>
+    }) : null
 
     
-    // Must UPDATE BACKEND WITH QUANTITY CHANGES//////////////////////////////////////////
-    function addItemToPot(item){
+
+    function addItemToPot(item, num){
         if (pot.length < 5){
+            let quantityUpdate = num - 1
+            fetch(`/pantries/${item.id}`, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  quantity: quantityUpdate
+                }),
+                }).then((r) => {
+                if (r.ok) {
+                  r.json().then((data)=> {
+                    let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
+                    let updatedPantry = [...filteredPantry, data]
+                    setPantries(updatedPantry)
+                  })
+                } else {
+                  r.json().catch((data) => console.log(data))
+                }
+              });
             let newPot = [...pot, item]
             setPot(newPot)
         } 
     }
 
-
-    // Must UPDATE BACKEND WITH QUANTITY CHANGES//////////////////////////////////////////
-    function removeFromPot(item){
+    function removeFromPot(item, num){
        
         let found = pot.find((ing)=> ing.ingredient.id === item.ingredient.id)
         
         let foundIndex = pot.indexOf(found)
         
         pot.splice(foundIndex, 1)
+        let quantityUpdate = num + 1
+            fetch(`/pantries/${item.id}`, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  quantity: quantityUpdate
+                }),
+                }).then((r) => {
+                if (r.ok) {
+                  r.json().then((data)=> {
+                    let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
+                    let updatedPantry = [...filteredPantry, data]
+                    setPantries(updatedPantry)
+                  })
+                } else {
+                  r.json().catch((data) => console.log(data))
+                }
+              });
         let newPot = [...pot]
         setPot(newPot)
-        // Update quantity in pantry (add one back in)
     }
 
-    // Must UPDATE BACKEND WITH QUANTITY CHANGES//////////////////////////////////////////
+    
     function startCookingProcess(){
         let foundRecipe
         let recipeIngredientList = recipeList.map((recipe)=>{
@@ -156,7 +199,20 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                   r.json().catch((data) => console.log(data))
                 }
               });
-            
+              pantries.forEach((pantryItem)=>{
+                  if(pantryItem.quantity === 0){
+                    fetch(`/pantries/${pantryItem.id}`, {
+                        method: 'DELETE',
+                      })
+                      .then((res) => {
+                        if (res.ok) {
+                          console.log("file deleted")
+                        } else {
+                          res.json().then((data)=> console.log(data))
+                        }
+                      })
+                  }
+              })
             setPot([])
         } else {
             alert('That mix is not edible!')
@@ -171,7 +227,6 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         dishes.splice(foundIndex, 1)
         let newDishArr = [...dishes]
         setDishes(newDishArr)
-        // /////////////////////////fetch delete for dish by id///////////////////////////
         fetch(`/dishes/${item.id}`, {
             method: 'DELETE',
           })
