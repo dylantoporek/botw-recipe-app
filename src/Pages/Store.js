@@ -10,6 +10,7 @@ function Store({ingredientList, addItemToCart}){
     const [nameFilter, setNameFilter] = useState("")
     const [togDetails, setTogDetails] = useState(false)
     const [specificIng, setSpecificIng] = useState(null)
+    
 
 
     const filteredByCategory = ingredientList.filter((ing)=>{
@@ -31,7 +32,7 @@ function Store({ingredientList, addItemToCart}){
     })
 
     const ingredientDisplay = filteredByName.map((ing)=>{
-        return <Ingredient key={ing.id} ing={ing} setTogDetails={setTogDetails} setSpecificIng={setSpecificIng} />
+        return <Ingredient key={ing.id} ing={ing} setTogDetails={setTogDetails} setSpecificIng={setSpecificIng}/>
     })
 
     const detailsDisplay = specificIng ? <Details addItemToCart={addItemToCart} setTogDetails={setTogDetails} ing={specificIng}/> : null
