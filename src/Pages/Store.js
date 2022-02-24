@@ -39,7 +39,7 @@ function Store({ingredientList, addItemToCart}){
     
     
     if(!togDetails){
-        return <div className="comp-cont-1">
+        return <div className="store-comp-cont-1">
         <StoreNav 
             name={nameFilter} 
             category={categoryFilter} 
@@ -49,7 +49,7 @@ function Store({ingredientList, addItemToCart}){
         {ingredientDisplay}
     </div>
     } else{
-        return <div className="comp-cont-1">
+        return <div className="store-comp-cont-1">
         <StoreNav 
             name={nameFilter} 
             category={categoryFilter} 

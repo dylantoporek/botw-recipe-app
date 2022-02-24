@@ -42,9 +42,12 @@ function Details({ing, setTogDetails, addItemToCart}){
             <p id='details-price'>Price: ${ing.price}</p>
         
             <div id='quantity-form-cont'>
-                <button id='minus' onClick={removeOne}>-</button>
                 <p id='quantity'>How many? x{quantity}</p>
-                <button id='add' onClick={addOne}>+</button>
+                <div id='quantity-cont-plus'>
+                    <button id='minus' onClick={removeOne}>-</button>
+                    <button id='add' onClick={addOne}>+</button>
+                </div>
+                
                 <p id='details-total'>Total: ${totalPrice}</p>
             </div>
 
