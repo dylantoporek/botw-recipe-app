@@ -22,7 +22,7 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
     function handleRemoveFromPot(){
        let potCheck 
         potCheck = pot.find((ing)=> ing.id === item.id)
-        console.log(potCheck)
+        
         if(potCheck !== undefined){
             removeFromPot(item, quantity)
             let newQuantity = quantity + 1

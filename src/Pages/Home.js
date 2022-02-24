@@ -69,9 +69,11 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 }).then((r) => {
                 if (r.ok) {
                   r.json().then((data)=> {
-                    let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
-                    let updatedPantry = [...filteredPantry, data]
-                    setPantries(updatedPantry)
+                      let found = pantries.find((ing)=> ing.ingredient.id === data.ingredient.id)
+                      let foundIndex = pantries.indexOf(found)
+                      let newPantry = pantries
+                      newPantry.splice(foundIndex, 1, data)
+                      setPantries(newPantry)
                   })
                 } else {
                   r.json().catch((data) => console.log(data))
@@ -101,9 +103,11 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 }).then((r) => {
                 if (r.ok) {
                   r.json().then((data)=> {
-                    let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
-                    let updatedPantry = [...filteredPantry, data]
-                    setPantries(updatedPantry)
+                        let found = pantries.find((ing)=> ing.ingredient.id === data.ingredient.id)
+                        let foundIndex = pantries.indexOf(found)
+                        let newPantry = pantries
+                        newPantry.splice(foundIndex, 1, data)
+                        setPantries(newPantry)
                   })
                 } else {
                   r.json().catch((data) => console.log(data))
@@ -161,7 +165,6 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 formula.push(null)
             }
         }
-        console.log(formula)
         recipeIngredientList.map((recipe)=> {
             
             if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){  
