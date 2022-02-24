@@ -5,7 +5,12 @@ function Details({ing, setTogDetails, addItemToCart}){
 
 
     function removeOne(){
-        setQuantity((quantity) => quantity - 1)
+        if (quantity > 1){
+            setQuantity((quantity) => quantity - 1)
+        } else {
+           return alert('Cannot purchase less than 1')
+        }
+        
     }
 
     function addOne(){
@@ -34,13 +39,13 @@ function Details({ing, setTogDetails, addItemToCart}){
             <img id='details-img' src={ing.image}/>
             <p id='description-label'>Description:</p>
             <p id='details-description'>{ing.description}</p>
-            <p id='details-price'>Price: {ing.price}</p>
+            <p id='details-price'>Price: ${ing.price}</p>
         
             <div id='quantity-form-cont'>
                 <button id='minus' onClick={removeOne}>-</button>
-                <p id='quantity'>{quantity}</p>
+                <p id='quantity'>How many? x{quantity}</p>
                 <button id='add' onClick={addOne}>+</button>
-                <p id='details-total'>Total: {totalPrice}</p>
+                <p id='details-total'>Total: ${totalPrice}</p>
             </div>
 
             

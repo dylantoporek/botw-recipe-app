@@ -1,11 +1,11 @@
-/* APP */
+/* APP ////////////////////////*/
 #app-contianer{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-/* COMPONENT CONTAINER TRIAL!! */
+/* COMPONENT CONTAINER FLEX /////////////////////*/
 .comp-cont-1{
   display: flex;
   position: relative;
@@ -28,14 +28,153 @@
   top: 50px;
 }
 
-/* STORE PAGE */
+/* NAVBAR ///////////////////////////////////////////////////////////////////////*/
+#navbar{
+  position: fixed;
+  top: 0px;
+  z-index: 150;
+  background-color: white;
+  width: 100%;
+  height: 30px;
+}
 
-#store-nav{
+#nav-links-cont{
+  position: relative;
+  left: 2%;
+}
+
+#nav-to-home{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#nav-to-cookbook{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#nav-to-store{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#nav-to-cart{
+  position: relative;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+#signout-button{
+  position: relative;
+  left: 86%;
+  top: -68px;
+}
+
+#to-cart-button{
+  position: relative;
+  top: -33px;
+  left: 45%; 
+}
+
+#user-container-display{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -17px;
+  left: 70%;
+}
+
+#user-display{
+ position: relative;
+ top: -18px;
+}
+
+#user-bank{
+  position: relative;
+  left: 20px;
+  top: -18px;
+}
+
+/* HOME PAGE //////////////////////////////////////////////////////////////////////////////*/
+
+
+/* PANTRY//////////////////////////////// */
+
+#pantry-items-cont{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: whitesmoke;
+}
+
+#pantry-item{
+  position: relative;
+  width: 120px;
+  background-color: antiquewhite;
+}
+
+/* POT ////////////////////////////////////*/
+
+#pot-items-cont{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: whitesmoke;
+}
+
+#pot-ing{
+  position: relative;
+  width: 75px;
+  height: 50px;
+  padding-right: 10px;
+}
+
+/* COOKBOOK PAGE /////////////////////////////////////////////////////////////////*/
+
+#cookbook-nav{
   width: 90%;
   height: 100px;
   background-color: ghostwhite;
   align-content: center;
   z-index: 5;
+}
+
+#search-by-type{
+  position: relative;
+  left: 10%;
+  top: 20px;
+}
+
+.recipe{
+  width: 15%;
+  background-color: antiquewhite;
+  padding: 5px;
+  border-style: groove;
+  border-color: whitesmoke;
+}
+
+.recipe-details{
+  position: relative;
+  left: 35%;
+}
+
+
+
+/* STORE PAGE ////////////////////////////////////////////////////////////////////////*/
+
+#store-nav{
+  position: relative;
+  width: 90%;
+  height: 100px;
+  top: 10px;
+  background-color: ghostwhite;
+  align-content: center;
+  z-index: 140;
 }
 
 #search-by-category{
@@ -50,14 +189,16 @@
   left: 1%;
 }
 
-/* STORE DETAILS */
+/* STORE DETAILS ///////////////////*/
 
 #details-cont{
   position: fixed;
   width: 70%;
   height: 70%;
   z-index: 10;
-  background-color: ghostwhite;
+  background-color: antiquewhite;
+  border-style: groove;
+  border-width: 5px;
 }
 
 #to-shop{
@@ -73,8 +214,8 @@
 
 #details-img{
   position: relative;
-  height: 130px;
-  width: 130px;
+  height: 100px;
+  width: 100px;
   left: 40%;
 }
 
@@ -86,7 +227,7 @@
 
 #details-description{
   position: relative;
-  left: 2%;
+  left: 5%;
   top: 0%;
   width: 60%;
 }
@@ -127,7 +268,7 @@
 #details-total{
   position: relative;
   top: 50px;
-  left: -70px;
+  left: -120px;
 }
 
 #details-add-to-cart{
@@ -136,7 +277,7 @@
   left: 45%;
 }
 
-/* CART PAGE */
+/* CART PAGE ///////////////////////////////////////////////////////////////////*/
 
 #to-store{
   position: fixed;
@@ -211,80 +352,11 @@
   left: 86%;
 }
 
-/* NAVBAR */
-#navbar{
-  position: fixed;
-  top: 0px;
-  z-index: 5;
-  background-color: white;
-  width: 100%;
-  height: 5%;
-}
-
-#nav-links-cont{
-  position: relative;
-  left: 2%;
-}
-
-#nav-to-home{
-  position: relative;
-  padding-right: 10px;
-  text-decoration: none;
-}
-
-#nav-to-cookbook{
-  position: relative;
-  padding-right: 10px;
-  text-decoration: none;
-}
-
-#nav-to-store{
-  position: relative;
-  padding-right: 10px;
-  text-decoration: none;
-}
-
-#nav-to-cart{
-  position: relative;
-  padding-right: 10px;
-  text-decoration: none;
-}
-
-#signout-button{
-  position: relative;
-  left: 86%;
-  top: -68px;
-}
-
-#to-cart-button{
-  position: relative;
-  top: -33px;
-  left: 45%; 
-}
-
-#user-container-display{
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: -17px;
-  left: 70%;
-}
-
-#user-display{
- position: relative;
- top: -18px;
-}
-
-#user-bank{
-  position: relative;
-  left: 20px;
-  top: -18px;
-}
-
-/* INGREDIENT */
+/* INGREDIENT /////////////////////////////////////*/
 .ingredient{
+  position: relative;
   flex: auto;
-  align-items: center;
+  top: 40px;
   width: 150px;
   height: 150px;
   
@@ -328,67 +400,8 @@
   height: 150px;
 }
 
-/* COOKBOOK PAGE */
-
-#cookbook-nav{
-  width: 90%;
-  height: 100px;
-  background-color: ghostwhite;
-  align-content: center;
-  z-index: 5;
-}
-
-#search-by-type{
-  position: relative;
-  left: 10%;
-  top: 20px;
-}
-
-.recipe{
-  width: 15%;
-  background-color: antiquewhite;
-  padding: 5px;
-  border-style: groove;
-  border-color: whitesmoke;
-}
-
-.recipe-details{
-  position: relative;
-  left: 35%;
-}
-
-/* HOME PAGE */
 
 
-/* PANTRY */
 
-#pantry-items-cont{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  background-color: whitesmoke;
-}
 
-#pantry-item{
-  position: relative;
-  width: 120px;
-  background-color: antiquewhite;
-}
 
-/* POT */
-
-#pot-items-cont{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  background-color: whitesmoke;
-}
-
-#pot-ing{
-  position: relative;
-  width: 75px;
-  height: 50px;
-  padding-right: 10px;
-}
