@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import backgroundHover from "../Images/backgroundHover.png"
+import backgroundNoHover from "../Images/backgroundNoHover.png"
 
 function Ingredient({ing, setTogDetails, setSpecificIng}){
     const [isShown, setIsShown] = useState(false)
@@ -17,6 +19,7 @@ function Ingredient({ing, setTogDetails, setSpecificIng}){
                 onClick={putInCart} className='ingredient'>
             <p className="ing-name">{ing.name}</p>
             <img className="ing-img" src={ing.image} />
+            <img className='ing-background-noH' src={backgroundNoHover}/>
             {/* <button onClick={putInCart} className='ing-button' value={ing.id}>Details</button> */}
         </div>
     }
@@ -25,9 +28,10 @@ function Ingredient({ing, setTogDetails, setSpecificIng}){
         ingDisplay = <div 
         onMouseEnter={()=> setIsShown(true)}
         onMouseLeave={()=> setIsShown(false)}
-        onClick={putInCart} className='ingredient' style={{backgroundColor: 'red'}}>
+        onClick={putInCart} className='ingredient'>
     <p className="ing-name">{ing.name}</p>
     <img className="ing-img" src={ing.image} />
+    <img className='ing-background-H' src={backgroundHover}/>
     {/* <button onClick={putInCart} className='ing-button' value={ing.id}>Details</button> */}
 </div>
     }
