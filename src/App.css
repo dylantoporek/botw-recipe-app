@@ -94,21 +94,61 @@
 
 /* HOME PAGE //////////////////////////////////////////////////////////////////////////////*/
 
+#home-ing-block{
+  position: relative;
+  left: -30%;
+}
 
+#home-pot-block{
+  position: relative;
+}
+
+#home-dish-block{
+  position: relative;
+  left: 30%;
+}
 /* PANTRY//////////////////////////////// */
 
 #pantry-items-cont{
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: fit-content;
   background-color: whitesmoke;
 }
 
 #pantry-item{
   position: relative;
-  width: 120px;
-  background-color: antiquewhite;
+  width: 200px;
+  height: 200px;
+}
+
+.pantry-quantity{
+  position: relative;
+  left: 70%;
+  top: -10%;
+  z-index: 1;
+  
+}
+
+#adder{
+  position: relative;
+  top: 10%;
+  z-index: 1;
+}
+
+#minuser{
+  position: relative;
+  top: 10%;
+  left: 5%;
+  z-index: 1;
+}
+.pantry-background{
+  position: relative;
+  top: -160px;
+  left: 0%;
+  height: 150px;
+  width: 200px;
 }
 
 /* POT ////////////////////////////////////*/
@@ -322,8 +362,7 @@
 .ing-name{
   position: relative;
   font-size: 12px;
-  left: 15%;
-  right: 15%;
+  left: 16%;
   top: 20px;
   z-index: 10;
 }

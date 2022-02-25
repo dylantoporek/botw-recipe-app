@@ -4,6 +4,7 @@ import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
 
 
+
 function Home({pantries, recipeList, setPantries, user, setUser}){
 
     const [pot, setPot] = useState([])
@@ -244,23 +245,30 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
     
     
     // pantry display && potDisplay && dishesDisplay
-    return <div className="comp-cont-2">
+    return <div className="comp-cont-1">
     
+        <div id='home-ing-block'>
             <h3>Ingredients</h3>
-            <div id='pantry-items-cont'>
-                {pantryDisplay}
-            </div>
-
+                <div id='pantry-items-cont'>
+                    {pantryDisplay}
+                </div>
+        </div>
+            
+        <div id='home-pot-block'>
             <h3>Pot</h3>
-            <div id='pot-items-cont'>
-                {potDisplay}
-                <button onClick={startCookingProcess}>Cook</button>
-            </div>
-
+                    <div id='pot-items-cont'>
+                        {potDisplay}
+                        <button onClick={startCookingProcess}>Cook</button>
+                    </div>
+        </div>
+            
+        <div id='home-dish-block'>
             <h3>Dishes</h3>
             <div>
                 {dishDisplay}
-            </div>  
+            </div>
+        </div>
+              
     </div>
 }
 
