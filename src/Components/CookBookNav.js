@@ -16,7 +16,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
 
     return (
         <div id='cookbook-nav'>
-            <input id='search-by-name' type="text" value={name} onChange={handleSearchByName}></input>
+            <input id='search-by-name' placeholder="Search" type="text" value={name} onChange={handleSearchByName}></input>
             <select id='search-by-category' value={category} onChange={handleFilterChange}>
                 <option value="All">All</option>
                 <option value="Restore Hearts">Restores Hearts</option>

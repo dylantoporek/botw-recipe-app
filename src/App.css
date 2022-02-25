@@ -130,7 +130,11 @@
 
 /* COOKBOOK PAGE /////////////////////////////////////////////////////////////////*/
 
+/* COOKBOOK NAV////////////////////////////// */
+
 #cookbook-nav{
+  position: relative;
+  top: 10px;
   width: 90%;
   height: 50px;
   background-color: ghostwhite;
@@ -140,24 +144,136 @@
 
 #search-by-type{
   position: relative;
-  left: 10%;
-  top: 20px;
+  left: 9%;
+  top: 10px;
 }
 
+/* RECIPE /////////////////////////////////// */
+
 .recipe{
+  position: relative;
   width: 15%;
   background-color: antiquewhite;
   padding: 5px;
   border-style: groove;
   border-color: whitesmoke;
+  top: 20px;
+  height: 250px;
 }
 
-.recipe-details{
+.recipe-name{
   position: relative;
-  left: 35%;
 }
 
+.recipe-img{
+  position: relative;
+  height: 80%;
+  width: 80%;
+  top: -20px;
+  left: 10%;
+}
+.recipe-value{
+  position: relative;
+  top: -30px;
+  left: 30%;
+}
+#recipe-item-nH{
+  position: relative;
+  
+}
 
+#recipe-item-hover{
+  position: relative;
+  background-color: wheat;
+}
+
+/* COOKBOOK DETAILS ///////////////////////////////////////////////// */
+
+
+#cookbook-details{
+  position: fixed;
+  top: 170px;
+  width: 70%;
+  height: 70%;
+  z-index: 10;
+  background-color: antiquewhite;
+  border-style: groove;
+  border-width: 5px;
+}
+
+#back-to-cb{
+  position: relative;
+  left: 80%;
+  top: 2%;
+}
+
+#cbd-name{
+  position: relative;
+  left: 2%;
+}
+
+#cbd-img{
+  position: relative;
+  left: 40%;
+  top: -10%;
+}
+
+#cbd-effect{
+  position: relative;
+  top: -40%;
+  left: 3%;
+}
+
+#cbd-price{
+  position: relative;
+  top: -40%;
+  left: 3%;
+}
+
+#cbd-description-cont{
+  position: relative;
+  top: -20%;
+  left: 3%;
+}
+
+#cbd-ing-list-cont{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: -40%;
+  left: 70%;
+}
+
+#cbd-ing-list-ings{
+  position: relative;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+#cbd-ing1{
+  position: relative;
+}
+
+#cbd-ing2{
+  position: relative;
+  top: -20px;
+}
+
+#cbd-ing3{
+  position: relative;
+  top: -40px;
+}
+
+#cbd-ing4{
+  position: relative;
+  top: -60px;
+}
+
+#cbd-ing5{
+  position: relative;
+  top: -80px;
+}
 
 /* STORE PAGE ////////////////////////////////////////////////////////////////////////*/
 
