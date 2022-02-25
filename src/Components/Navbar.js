@@ -12,9 +12,7 @@ function Navbar({user, setUser}){
         });
       }
 
-      function handleNavToCart(){
-        navigate('/cart')
-    }
+      
     return <div id='navbar'>
         <div id='nav-links-cont'>
             <NavLink id='nav-to-home' to='/'>Home</NavLink>

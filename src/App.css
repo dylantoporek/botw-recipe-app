@@ -69,14 +69,8 @@
 
 #signout-button{
   position: relative;
-  left: 84%;
+  left: 93%;
   top: -68px;
-}
-
-#to-cart-button{
-  position: relative;
-  top: -33px;
-  left: 45%; 
 }
 
 #user-container-display{
@@ -84,7 +78,7 @@
   flex-direction: row;
   position: relative;
   top: -17px;
-  left: 50%;
+  left: 70%;
 }
 
 #user-display{
@@ -270,8 +264,8 @@
 
 #details-img{
   position: relative;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
   left: 40%;
 }
 
@@ -299,7 +293,7 @@
   display: flex;
   flex-direction: column;
   left: 80%;
-  top: -100px;
+  top: 0px;
 }
 
 #quantity-cont-plus{
@@ -330,13 +324,13 @@
 
 #details-total{
   position: relative;
-  top: 20px;
+  top: 0px;
   left: 20px;
 }
 
 #details-add-to-cart{
   position: relative;
-  top: -120px;
+  top: 0px;
   left: 45%;
 }
 
@@ -356,9 +350,23 @@
   max-width: 200px; 
 }
 
+.cart-comp-cont-2{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  top: 50px;
+  
+}
+
 #cart-items-cont{
   position: relative;
-  top: 50px;
+  top: 100px;
+  height: fit-content;
+  background-color: whitesmoke;
   
 }
 
@@ -413,6 +421,20 @@
   position: fixed;
   top: 70%;
   left: 86%;
+}
+
+#empty-cart{
+  position: relative;
+  left: 0%;
+  height: 100px;
+  font-size: 24px;
+
+}
+
+#empty-cart-text{
+  position: relative;
+  top: 20%;
+  left: 44%;
 }
 
 
