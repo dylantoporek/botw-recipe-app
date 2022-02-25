@@ -45,49 +45,55 @@
 
 #nav-to-home{
   position: relative;
-  padding-right: 10px;
+  padding-right: 20px;
+  font-size: 20px;
   text-decoration: none;
 }
 
 #nav-to-cookbook{
   position: relative;
-  padding-right: 10px;
+  padding-right: 20px;
+  font-size: 20px;
   text-decoration: none;
 }
 
 #nav-to-store{
   position: relative;
-  padding-right: 10px;
+  padding-right: 20px;
+  font-size: 20px;
   text-decoration: none;
 }
 
 #nav-to-cart{
   position: relative;
-  padding-right: 10px;
+  padding-right: 20px;
+  font-size: 20px;
   text-decoration: none;
 }
 
 #signout-button{
   position: relative;
   left: 93%;
-  top: -68px;
+  top: -78px;
 }
 
 #user-container-display{
   display: flex;
   flex-direction: row;
   position: relative;
-  top: -17px;
+  top: -20px;
   left: 70%;
 }
 
 #user-display{
  position: relative;
+ font-size: 20px;
  top: -18px;
 }
 
 #user-bank{
   position: relative;
+  font-size: 20px;
   left: 20px;
   top: -18px;
 }
@@ -410,10 +416,9 @@
 #details-cont{
   position: fixed;
   top: 170px;
-  width: 70%;
+  width: 60%;
   height: 70%;
   z-index: 10;
-  background-color: antiquewhite;
   border-style: groove;
   border-width: 5px;
 }
@@ -452,15 +457,15 @@
 #details-price{
   position: relative;
   left: 2%;
-  top: 8%;
+  top: 0%;
 }
 
 #quantity-form-cont{
   position: relative;
   display: flex;
   flex-direction: column;
-  left: 80%;
-  top: 0px;
+  left: 43.5%;
+  top: 20px;
 }
 
 #quantity-cont-plus{
@@ -497,9 +502,11 @@
 
 #details-add-to-cart{
   position: relative;
-  top: 0px;
+  top: 20px;
   left: 45%;
 }
+
+
 
 /* CART PAGE ///////////////////////////////////////////////////////////////////*/
 

@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import backgroundNoHover from "../Images/backgroundNoHover.png"
 
 function Details({ing, setTogDetails, addItemToCart}){
     const [quantity, setQuantity] = useState(1)

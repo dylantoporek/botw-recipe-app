@@ -15,7 +15,7 @@ function Navbar({user, setUser}){
       
     return <div id='navbar'>
         <div id='nav-links-cont'>
-            <NavLink id='nav-to-home' to='/'>Home</NavLink>
+            <NavLink id='nav-to-home' to='/'>Kitchen</NavLink>
             <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook</NavLink>
             <NavLink id='nav-to-store' to='/store'>Store</NavLink>
             <NavLink id='nav-to-cart' to='/cart'>Cart</NavLink>
