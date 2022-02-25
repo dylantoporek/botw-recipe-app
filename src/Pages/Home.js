@@ -248,22 +248,22 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
     return <div className="comp-cont-1">
     
         <div id='home-ing-block'>
-            <h3>Ingredients</h3>
+            <h3 id='pantry-label'>Ingredients</h3>
                 <div id='pantry-items-cont'>
                     {pantryDisplay}
                 </div>
         </div>
             
         <div id='home-pot-block'>
-            <h3>Pot</h3>
+            <h3 id='pot-label'>Pot</h3>
                     <div id='pot-items-cont'>
                         {potDisplay}
-                        <button onClick={startCookingProcess}>Cook</button>
+                        <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
                     </div>
         </div>
             
         <div id='home-dish-block'>
-            <h3>Dishes</h3>
+            <h3 id='dish-label'>Dishes</h3>
             <div>
                 {dishDisplay}
             </div>

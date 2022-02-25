@@ -95,17 +95,18 @@
 /* HOME PAGE //////////////////////////////////////////////////////////////////////////////*/
 
 #home-ing-block{
-  position: relative;
-  left: -30%;
+  position: absolute;
+  left: 5%;
 }
 
 #home-pot-block{
-  position: relative;
+  position: absolute;
+  top: 200px;
 }
 
 #home-dish-block{
-  position: relative;
-  left: 30%;
+  position: absolute;
+  left: 80%;
 }
 /* PANTRY//////////////////////////////// */
 
@@ -113,8 +114,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  background-color: whitesmoke;
 }
 
 #pantry-item{
@@ -156,8 +155,11 @@
 #pot-items-cont{
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  width: fit-content;
+  /* top: 200px; */
+  height: 150px;
+  width: 260px;
   background-color: whitesmoke;
 }
 
@@ -166,6 +168,16 @@
   width: 75px;
   height: 50px;
   padding-right: 10px;
+  padding-top: 5px;
+  top: -30px;
+}
+
+#start-cooking{
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  top: 120%;
+  left: 40%;
 }
 
 /* COOKBOOK PAGE /////////////////////////////////////////////////////////////////*/
@@ -332,7 +344,7 @@
   width: 90%;
   height: 50px;
   top: 10px;
-  background-color: antiquewhite;
+  background-color: ghostwhite;
   align-content: center;
   z-index: 150;
 }
