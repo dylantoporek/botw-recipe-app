@@ -210,17 +210,16 @@
 
 .recipe{
   position: relative;
-  width: 15%;
-  background-color: antiquewhite;
+  width: 175px;
   padding: 5px;
-  border-style: groove;
-  border-color: whitesmoke;
   top: 20px;
   height: 250px;
+  z-index: 1;
 }
 
 .recipe-name{
   position: relative;
+  z-index: 1;
 }
 
 .recipe-img{
@@ -229,11 +228,13 @@
   width: 80%;
   top: -20px;
   left: 10%;
+  z-index: 1;
 }
 .recipe-value{
   position: relative;
   top: -30px;
   left: 30%;
+  z-index: 1;
 }
 #recipe-item-nH{
   position: relative;
@@ -242,7 +243,24 @@
 
 #recipe-item-hover{
   position: relative;
-  background-color: wheat;
+
+}
+
+#recipe-background-H{
+  position: relative;
+  height: 450px;
+  width: 450px;
+  top: -360px;
+  left: -150px;
+
+}
+
+#recipe-background-nH{
+  position: relative;
+  height: 450px;
+  width: 450px;
+  top: -360px;
+  left: -150px;
 }
 
 /* COOKBOOK DETAILS ///////////////////////////////////////////////// */

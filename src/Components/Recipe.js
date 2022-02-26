@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import parchV from '../Images/parchV.png'
+import brightParch from '../Images/brightParch.png'
 
 function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     const [isShown, setIsShown] = useState(false)
@@ -37,6 +39,21 @@ function openDetails(){
         <p className="recipe-name">{recipe.name}</p>
         <img className="recipe-img" src={recipe.image}/>
         <p className="recipe-value">Value: {priceRewrite}</p>
+        <img id='recipe-background-H' src={brightParch} />
+        
+    </div>
+    }
+
+    if (!isShown){
+        recipeDisplay = <div 
+        onClick={openDetails}
+            onMouseEnter={()=> setIsShown(true)}
+            onMouseLeave={()=> setIsShown(false)} 
+        id='recipe-item-no-hover'>
+        <p className="recipe-name">{recipe.name}</p>
+        <img className="recipe-img" src={recipe.image}/>
+        <p className="recipe-value">Value: {priceRewrite}</p>
+        <img id='recipe-background-nH' src={parchV} />
         
     </div>
     }
