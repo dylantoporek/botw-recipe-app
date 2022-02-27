@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import rupee from '../Images/rupee.png'
 
 function Navbar({user, setUser}){
     const navigate = useNavigate()
@@ -12,6 +13,7 @@ function Navbar({user, setUser}){
         });
       }
 
+      const rupeeDisplay = <img id='nav-rupee' src={rupee} />
       
     return <div id='navbar'>
         <div id='nav-links-cont'>
@@ -24,7 +26,8 @@ function Navbar({user, setUser}){
         
       <div id='user-container-display'> 
         <p id='user-display'>User: {user.username}</p>
-        <p id='user-bank'>Bank: {user.bank}</p>
+        <p id='user-bank'>Bank: {rupeeDisplay}{user.bank}</p>
+        
       </div>
         <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
       

@@ -74,14 +74,14 @@
 #signout-button{
   position: relative;
   left: 93%;
-  top: -78px;
+  top: -84px;
 }
 
 #user-container-display{
   display: flex;
   flex-direction: row;
   position: relative;
-  top: -20px;
+  top: -24px;
   left: 70%;
 }
 
@@ -96,6 +96,14 @@
   font-size: 20px;
   left: 20px;
   top: -18px;
+}
+
+#nav-rupee{
+  position: relative;
+  height: 20px;
+  width: 12px;
+  top: 3px;
+  padding-right: 5px;
 }
 
 /* HOME PAGE //////////////////////////////////////////////////////////////////////////////*/
@@ -118,19 +126,36 @@
 
 #pantry-items-cont{
   position: relative;
+  left: -20%;
   display: flex;
   flex-direction: column;
+  width: 300px;
 }
 
 #pantry-item{
   position: relative;
   width: 200px;
-  height: 200px;
+  height: 100px;
+}
+
+.pantry-name{
+  position: relative;
+  left: 70%;
+  z-index: 1;
+}
+
+.pantry-img{
+  position: relative;
+  max-height: 50px;
+  max-width: 50px;
+  left: 40px;
+  top: -125px;
+  z-index: 1;
 }
 
 .pantry-quantity{
   position: relative;
-  left: 70%;
+  left: 120%;
   top: -10%;
   z-index: 1;
   
@@ -138,22 +163,23 @@
 
 #adder{
   position: relative;
-  top: 10%;
+  left: 70%;
+  top: -30%;
   z-index: 1;
 }
 
 #minuser{
   position: relative;
-  top: 10%;
-  left: 5%;
+  left: 32%;
+  top: -0%;
   z-index: 1;
 }
 .pantry-background{
   position: relative;
-  top: -160px;
-  left: 0%;
-  height: 150px;
-  width: 200px;
+  top: -100px;
+  left: -20%;
+  height: 125px;
+  width: 125px;
 }
 
 /* POT ////////////////////////////////////*/
@@ -191,45 +217,56 @@
 #dish{
   position: relative;
   width: 350px;
-  height: 350px;
+  height: 250px;
   left: -100px;
   top: 20px;
+  border-style: dashed;
 }
 
 #dish-name{
   position: relative;
   font-weight: bolder;
   z-index: 2;
-  left: 30%;
+  left: 50%;
 }
 
 #dish-img{
   position: relative;
   z-index: 2;
-  top: 0px;
-  left: 72px;
+  height: 100px;
+  width: 100px;
+  top: -20px;
+  left: 40px;
 }
 
 #dish-value{
   position: relative;
   z-index: 2;
-  top: 50px;
-  left: 25%;
+  top: -120px;
+  left: 55%;
+}
+
+#dish-rupee{
+  position: relative;
+  height: 20px;
+  width: 12px;
+  top: 3px;
+  padding-right: 1px;
 }
 
 #sell-dish{
   position: relative;
   z-index: 2;
-  top: -220px;
-  left: 60%;
+  top: -250px;
+  left: 62%;
 }
 
 #dish-background{
   position: relative;
-  height: 250px;
-  width: 250px;
-  top: -260px;
-  left: 10px;
+  height: 150px;
+  width: 150px;
+  top: -200px;
+  left: -25px;
 
   
 }
@@ -358,7 +395,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  top: 0%;
+  top: -20%;
   left: 70%;
 }
 

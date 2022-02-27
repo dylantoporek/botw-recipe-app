@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import backgroundNoHover from "../Images/backgroundNoHover.png"
+import darkPantry from '../Images/darkPantry.png'
 
 
 function Pantry({item, pot, addItemToPot, removeFromPot}){
@@ -36,12 +37,19 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
     let itemDisplay
     if(item.ingredient.name !== null){
         itemDisplay = <div id='pantry-item'>
-            <p className="ing-name">{item.ingredient.name}</p>
-            <img className="ing-img" src={item.ingredient.image}/>
-            <p className='pantry-quantity'>x{quantity}</p>
-            <button id='adder' onClick={addToPot}>add to pot</button>
-            <button id='minuser' onClick={handleRemoveFromPot}>remove from pot</button>
-            <img className='pantry-background' src={backgroundNoHover}/>
+            
+                <p className="pantry-name">{item.ingredient.name}</p>
+                <p className='pantry-quantity'>x{quantity}</p>
+                <button id='adder' onClick={addToPot}>add to pot</button>
+                <button id='minuser' onClick={handleRemoveFromPot}>remove from pot</button>
+            
+            
+                <img className="pantry-img" src={item.ingredient.image}/>
+                <img className='pantry-background' src={darkPantry}/>
+            
+            
+            
+            
         </div>
     }
     return(
