@@ -22,11 +22,14 @@ function openDetails(){
             onClick={openDetails}
                 onMouseEnter={()=> setIsShown(true)}
                 onMouseLeave={()=> setIsShown(false)} 
-            id='recipe-item-nH'>
-            <p className="recipe-name">{recipe.name}</p>
-            <img className="recipe-img" src={recipe.image}/>
-            <p className="recipe-value">Value: {priceRewrite}</p>
-            
+                className="recipe">
+                <img id='recipe-background-nH' src={parchV} />
+                <div>
+                    <p className="recipe-name">{recipe.name}</p>
+                    <img className="recipe-img" src={recipe.image}/>
+                    <p className="recipe-value">Value: {priceRewrite}</p> 
+                </div>
+                  
         </div>
     }
 
@@ -35,31 +38,22 @@ function openDetails(){
         onClick={openDetails}
             onMouseEnter={()=> setIsShown(true)}
             onMouseLeave={()=> setIsShown(false)} 
-        id='recipe-item-hover'>
-        <p className="recipe-name">{recipe.name}</p>
-        <img className="recipe-img" src={recipe.image}/>
-        <p className="recipe-value">Value: {priceRewrite}</p>
+            className="recipe">
         <img id='recipe-background-H' src={brightParch} />
+        <div>
+            <p className="recipe-name">{recipe.name}</p>
+            <img className="recipe-img" src={recipe.image}/>
+            <p className="recipe-value">Value: {priceRewrite}</p>
+        </div>
+        
+        
         
     </div>
     }
 
-    if (!isShown){
-        recipeDisplay = <div 
-        onClick={openDetails}
-            onMouseEnter={()=> setIsShown(true)}
-            onMouseLeave={()=> setIsShown(false)} 
-        id='recipe-item-no-hover'>
-        <p className="recipe-name">{recipe.name}</p>
-        <img className="recipe-img" src={recipe.image}/>
-        <p className="recipe-value">Value: {priceRewrite}</p>
-        <img id='recipe-background-nH' src={parchV} />
-        
-    </div>
-    }
 
     return(
-        <div className="recipe">{recipeDisplay}</div>
+        <div>{recipeDisplay}</div>
     ) 
 }
 
