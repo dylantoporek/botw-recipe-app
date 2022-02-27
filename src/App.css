@@ -186,6 +186,54 @@
   left: 40%;
 }
 
+/* DISH////////////////////////////////////// */
+
+#dish{
+  position: relative;
+  width: 350px;
+  height: 350px;
+  left: -100px;
+  top: 20px;
+}
+
+#dish-name{
+  position: relative;
+  font-weight: bolder;
+  z-index: 2;
+  left: 30%;
+}
+
+#dish-img{
+  position: relative;
+  z-index: 2;
+  top: 0px;
+  left: 72px;
+}
+
+#dish-value{
+  position: relative;
+  z-index: 2;
+  top: 50px;
+  left: 25%;
+}
+
+#sell-dish{
+  position: relative;
+  z-index: 2;
+  top: -220px;
+  left: 60%;
+}
+
+#dish-background{
+  position: relative;
+  height: 250px;
+  width: 250px;
+  top: -260px;
+  left: 10px;
+
+  
+}
+
 /* COOKBOOK PAGE /////////////////////////////////////////////////////////////////*/
 
 /* COOKBOOK NAV////////////////////////////// */
