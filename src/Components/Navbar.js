@@ -13,7 +13,7 @@ function Navbar({user, setUser}){
         });
       }
 
-      const rupeeDisplay = <img id='nav-rupee' src={rupee} />
+      const rupeeDisplay = <img id='rupee' src={rupee} />
       
     return <div id='navbar'>
         <div id='nav-links-cont'>

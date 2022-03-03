@@ -57,6 +57,7 @@ function Store({ingredientList, addItemToCart}){
             setNameFilter={setNameFilter}
         />
         {detailsDisplay}
+        {ingredientDisplay}
         
     </div>
     }

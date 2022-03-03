@@ -1,9 +1,11 @@
 import React,{useState} from "react";
 import backgroundNoHover from "../Images/backgroundNoHover.png"
+import rupee from '../Images/rupee.png'
 
 function Details({ing, setTogDetails, addItemToCart}){
     const [quantity, setQuantity] = useState(1)
 
+    const rupeeDisplay = <img id='rupee' src={rupee} />
 
     function removeOne(){
         if (quantity > 1){
@@ -29,15 +31,16 @@ function Details({ing, setTogDetails, addItemToCart}){
         }
         alert('item added to cart')
         addItemToCart(newCartItem)
+        setTogDetails(false)
     }
 
     const totalPrice = ing.price * quantity
     const infoDisplay = <div id='details-cont'>
         
-            <button id='to-shop' onClick={closeDetails}>keep shopping</button>
+            <button id='to-shop' onClick={closeDetails}>X</button>
 
             <p id='details-name'>{ing.name}</p>
-            <p id='details-price'>Price: ${ing.price}</p>
+            <p id='details-price'>Price: {rupeeDisplay}{ing.price}</p>
             <img id='details-img' src={ing.image}/>
             <p id='description-label'>Description:</p>
             <p id='details-description'>{ing.description}</p>
@@ -50,7 +53,7 @@ function Details({ing, setTogDetails, addItemToCart}){
                     <button id='add' onClick={addOne}>+</button>
                 </div>
                 
-                <p id='details-total'>Total: ${totalPrice}</p>
+                <p id='details-total'>Total: {rupeeDisplay}{totalPrice}</p>
             </div>
 
             

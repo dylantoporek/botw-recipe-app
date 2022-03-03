@@ -1,20 +1,31 @@
 import React, {useState} from "react";
+import noImg from '../Images/noImg.png'
+import rupee from '../Images/rupee.png'
 
 function CookBookDetails({recipe, setTogDetails}){
 
+  const rupeeDisplay = <img id='rupee' src={rupee} />
     let priceRewrite = recipe.price
     if(priceRewrite === 0){
         priceRewrite = 25
     }
+
+    let recipeImg
+    if (recipe.image !== null){
+        recipeImg = <img id="cbd-img" src={recipe.image}/>
+    } else {
+        recipeImg = <img id="cbd-img" src={noImg}/>
+    }
+
     const infoDisplay = <div id='cookbook-details'>
-        <button id='back-to-cb' onClick={()=> setTogDetails(false)}>Back to Cookbook</button>
+        <button id='back-to-cb' onClick={()=> setTogDetails(false)}>X</button>
         <p id='cbd-name'>{recipe.name}</p>
-        <img id='cbd-img' src={recipe.image}/>
+        {recipeImg}
         <p id='cbd-effect'>Additonal Effect: {recipe.category}</p>
-        <p id='cbd-price'>Value: {priceRewrite}</p>
+        <p id='cbd-price'>Value: {rupeeDisplay}{priceRewrite}</p>
         <div id='cbd-description-cont'>
-            <p>Description:</p>
-            <p>{recipe.description}</p>
+            <p id='cookbook-description-label'>Description:</p>
+            <p id='cookbook-description'>{recipe.description}</p>
         </div>
         
         <div id='cbd-ing-list-cont'>

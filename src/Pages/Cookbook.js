@@ -66,6 +66,7 @@ function Cookbook({recipeList}){
             setTypeFilter={setTypeFilter}
         />
         {detailsDisplay}
+        {recipeDisplay}
     </div>
     } 
     

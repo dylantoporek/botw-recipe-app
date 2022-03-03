@@ -1,20 +1,32 @@
 import React, {useState} from "react";
 import parchV from '../Images/parchV.png'
 import brightParch from '../Images/brightParch.png'
+import noImg from '../Images/noImg.png'
+import rupee from '../Images/rupee.png'
 
 function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     const [isShown, setIsShown] = useState(false)
-let priceRewrite = recipe.price
 
-if (priceRewrite === 0){
-    
-    priceRewrite = 25
-}
+  const rupeeDisplay = <img id='rupee' src={rupee} />
+    let priceRewrite = recipe.price
+    if (priceRewrite === 0){
+        priceRewrite = 25
+    }
 
-function openDetails(){
-    setTogDetails(true)
-    setSpecificRecipe(recipe)
-}
+    function openDetails(){
+        setTogDetails(true)
+        setSpecificRecipe(recipe)
+    }
+
+    let recipeImg
+    if (recipe.image !== null){
+        recipeImg = <img className="recipe-img" src={recipe.image}/>
+    } else {
+        recipeImg = <img className="recipe-img" src={noImg}/>
+    }
+
+
+ 
 
     let recipeDisplay
     if (recipe.name !== null){
@@ -26,8 +38,8 @@ function openDetails(){
                 <img id='recipe-background-nH' src={parchV} />
                 <div>
                     <p className="recipe-name">{recipe.name}</p>
-                    <img className="recipe-img" src={recipe.image}/>
-                    <p className="recipe-value">Value: {priceRewrite}</p> 
+                    {recipeImg}
+                    <p className="recipe-value">Value: {rupeeDisplay}{priceRewrite}</p> 
                 </div>
                   
         </div>
@@ -42,8 +54,8 @@ function openDetails(){
         <img id='recipe-background-H' src={brightParch} />
         <div>
             <p className="recipe-name">{recipe.name}</p>
-            <img className="recipe-img" src={recipe.image}/>
-            <p className="recipe-value">Value: {priceRewrite}</p>
+            {recipeImg}
+            <p className="recipe-value">Value: {rupeeDisplay}{priceRewrite}</p>
         </div>
         
         

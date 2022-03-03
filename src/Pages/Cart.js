@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import CartItem from "../Components/CartItem";
-
+import rupee from '../Images/rupee.png'
 
 function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser}){
 
+  const rupeeDisplay = <img id='rupee' src={rupee} />
 
     let tallyTotal = 0
     const tallyItems = cart.map((item)=> {
@@ -63,7 +64,7 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             <div id='cart-items-cont'>
             {cartDisplay}
             </div>
-            <div id="total-cost">Total: {tallyTotal}</div>
+            <div id="total-cost">Total: {rupeeDisplay}{tallyTotal}</div>
             <button id='checkout' onClick={checkoutItems}>Checkout</button>
         </div>
     )
