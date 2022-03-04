@@ -264,7 +264,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             
         <div id='home-dish-block'>
             <h3 id='dish-label'>Dishes</h3>
-            <div>
+            <div id='dish-items-cont'>
                 {dishDisplay}
             </div>
         </div>

@@ -125,11 +125,13 @@
 /* PANTRY//////////////////////////////// */
 
 #pantry-items-cont{
-  position: relative;
-  left: -20%;
+  position: fixed;
+  left: 5%;
   display: flex;
   flex-direction: column;
   width: 300px;
+  overflow-y: scroll;
+  height: 80%;
 }
 
 #pantry-item{
@@ -214,19 +216,30 @@
 
 /* DISH////////////////////////////////////// */
 
+#dish-items-cont{
+  position: fixed;
+  left: 70%;
+  display: flex;
+  width: 375px;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 80%;
+  
+}
+
 #dish{
   position: relative;
-  width: 350px;
-  height: 250px;
-  left: -100px;
+  height: 130px;
+  width: 100%;
+  left: 0px;
   top: 20px;
-  border-style: dashed;
 }
 
 #dish-name{
   position: relative;
   font-weight: bolder;
   z-index: 2;
+  width: 46%;
   left: 50%;
 }
 
@@ -243,6 +256,7 @@
   position: relative;
   z-index: 2;
   top: -120px;
+  width: 50%;
   left: 55%;
 }
 
@@ -346,72 +360,79 @@
 
 #cookbook-details{
   position: fixed;
-  top: 170px;
+  top: 200px;
   width: 60%;
   height: 70%;
   z-index: 10;
-  background-color: white;
-  border-style: groove;
-  border-color: tan;
-  border-width: 5px;
 }
 
 #back-to-cb{
   position: relative;
-  left: 95%;
-  top: 2%;
+  left: 83%;
+  top: -4%;
+  z-index: 11;
 }
 
 #cbd-name{
   position: relative;
-  top: 0%;
+  font-weight: bolder;
+  top: -10%;
   left: 40%;
+  z-index: 10;
 }
 
 #cbd-img{
   position: relative;
-  left: 65%;
-  top: -5%;
+  left: 12%;
+  top: -10%;
   max-width: 40%;
   max-height: 40%;
+  z-index: 10;
 }
 
 #cbd-effect{
   position: relative;
-  top: -30%;
-  left: 3%;
+  top: -40%;
+  left: 50%;
+  z-index: 10;
 }
 
 #cbd-price{
   position: relative;
-  top: -30%;
-  left: 3%;
+  top: -41%;
+  left: 50%;
+  z-index: 10;
 }
 
 #cbd-description-cont{
   position: relative;
-  top: -30%;
-  left: 3%;
+  top: -40%;
+  left: 50%;
+  z-index: 10;
 }
 
 #cookbook-description-label{
   position: relative;
   top: -5px;
+  z-index: 10;
 }
 
 #cookbook-description{
   position: relative;
   top: -10px;
   left: 1%;
+  width: 32%;
   font-size: smaller;
+  z-index: 10;
 }
 
 #cbd-ing-list-cont{
   position: relative;
   display: flex;
   flex-direction: column;
-  top: -30%;
+  top: -35%;
   left: 40%;
+  z-index: 10;
 }
 
 #cbd-ing-list-ings{
@@ -419,30 +440,45 @@
   left: 2%;
   display: flex;
   flex-direction: column;
+  font-size: smaller;
+  z-index: 10;
 }
 
 #cbd-ing1{
   position: relative;
+  z-index: 10;
 }
 
 #cbd-ing2{
   position: relative;
   top: -20px;
+  z-index: 10;
 }
 
 #cbd-ing3{
   position: relative;
   top: -40px;
+  z-index: 10;
 }
 
 #cbd-ing4{
   position: relative;
   top: -60px;
+  z-index: 10;
 }
 
 #cbd-ing5{
   position: relative;
   top: -80px;
+  z-index: 10;
+}
+
+#cbd-background-img{
+  position: relative;
+  top: -760px;
+  width: 100%;
+  height: 105%;
+
 }
 
 /* STORE PAGE ////////////////////////////////////////////////////////////////////////*/

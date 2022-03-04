@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import noImg from '../Images/noImg.png'
 import rupee from '../Images/rupee.png'
+import parchH from '../Images/parchH.png'
 
 function CookBookDetails({recipe, setTogDetails}){
 
@@ -39,6 +40,8 @@ function CookBookDetails({recipe, setTogDetails}){
             </div>
             
         </div> 
+
+        <img id='cbd-background-img' src={parchH}/>
     </div>
 
     return (
