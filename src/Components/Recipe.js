@@ -22,7 +22,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     if (recipe.image !== null){
         recipeImg = <img className="recipe-img" src={recipe.image}/>
     } else {
-        recipeImg = <img className="recipe-img" src={noImg}/>
+        recipeImg = <img className="noImg-recipe-img" src={noImg}/>
     }
 
 

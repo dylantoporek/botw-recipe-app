@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 import rupee from '../Images/rupee.png'
+import homeIcon from '../Images/homeIcon.png'
 
 function Navbar({user, setUser}){
     const navigate = useNavigate()
@@ -13,11 +14,12 @@ function Navbar({user, setUser}){
         });
       }
 
+      const homeDisplay = <img id='homeIcon' src={homeIcon}/> 
       const rupeeDisplay = <img id='rupee' src={rupee} />
       
     return <div id='navbar'>
         <div id='nav-links-cont'>
-            <NavLink id='nav-to-home' to='/'>Kitchen</NavLink>
+            <NavLink id='nav-to-home' to='/'>Kitchen{homeDisplay}</NavLink>
             <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook</NavLink>
             <NavLink id='nav-to-store' to='/store'>Store</NavLink>
             <NavLink id='nav-to-cart' to='/cart'>Cart</NavLink>
