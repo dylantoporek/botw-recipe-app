@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Pantry from "../Components/Pantry";
 import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
+import potBackground from '../Images/pot.png'
 
 
 
@@ -255,10 +256,10 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         </div>
             
         <div id='home-pot-block'>
-            <h3 id='pot-label'>Pot</h3>
                     <div id='pot-items-cont'>
                         {potDisplay}
                         <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                        <img id='pot-img' src={potBackground}/>
                     </div>
         </div>
             

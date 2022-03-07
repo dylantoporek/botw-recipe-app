@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function Pot({item}){
 
     
@@ -11,6 +12,8 @@ function Pot({item}){
             
         </div>
     }
+
+    
 
     return(
         <div>
