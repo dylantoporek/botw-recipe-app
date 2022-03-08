@@ -31,6 +31,8 @@
 /* NAVBAR ///////////////////////////////////////////////////////////////////////*/
 #navbar{
   position: fixed;
+  flex-wrap: wrap;
+  display: flex;
   top: 0px;
   z-index: 150;
   background-color: white;
@@ -105,16 +107,17 @@
 
 #signout-button{
   position: relative;
-  left: 93%;
-  top: -84px;
+  left: 55%;
+  height: 30px;
+  top: 0px;
 }
 
 #user-container-display{
   display: flex;
   flex-direction: row;
   position: relative;
-  top: -24px;
-  left: 70%;
+  top: 0px;
+  left: 30%;
 }
 
 #user-display{
@@ -142,28 +145,56 @@
 
 #home-ing-block{
   position: absolute;
+  top: 70px;
   left: 5%;
 }
 
 #home-pot-block{
   position: absolute;
   top: 200px;
+  left: 70%;
 }
 
 #home-dish-block{
   position: absolute;
-  left: 80%;
+  left: 5%;
+  top: 70px;
+}
+
+#tog-cont{
+  position: relative;
+  left: -43%;
+  background-color: tan;
+  top: 10px;
+  border-radius: 20%;
+  height: 50px;
+  width: 200px;
+}
+
+#tog-pantry{
+  position: relative;
+  left: 30px;
+  top: 10px;
+  z-index: 10;
+}
+
+#tog-dishes{
+  position: relative;
+  left: 60px;
+  top: 10px;
+  z-index: 10;
 }
 /* PANTRY//////////////////////////////// */
 
 #pantry-items-cont{
   position: fixed;
-  left: 5%;
+  left: 6%;
   display: flex;
   flex-direction: column;
   width: 300px;
   overflow-y: scroll;
   height: 80%;
+  top: 102px;
 }
 
 #pantry-item{
@@ -254,7 +285,8 @@
 
 #dish-items-cont{
   position: fixed;
-  left: 70%;
+  top: 90px;
+  left: 5%;
   display: flex;
   width: 375px;
   flex-direction: column;
@@ -382,8 +414,8 @@
 
 .recipe-value{
   position: absolute;
-  top: -270px;
-  left: 30px;
+  top: 130px;
+  left: 55px;
   z-index: 2;
 }
 

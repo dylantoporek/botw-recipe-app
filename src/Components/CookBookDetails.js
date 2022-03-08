@@ -6,6 +6,7 @@ import parchH from '../Images/parchH.png'
 function CookBookDetails({recipe, setTogDetails}){
 
   const rupeeDisplay = <img id='rupee' src={rupee} />
+
     let priceRewrite = recipe.price
     if(priceRewrite === 0){
         priceRewrite = 25

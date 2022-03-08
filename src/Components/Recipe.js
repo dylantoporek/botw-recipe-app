@@ -8,12 +8,14 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     const [isShown, setIsShown] = useState(false)
 
   const rupeeDisplay = <img id='rupee' src={rupee} />
+
     let priceRewrite = recipe.price
-    if (priceRewrite === 0){
+    if (recipe.price === 0){
         priceRewrite = 25
     }
 
     function openDetails(){
+        console.log(recipe.price)
         setTogDetails(true)
         setSpecificRecipe(recipe)
     }
@@ -39,7 +41,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
                 <div>
                     <p className="recipe-name">{recipe.name}</p>
                     {recipeImg}
-                    <p className="recipe-value">Value: {rupeeDisplay}{priceRewrite}</p> 
+                    <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p> 
                 </div>
                   
         </div>
@@ -55,7 +57,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
         <div>
             <p className="recipe-name">{recipe.name}</p>
             {recipeImg}
-            <p className="recipe-value">Value: {rupeeDisplay}{priceRewrite}</p>
+            <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p>
         </div>
         
         

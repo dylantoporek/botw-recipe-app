@@ -34,7 +34,7 @@ function Navbar({user, setUser}){
         
       <div id='user-container-display'> 
         <p id='user-display'>User: {user.username}</p>
-        <p id='user-bank'>Bank: {rupeeDisplay}{user.bank}</p>
+        <p id='user-bank'>{rupeeDisplay}{user.bank}</p>
         
       </div>
         <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>

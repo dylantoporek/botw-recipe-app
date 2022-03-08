@@ -10,6 +10,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
 
     const [pot, setPot] = useState([])
     const [dishes, setDishes] = useState([])
+    const [togDisplay, setTogDisplay] = useState(false) 
 
     useEffect(()=>{
         // Pantries from DB
@@ -243,34 +244,85 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             }
           })
     }
-    
-    
-    // pantry display && potDisplay && dishesDisplay
-    return <div className="comp-cont-1">
-    
-        <div id='home-ing-block'>
-            <h3 id='pantry-label'>Ingredients</h3>
-                <div id='pantry-items-cont'>
-                    {pantryDisplay}
-                </div>
-        </div>
+
+    function handlePantryDisplay(){
+        setTogDisplay(false)
+    }
+
+    function handleDishDisplay(){
+        setTogDisplay(true)
+    }
+
+    if (togDisplay === false){
+        return <div className="comp-cont-1">
+            <div id='tog-cont'>
+                <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
+                <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
+            </div>
             
-        <div id='home-pot-block'>
+            <div id='home-ing-block'>
+                    <div id='pantry-items-cont'>
+                        {pantryDisplay}
+                    </div>
+            </div>
+                
+            <div id='home-pot-block'>
+                        <div id='pot-items-cont'>
+                            {potDisplay}
+                            <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                            <img id='pot-img' src={potBackground}/>
+                        </div>
+            </div>
+        </div>
+    } if (togDisplay === true){
+        return <div className="comp-cont-1">
+            <div id='tog-cont'>
+                <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
+                <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
+            </div>
+            <div id='home-dish-block'>
+                <div id='dish-items-cont'>
+                    {dishDisplay}
+                </div>
+            </div>
+        
+            <div id='home-pot-block'>
                     <div id='pot-items-cont'>
                         {potDisplay}
                         <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
                         <img id='pot-img' src={potBackground}/>
                     </div>
+                </div>
         </div>
+    }
+    
+    // pantry display && potDisplay && dishesDisplay
+    // return <div className="comp-cont-1">
+    //     <button onClick={handlePantryDisplay}>Pantry</button>
+    //     <button onCLick={handleDishDisplay}>Dishes</button>
+    //     <div id='home-ing-block'>
+    //         <h3 id='pantry-label'>Ingredients</h3>
+    //             <div id='pantry-items-cont'>
+    //                 {pantryDisplay}
+    //             </div>
+    //     </div>
             
-        <div id='home-dish-block'>
-            <h3 id='dish-label'>Dishes</h3>
-            <div id='dish-items-cont'>
-                {dishDisplay}
-            </div>
-        </div>
+    //     <div id='home-pot-block'>
+    //                 <div id='pot-items-cont'>
+    //                     {potDisplay}
+    //                     <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+    //                     <img id='pot-img' src={potBackground}/>
+    //                 </div>
+    //     </div>
+            
+    //     <div id='home-dish-block'>
+    //         <h3 id='dish-label'>Dishes</h3>
+    //         <div id='dish-items-cont'>
+    //             {dishDisplay}
+    //         </div>
+    //     </div>
               
-    </div>
+    // </div>
 }
 
 export default Home
