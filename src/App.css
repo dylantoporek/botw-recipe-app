@@ -162,13 +162,14 @@
 }
 
 #tog-cont{
-  position: relative;
-  left: -43%;
+  position: absolute;
+  left: -10px;
   background-color: tan;
   top: 10px;
   border-radius: 20%;
   height: 50px;
   width: 200px;
+  z-index: 10;
 }
 
 #tog-pantry{
@@ -194,18 +195,20 @@
   width: 300px;
   overflow-y: scroll;
   height: 80%;
-  top: 102px;
+  top: 90px;
 }
 
 #pantry-item{
   position: relative;
   width: 200px;
   height: 100px;
+  top: -27px;
 }
 
 .pantry-name{
   position: relative;
   left: 70%;
+  top: 40%;
   z-index: 1;
 }
 
@@ -213,15 +216,15 @@
   position: relative;
   max-height: 50px;
   max-width: 50px;
-  left: 40px;
-  top: -125px;
+  left: -10px;
+  top: 10px;
   z-index: 1;
 }
 
 .pantry-quantity{
   position: relative;
-  left: 120%;
-  top: -10%;
+  left: 100%;
+  top: 22%;
   z-index: 1;
   
 }
@@ -230,19 +233,23 @@
   position: relative;
   left: 70%;
   top: -30%;
+  height: 30px;
+  width: 30px;
   z-index: 1;
 }
 
 #minuser{
   position: relative;
-  left: 32%;
-  top: -0%;
+  left: 55%;
+  top: 2%;
+  height: 30px;
+  width: 30px;
   z-index: 1;
 }
 .pantry-background{
   position: relative;
   top: -100px;
-  left: -20%;
+  left: 5%;
   height: 125px;
   width: 125px;
 }
@@ -326,7 +333,7 @@
   z-index: 2;
   top: -120px;
   width: 50%;
-  left: 55%;
+  left: 50%;
 }
 
 #dish-rupee{
@@ -341,7 +348,7 @@
   position: relative;
   z-index: 2;
   top: -250px;
-  left: 62%;
+  left: 50%;
 }
 
 #dish-background{
@@ -363,7 +370,7 @@
   top: 10px;
   width: 90%;
   height: 50px;
-  background-color: ghostwhite;
+  background-color: tan;
   align-content: center;
   z-index: 150;
 }

@@ -40,8 +40,8 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
             
                 <p className="pantry-name">{item.ingredient.name}</p>
                 <p className='pantry-quantity'>x{quantity}</p>
-                <button id='adder' onClick={addToPot}>add to pot</button>
-                <button id='minuser' onClick={handleRemoveFromPot}>remove from pot</button>
+                <button id='adder' onClick={addToPot}>+</button>
+                <button id='minuser' onClick={handleRemoveFromPot}>-</button>
             
             
                 <img className="pantry-img" src={item.ingredient.image}/>
