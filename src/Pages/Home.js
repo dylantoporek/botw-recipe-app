@@ -84,13 +84,13 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
               });
             let newPot = [...pot, item]
             setPot(newPot)
+            
         } 
     }
 
     function removeFromPot(item, num){
        
         let found = pot.find((ing)=> ing.ingredient.id === item.ingredient.id)
-        
         let foundIndex = pot.indexOf(found)
         
         pot.splice(foundIndex, 1)
@@ -131,7 +131,6 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         })
         let formula = []
         let potIngredients = pot.map((item)=> item.ingredient.name)
-        console.log(potIngredients)
         potIngredients.forEach((str)=>{
             let checkX2 = str + ' x2'
             let checkX3 = str + ' x3'
@@ -142,23 +141,23 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             }
             if (formula.includes(str)){
                 let newStr = str + ' x2'
-                return formula.splice(formula.indexOf(str), 1, newStr, null)
+                return formula.splice(formula.indexOf(str), 1, newStr)
              
             }
             
             if (formula.includes(checkX2)){
                 let newStr = str + ' x3'
-                return formula.splice(formula.indexOf(checkX2), 1, newStr, null)
+                return formula.splice(formula.indexOf(checkX2), 1, newStr)
             }
 
             if (formula.includes(checkX3)){
                 let newStr = str + ' x4'
-                return formula.splice(formula.indexOf(checkX3), 1, newStr, null)
+                return formula.splice(formula.indexOf(checkX3), 1, newStr)
             }
             
             if (formula.includes(checkX4)){
                 let newStr = str + ' x5'
-                return formula.splice(formula.indexOf(checkX4), 1, newStr, null)
+                return formula.splice(formula.indexOf(checkX4), 1, newStr)
             }
         })
 
@@ -168,8 +167,16 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 formula.push(null)
             }
         }
+        
+        if (formula.includes(null)){
+            console.log(formula)
+            let nullIndex = formula.indexOf(null)
+            formula.splice(formula.indexOf(null), 1)
+            console.log(formula)
+            formula.push(null)
+            console.log(formula)
+        }
         recipeIngredientList.map((recipe)=> {
-            
             if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){  
                 if(recipe.ingredients.includes(formula[1]) && formula.includes(recipe.ingredients[1])){
                     if(recipe.ingredients.includes(formula[2]) && formula.includes(recipe.ingredients[2])){
@@ -295,34 +302,6 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 </div>
         </div>
     }
-    
-    // pantry display && potDisplay && dishesDisplay
-    // return <div className="comp-cont-1">
-    //     <button onClick={handlePantryDisplay}>Pantry</button>
-    //     <button onCLick={handleDishDisplay}>Dishes</button>
-    //     <div id='home-ing-block'>
-    //         <h3 id='pantry-label'>Ingredients</h3>
-    //             <div id='pantry-items-cont'>
-    //                 {pantryDisplay}
-    //             </div>
-    //     </div>
-            
-    //     <div id='home-pot-block'>
-    //                 <div id='pot-items-cont'>
-    //                     {potDisplay}
-    //                     <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
-    //                     <img id='pot-img' src={potBackground}/>
-    //                 </div>
-    //     </div>
-            
-    //     <div id='home-dish-block'>
-    //         <h3 id='dish-label'>Dishes</h3>
-    //         <div id='dish-items-cont'>
-    //             {dishDisplay}
-    //         </div>
-    //     </div>
-              
-    // </div>
 }
 
 export default Home

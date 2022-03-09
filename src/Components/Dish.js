@@ -31,18 +31,18 @@ function Dish({item, sellRecipe, user, setUser}){
             } else {
               r.json().catch((data) => console.log(data))
             }
-          });
+        });
 
     }
 
-    const rupeeDisplay = <img id='dish-rupee' src={rupee} />
+    const rupeeDisplay = <img id='dish-rupee' src={rupee}/>
 
     let itemDisplay = <div id='dish'>
         <p id='dish-name'>{item.recipe.name}</p>
         <img id='dish-img' src={item.recipe.image}/>
         <p id='dish-value'>{rupeeDisplay} {priceRewrite}</p>
         <button id='sell-dish' onClick={handleSellItem}>Sell</button>
-        <img id='dish-background' src={tabletop} />
+        <img id='dish-background' src={tabletop}/>
     </div>
 
     return(

@@ -333,24 +333,24 @@
 
 #pot-img{
   position: absolute;
-  left: -80px;
-  top: -50px;
-  width: 400px;
+  left: -100px;
+  top: -90px;
+  width: 500px;
   
 }
 
 #pot-ing{
   position: relative;
-  width: 30px;
-  top: 200px;
-  left: 15px;
+  width: 35px;
+  top: 240px;
+  left: 30px;
 }
 
 #start-cooking{
   position: absolute;
   width: 50px;
   height: 25px;
-  top: -90%;
+  top: -120%;
   left: 40%;
 }
 
