@@ -23,11 +23,12 @@ function LoginForm({onLogin}){
       }
 
     return (
-    <form  onSubmit={handleSubmit}>
+    <form id='login-form'  onSubmit={handleSubmit}>
         <input
           type="text"
           id="username-input"
           autoComplete="off"
+          placeholder='username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -35,10 +36,11 @@ function LoginForm({onLogin}){
           type="password"
           id="password-input"
           autoComplete="current-password"
+          placeholder='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button id='login-form-submit' type="submit">Login</button>
       
         <div className="errors">
             {errors.map((err) => (

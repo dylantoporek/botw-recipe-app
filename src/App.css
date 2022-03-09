@@ -28,6 +28,72 @@
   top: 50px;
 }
 
+/* LOGIN /////////////////////////////////////////////////////////////////////// */
+
+#tog-login-signup{
+  position: relative;
+  top: 300px;
+  left: 43%;
+}
+
+#login-form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 45%;
+  top: 200px;
+}
+
+#username-input{
+  position: relative;
+  width: 150px;
+}
+
+#password-input{
+  position: relative;
+  width: 150px;
+  top: 20px;
+}
+
+#login-form-submit{
+  position: relative;
+  width: 50px;
+  top: 40px;
+  left: 55px;
+}
+
+#signup-form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: 45%;
+  top: 200px;
+}
+
+#signup-username{
+  position: relative;
+  width: 150px;
+}
+
+#signup-password{
+  position: relative;
+  width: 150px;
+  top: 20px;
+}
+
+#signup-password_confirmation{
+  position: relative;
+  width: 150px;
+  top: 40px;
+}
+
+#signup-form-submit{
+  position: relative;
+  width: 60px;
+  top: 60px;
+  left: 55px;
+}
+
 /* NAVBAR ///////////////////////////////////////////////////////////////////////*/
 #navbar{
   position: fixed;

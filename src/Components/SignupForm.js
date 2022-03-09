@@ -37,12 +37,14 @@ function SignupForm({onLogin}){
           type="text"
           id="signup-username"
           autoComplete="off"
+          placeholder='username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           id="signup-password"
+          placeholder='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
@@ -50,11 +52,12 @@ function SignupForm({onLogin}){
         <input
           type="password"
           id="signup-password_confirmation"
+          placeholder='password confirmation'
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button type="submit">Submit</button>
+        <button id='signup-form-submit' type="submit">Signup</button>
       <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>

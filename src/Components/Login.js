@@ -12,12 +12,12 @@ function Login({onLogin}){
             {showLogin ? (
                 <div>
                     <LoginForm onLogin={onLogin}/>
-                    <button onClick={() => setShowLogin(false)}>Don't have an account? Sign up</button>
+                    <button id='tog-login-signup' onClick={() => setShowLogin(false)}>Don't have an account? Sign up</button>
                 </div>
             ) : (
                 <div>
                     <SignupForm onLogin={onLogin}/>
-                    <button onClick={() => setShowLogin(true)}>Already have an account? Login</button>
+                    <button id='tog-login-signup' onClick={() => setShowLogin(true)}>Already have an account? Login</button>
                 </div> 
             )}
         </div>
