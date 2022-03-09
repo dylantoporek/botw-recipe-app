@@ -327,10 +327,9 @@
 #pot-items-cont{
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  height: 100px;
-  width: 200px;
+  height: 300px;
+  width: 100px;
 }
 
 #pot-img{
@@ -343,10 +342,16 @@
 
 #pot-ing{
   position: relative;
-  width: 35px;
-  top: 240px;
+  width: 40px;
+  top: 260px;
   left: 30px;
-  z-index: 1;
+  z-index: 10;
+}
+
+.pot-ing-img{
+  position: relative;
+  width: 110%;
+  height: 110%;
 }
 
 #start-cooking{
