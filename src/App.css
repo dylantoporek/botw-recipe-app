@@ -346,6 +346,7 @@
   width: 35px;
   top: 240px;
   left: 30px;
+  z-index: 1;
 }
 
 #start-cooking{
