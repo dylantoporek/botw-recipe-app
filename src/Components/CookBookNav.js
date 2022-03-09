@@ -17,6 +17,17 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
     return (
         <div id='cookbook-nav'>
             <input id='search-by-name' placeholder="Search" type="text" value={name} onChange={handleSearchByName}></input>
+            <select id='search-by-type' value={typeFilter} onChange={handleTypeChange}>
+                <option value="All">All</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Mushroom">Mushroom</option>
+                <option value="Meat">Meat</option>
+                <option value='Seafood'>Seafood</option>
+                <option value="Veggie">Vegetarian</option>
+                <option value="Curry">Curry</option>
+                <option value='Cake'>Cake</option>
+                <option value='Pie'>Pie</option>
+            </select>
             <select id='search-by-category' value={category} onChange={handleFilterChange}>
                 <option value="All">All</option>
                 <option value="Restore Hearts">Restores Hearts</option>
@@ -30,17 +41,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
                 <option value="Cold Resist">Cold Resistance</option>
                 <option value="Electric Resist">Electric Resistance</option>
             </select>
-            <select id='search-by-type' value={typeFilter} onChange={handleTypeChange}>
-                <option value="All">All</option>
-                <option value="Fruit">Fruit</option>
-                <option value="Mushroom">Mushroom</option>
-                <option value="Meat">Meat</option>
-                <option value='Seafood'>Seafood</option>
-                <option value="Veggie">Vegetarian</option>
-                <option value="Curry">Curry</option>
-                <option value='Cake'>Cake</option>
-                <option value='Pie'>Pie</option>
-            </select>
+            
             
         </div>
     )

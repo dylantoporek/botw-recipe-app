@@ -168,14 +168,6 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             }
         }
         
-        if (formula.includes(null)){
-            console.log(formula)
-            let nullIndex = formula.indexOf(null)
-            formula.splice(formula.indexOf(null), 1)
-            console.log(formula)
-            formula.push(null)
-            console.log(formula)
-        }
         recipeIngredientList.map((recipe)=> {
             if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){  
                 if(recipe.ingredients.includes(formula[1]) && formula.includes(recipe.ingredients[1])){
@@ -263,7 +255,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
     if (togDisplay === false){
         return <div className="comp-cont-1">
             <div id='tog-cont'>
-                <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
+                <button id='tog-pantry' style={{backgroundColor: 'red'}} onClick={handlePantryDisplay}>Pantry</button>
                 <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
             </div>
             
@@ -285,7 +277,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
         return <div className="comp-cont-1">
             <div id='tog-cont'>
                 <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
-                <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
+                <button id='tog-dishes' style={{backgroundColor: 'red'}} onClick={handleDishDisplay}>Dishes</button>
             </div>
             <div id='home-dish-block'>
                 <div id='dish-items-cont'>

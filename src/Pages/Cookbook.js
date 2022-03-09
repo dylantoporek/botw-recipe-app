@@ -44,7 +44,7 @@ function Cookbook({recipeList}){
     const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails}/> : null
 
     if (!togDetails){
-        return <div className="comp-cont-1">
+        return <div className="cookbook-comp-cont-1">
         <CookBookNav 
             name={nameFilter}
             category={categoryFilter}
@@ -56,7 +56,7 @@ function Cookbook({recipeList}){
         {recipeDisplay}
     </div>
     } if(togDetails){
-        return <div className="comp-cont-1">
+        return <div className="cookbook-comp-cont-1">
         <CookBookNav 
             name={nameFilter}
             category={categoryFilter}
