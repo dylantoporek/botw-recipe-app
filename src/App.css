@@ -446,9 +446,9 @@
 #cookbook-nav{
   position: fixed;
   width: 10%;
-  height: 600px;
+  height: 400px;
   left: 0;
-  top: 80px;
+  top: 120px;
   background-color: tan;
   z-index: 150;
 }
@@ -456,13 +456,14 @@
 #search-by-type{
   position: relative;
   left: 9%;
-  top: 40px;
+  top: 30px;
+  width: 100px;
   
 }
 
 #search-by-category{
   position: relative;
-  width: 120px;
+  width: 100px;
   top: 0px;
 }
 
@@ -665,14 +666,14 @@
   justify-content: center;
   width: 80%;
   height: fit-content;
-  top: 50px;
+  top: 33px;
 }
 #store-nav{
   position: fixed;
   width: 10%;
-  height: 600px;
+  height: 400px;
   left: 0;
-  top: 80px;
+  top: 120px;
   background-color: tan;
   z-index: 150;
 }
@@ -681,6 +682,7 @@
   position: relative;
   top: 10%;
   left: 10%;
+  width: 100px;
 }
 
 #search-by-name{
@@ -695,28 +697,28 @@
   position: relative;
   flex: auto;
   top: 20%;
-  width: 149px;
-  height: 137px;
+  width: 200px;
+  height: 180px;
 }
 
 .ing-name{
   position: relative;
-  font-size: 10px;
+  font-size: 12px;
   background-color: white;
-  left: 16%;
-  width: 103px;
+  left: 20%;
+  width: 120px;
   height: 15px;
   opacity: 80%;
-  top: 25px;
+  top: 45px;
   z-index: 10;
 }
 
 .ing-img{
   position: relative;
-  max-height: 50px;
-  max-width: 50px;
-  left: 30%;
-  top: 25px;
+  max-height: 30%;
+  max-width: 30%;
+  left: 35%;
+  top: 70px;
   z-index: 10;
 }
 
@@ -724,15 +726,15 @@
 .ing-background-noH{
   position: relative;
   top: -90px;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
 }
 
 .ing-background-H{
   position: relative;
   top: -90px;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   z-index: 1;
 }
 
