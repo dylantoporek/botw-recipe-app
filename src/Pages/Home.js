@@ -253,9 +253,12 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
     }
 
     if (togDisplay === false){
-        return <div className="comp-cont-1">
+        return <div id='page-background'>
+
+        
+        <div className="comp-cont-1">
             <div id='tog-cont'>
-                <button id='tog-pantry' style={{backgroundColor: 'red'}} onClick={handlePantryDisplay}>Pantry</button>
+                <button id='tog-pantry' style={{backgroundColor: '#F26C50'}} onClick={handlePantryDisplay}>Pantry</button>
                 <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
             </div>
             
@@ -273,11 +276,15 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                         </div>
             </div>
         </div>
+        </div> 
     } if (togDisplay === true){
-        return <div className="comp-cont-1">
+        return <div id='page-background'>
+
+        
+        <div className="comp-cont-1">
             <div id='tog-cont'>
                 <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
-                <button id='tog-dishes' style={{backgroundColor: 'red'}} onClick={handleDishDisplay}>Dishes</button>
+                <button id='tog-dishes' style={{backgroundColor: '#F26C50'}} onClick={handleDishDisplay}>Dishes</button>
             </div>
             <div id='home-dish-block'>
                 <div id='dish-items-cont'>
@@ -293,6 +300,7 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                     </div>
                 </div>
         </div>
+        </div> 
     }
 }
 

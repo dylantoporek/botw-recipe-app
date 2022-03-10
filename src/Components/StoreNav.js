@@ -17,7 +17,7 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
     return (
         <div id='store-nav'>
             <input id='search-by-name' placeholder="Search" type="text" value={name} onChange={handleSearchByName}></input>
-            <select id='search-by-category' value={category} onChange={handleFilterChange}>
+            <select id='search-by-type' value={category} onChange={handleFilterChange}>
                 <option value="All">All</option>
                 <option value="Fruit">Fruits</option>
                 <option value="Vegetable">Vegetables</option>

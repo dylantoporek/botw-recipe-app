@@ -60,13 +60,16 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
       </div>
 
     return (
-        <div className="cart-comp-cont-2">
+      <div id='page-background'>
+<div className="cart-comp-cont-2">
             <div id='cart-items-cont'>
             {cartDisplay}
             </div>
             <div id="total-cost">Total: {rupeeDisplay}{tallyTotal}</div>
             <button id='checkout' onClick={checkoutItems}>Checkout</button>
         </div>
+      </div>
+        
     )
 }
 

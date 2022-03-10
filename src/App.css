@@ -28,6 +28,13 @@
   top: 50px;
 }
 
+#page-background{
+  position: relative;
+  min-height: 725px;
+  height: fit-content;
+  width: 100%;
+  background-color: #F26C50
+}
 /* LOGIN /////////////////////////////////////////////////////////////////////// */
 
 #tog-login-signup{
@@ -123,12 +130,13 @@
   z-index: 150;
   background-color: white;
   width: 100%;
-  height: 30px;
+  height: 50px;
 }
 
 #nav-links-cont{
   position: relative;
   left: 2%;
+  top: 10%;
 }
 
 #nav-to-home{
@@ -194,15 +202,15 @@
 #signout-button{
   position: relative;
   left: 55%;
-  height: 30px;
-  top: 0px;
+  height: 20px;
+  top: 10px;
 }
 
 #user-container-display{
   display: flex;
   flex-direction: row;
   position: relative;
-  top: 0px;
+  top: 5px;
   left: 30%;
 }
 
@@ -249,8 +257,8 @@
 
 #tog-cont{
   position: absolute;
-  left: -10px;
-  background-color: tan;
+  left: 10px;
+  background-color: antiquewhite;
   top: 10px;
   border-radius: 20%;
   height: 50px;
@@ -275,13 +283,13 @@
 
 #pantry-items-cont{
   position: fixed;
-  left: 6%;
+  left: 3%;
   display: flex;
   flex-direction: column;
   width: 290px;
   overflow-y: scroll;
   height: 82%;
-  top: 100px;
+  top: 92px;
 }
 
 #pantry-item{
@@ -355,8 +363,8 @@
 #pot-img{
   position: absolute;
   left: -100px;
-  top: -90px;
-  width: 500px;
+  top: -180px;
+  width: 600px;
   
 }
 
@@ -364,7 +372,7 @@
   position: relative;
   width: 40px;
   top: 260px;
-  left: 30px;
+  left: 80px;
   z-index: 10;
 }
 
@@ -378,8 +386,9 @@
   position: absolute;
   width: 50px;
   height: 25px;
-  top: -120%;
+  top: -50%;
   left: 40%;
+  z-index: 100;
 }
 
 /* DISH////////////////////////////////////// */
@@ -387,7 +396,7 @@
 #dish-items-cont{
   position: fixed;
   top: 90px;
-  left: 5%;
+  left: 1.5%;
   display: flex;
   width: 375px;
   flex-direction: column;
@@ -469,6 +478,13 @@
   top: 50px;
   z-index: 2;
 }
+
+#cookbook-background{
+  position: relative;
+  height: 8005px;
+  width: 100%;
+  background-color: #F26C50
+}
 /* COOKBOOK NAV////////////////////////////// */
 
 #cookbook-nav{
@@ -490,13 +506,6 @@
   
 }
 
-
-#cookbook-background{
-  position: relative;
-  height: 8005px;
-  width: 100%;
-  background-color: #F26C50
-}
 
 /* RECIPE /////////////////////////////////// */
 
@@ -696,16 +705,18 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 80%;
+  left: 15%;
   height: fit-content;
   top: 33px;
 }
 #store-nav{
   position: fixed;
-  width: 10%;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   left: 0;
   top: 120px;
-  background-color: tan;
+  background-color: antiquewhite;
+  border-radius: 5%;
   z-index: 150;
 }
 
@@ -885,7 +896,7 @@
 #checkout{
   position: fixed;
   top: 80%;
-  left: 86%;
+  left: 87%;
   max-width: 200px; 
 }
 
@@ -904,23 +915,23 @@
 #cart-items-cont{
   position: relative;
   top: 100px;
+  left: 5%;
   height: fit-content;
-  background-color: whitesmoke;
   
 }
 
 .cart-item{
   position: relative;
-  border-color: whitesmoke;
-  border-width: 2px;
+  background-color: antiquewhite;
+  border-color: #F26C50;
+  border-width: 5px;
   border-style: solid;
-  background-color: gainsboro;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 50%;
   height: 22%;
   top: 2%;
-  left: 20%;
+  left: 25%;
   
 }
 
@@ -950,9 +961,9 @@
 }
 
 #remove-from-cart{
-  position: relative;
-  left: 55%;
-  top: 30px;
+  position: absolute;
+  left: 60%;
+  
   
 }
 
@@ -960,6 +971,10 @@
   position: fixed;
   top: 70%;
   left: 86%;
+  background-color: antiquewhite;
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
 }
 
 #empty-cart{

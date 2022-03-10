@@ -44,7 +44,7 @@ function Cookbook({recipeList}){
     const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails}/> : null
 
     if (!togDetails){
-        return <div id='cookbook-background'>
+        return <div id='page-background'>
 
         
         <div className="cookbook-comp-cont-1">
@@ -60,7 +60,7 @@ function Cookbook({recipeList}){
     </div>
     </div>
     } if(togDetails){
-        return <div id='cookbook-background'>
+        return <div id='page-background'>
 
         
         <div className="cookbook-comp-cont-1">
