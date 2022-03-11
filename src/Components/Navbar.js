@@ -22,16 +22,17 @@ function Navbar({user, setUser}){
   const rupeeDisplay = <img id='rupee' src={rupee} />
       
   return <div id='navbar'>
+    
+      
+    <div id='user-container-display'> 
+      <p id='user-display'>User: {user.username}</p>
+      <p id='user-bank'>{rupeeDisplay}{user.bank}</p> 
+    </div>
     <div id='nav-links-cont'>
         <NavLink id='nav-to-home' to='/'>Kitchen{homeDisplay}</NavLink>
         <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook{cookbookDisplay}</NavLink>
         <NavLink id='nav-to-store' to='/store'>Store{storeDisplay}</NavLink>
         <NavLink id='nav-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>
-    </div>
-      
-    <div id='user-container-display'> 
-      <p id='user-display'>User: {user.username}</p>
-      <p id='user-bank'>{rupeeDisplay}{user.bank}</p> 
     </div>
     <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
   </div>

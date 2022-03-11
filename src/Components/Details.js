@@ -47,7 +47,7 @@ function Details({ing, setTogDetails, addItemToCart}){
             
         
             <div id='quantity-form-cont'>
-                <p id='quantity'>How many? x{quantity}</p>
+                <p id='quantity'>Qty: x{quantity}</p>
                 <div id='quantity-cont-plus'>
                     <button id='minus' onClick={removeOne}>-</button>
                     <button id='add' onClick={addOne}>+</button>
@@ -58,7 +58,7 @@ function Details({ing, setTogDetails, addItemToCart}){
 
             
 
-            <button id='details-add-to-cart' onClick={putInCart}>add to cart</button>
+            <button id='details-add-to-cart' onClick={putInCart}>Add to Cart</button>
 
         
     </div>

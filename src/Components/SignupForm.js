@@ -57,7 +57,7 @@ function SignupForm({onLogin}){
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button id='signup-form-submit' type="submit">Signup</button>
+        <button id='signup-form-submit' type="submit">Sign up</button>
       <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>
