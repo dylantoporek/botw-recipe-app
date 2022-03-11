@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import search from '../Images/search.png'
+
 
 function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilter, setTypeFilter}){
 
@@ -15,11 +15,10 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
         setTypeFilter(e.target.value)
     }
 
-    const searchDisplay = <img src={search}/>
 
     return (
         <div id='cookbook-nav'>
-            <input id='search-by-name' placeholder='🔍' type="text" value={name} onChange={handleSearchByName}></input>
+            <input id='search-by-name' placeholder='Search' type="text" value={name} onChange={handleSearchByName}></input>
             <select id='search-by-type' value={typeFilter} onChange={handleTypeChange}>
                 <option value="All">All</option>
                 <option value="Fruit">Fruit</option>

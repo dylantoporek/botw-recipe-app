@@ -4,6 +4,7 @@ function LoginForm({onLogin}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const [isShown, setIsShown] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -40,7 +41,12 @@ function LoginForm({onLogin}){
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button id='login-form-submit' type="submit">Login</button>
+        <button id='login-form-submit' 
+          onMouseEnter={()=> setIsShown(true)}
+          onMouseLeave={()=> setIsShown(false)} 
+          type="submit">
+          Login
+        </button>
       
         <div className="errors">
             {errors.map((err) => (

@@ -1,14 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import CookBookNav from "../Components/CookBookNav";
 import Recipe from "../Components/Recipe"
 import CookBookDetails from "../Components/CookBookDetails";
 
-function Cookbook({recipeList}){
+function Cookbook({recipeList, changePage, changePinnedRecipe}){
     const [categoryFilter, setCategoryFilter] = useState("All")
     const [nameFilter, setNameFilter] = useState("")
     const [typeFilter, setTypeFilter] = useState("All")
     const [togDetails, setTogDetails] = useState(false)
     const [specificRecipe, setSpecificRecipe] = useState(null)
+
+    useEffect(()=>{
+        changePage(window.location.href)
+      }, [])
 
     const filteredByCategory = recipeList.filter((recipe)=>{
         if (categoryFilter === "All" && recipe.category !== 'Elixer' && !recipe.name.includes('Monster')){
@@ -41,7 +45,7 @@ function Cookbook({recipeList}){
         return <Recipe key={recipe.id} recipe={recipe} setTogDetails={setTogDetails} setSpecificRecipe={setSpecificRecipe}/> 
     })
 
-    const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails}/> : null
+    const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe}/> : null
 
     if (!togDetails){
         return <div id='page-background'>

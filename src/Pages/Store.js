@@ -1,18 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
 import Details from "../Components/Details";
 
 
 
-function Store({ingredientList, addItemToCart}){
+function Store({ingredientList, addItemToCart, changePage}){
     const [categoryFilter, setCategoryFilter] = useState("All")
     const [nameFilter, setNameFilter] = useState("")
     const [togDetails, setTogDetails] = useState(false)
     const [specificIng, setSpecificIng] = useState(null)
+
+    useEffect(()=>{
+        changePage(window.location.href)
+    }, [])
+
     
-
-
     const filteredByCategory = ingredientList.filter((ing)=>{
         if (categoryFilter === "All"){
             return ing

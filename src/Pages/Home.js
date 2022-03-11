@@ -6,11 +6,12 @@ import potBackground from '../Images/pot.png'
 
 
 
-function Home({pantries, recipeList, setPantries, user, setUser}){
+function Home({pantries, recipeList, setPantries, user, setUser, changePage, pinnedRecipe}){
 
     const [pot, setPot] = useState([])
     const [dishes, setDishes] = useState([])
     const [togDisplay, setTogDisplay] = useState(false) 
+
 
     useEffect(()=>{
         // Pantries from DB
@@ -30,7 +31,10 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             }
         })
 
+        changePage(window.location.href)
     }, [])
+
+    
 
     const pantryDisplay = pantries.length > 0 ? pantries.map((item)=>{
        return <Pantry 
@@ -56,7 +60,15 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
             setUser={setUser}/>
     }) : null
 
-    
+    const pinnedRecipeDisplay = pinnedRecipe ? 
+    <div id='pinned-recipe-cont'>
+       {pinnedRecipe[0] !== null ? <li>{pinnedRecipe[0]}</li> : null}
+       {pinnedRecipe[1] !== null ? <li>{pinnedRecipe[1]}</li> : null}
+       {pinnedRecipe[2] !== null ? <li>{pinnedRecipe[2]}</li> : null}
+       {pinnedRecipe[3] !== null ? <li>{pinnedRecipe[3]}</li> : null}
+       {pinnedRecipe[4] !== null ? <li>{pinnedRecipe[4]}</li> : null}
+    </div> 
+    : null
 
     function addItemToPot(item, num){
         if (pot.length < 5){
@@ -268,6 +280,10 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                     </div>
             </div>
                 
+            <div id='pinned-recipe-kitchen'>
+                {pinnedRecipeDisplay}
+            </div>
+
             <div id='home-pot-block'>
                         <div id='pot-items-cont'>
                             {potDisplay}
@@ -290,6 +306,10 @@ function Home({pantries, recipeList, setPantries, user, setUser}){
                 <div id='dish-items-cont'>
                     {dishDisplay}
                 </div>
+            </div>
+
+            <div id='pinned-recipe-kitchen'>
+                {pinnedRecipeDisplay}
             </div>
         
             <div id='home-pot-block'>

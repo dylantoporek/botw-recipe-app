@@ -15,6 +15,8 @@ function App() {
   const [ingredientList, setIngredientList] = useState([])
   const [cart, setCart] = useState([])
   const [pantries, setPantries] = useState([])
+  const [selectedPage, setSelectedPage] = useState(null)
+  const [pinnedRecipe, setPinnedRecipe] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -46,7 +48,17 @@ function App() {
     
   }, []);
 
-  
+
+  function changePage(str){
+    setSelectedPage(str)
+  }
+
+  function changePinnedRecipe(arr){
+    setPinnedRecipe(arr)
+  }
+
+  console.log(pinnedRecipe)
+
 
   function checkPantryItems(item){
     let pantryCheck = pantries.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
@@ -130,12 +142,12 @@ function App() {
   } else {
     return (
       <div id='app-contianer'>
-        <Navbar user={user} setUser={setUser}/>
+        <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
         <Routes>
-          <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart}/>}/>
-          <Route path='/cookbook' element={<Cookbook recipeList={recipeList}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems}/>}/>
-          <Route path='/' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList}/>}/>
+          <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
+          <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
+          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
+          <Route path='/' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
         </Routes>
       </div>
     );

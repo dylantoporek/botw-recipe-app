@@ -154,10 +154,10 @@
 
 #nav-links-cont{
   position: relative;
-  left: 0%;
+  left: -3%;
   top: 16%;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 5%;
+  padding-right: 5%;
   
 }
 
@@ -167,6 +167,14 @@
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
+  color: black;
+}
+
+#selected-to-home{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
   color: black;
 }
 
@@ -187,6 +195,14 @@
   font-weight: bold;
 }
 
+#selected-to-cookbook{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
 #cookbookIcon{
   position: relative;
   height: 20px;
@@ -202,6 +218,14 @@
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+#selected-to-store{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
 
 #storeIcon{
@@ -221,6 +245,14 @@
   font-weight: bold;
 }
 
+#selected-to-cart{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
 #cartIcon{
   position: relative;
   height: 20px;
@@ -231,7 +263,7 @@
 
 #signout-button{
   position: relative;
-  left: 0%;
+  left: 15%;
   height: 40px;
   top: 5px;
   border: none;
@@ -246,7 +278,7 @@
   flex-direction: row;
   position: relative;
   top: 8px;
-  left: 0px;
+  left: -15%;
 }
 
 #user-display{
@@ -323,6 +355,23 @@
   z-index: 10;
   font-weight: bold;
   background-color: white;
+}
+
+#pinned-recipe-kitchen{
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  width: 180px;
+  height: 160px;
+  align-content: center;
+  top: 200px;
+  border-radius: 10%;
+}
+
+#pinned-recipe-cont{
+  position: absolute;
+  top: 30px;
+  left: 15%;
 }
 /* PANTRY//////////////////////////////// */
 
@@ -527,6 +576,8 @@
   
 }
 
+
+
 /* COOKBOOK PAGE /////////////////////////////////////////////////////////////////*/
 
 .cookbook-comp-cont-1{
@@ -654,6 +705,18 @@
   border: none;
   border-radius: 10%;
   background-color: white;
+}
+
+#pin-recipe{
+  position: relative;
+  z-index: 15;
+  border: none;
+  border-radius: 10%;
+  background-color: white;
+  left: 10%;
+  height: 30px;
+  width: 80px;
+
 }
 
 #cbd-name{

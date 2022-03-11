@@ -3,7 +3,7 @@ import noImg from '../Images/noImg.png'
 import rupee from '../Images/rupee.png'
 import parchH from '../Images/parchH.png'
 
-function CookBookDetails({recipe, setTogDetails}){
+function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
 
   const rupeeDisplay = <img id='rupee' src={rupee} />
 
@@ -19,8 +19,16 @@ function CookBookDetails({recipe, setTogDetails}){
         recipeImg = <img id="cbd-img" src={noImg}/>
     }
 
+   function handleChangePinnedRecipe(){
+        let pinnedIngredientList = [recipe.ingredient1, recipe.ingredient2, recipe.ingredient3, recipe.ingredient4, recipe.ingredient5]
+        changePinnedRecipe(pinnedIngredientList)
+        alert(`${recipe.name} is now pinned in your Kitchen.`)
+        setTogDetails(false)
+    }
+
     const infoDisplay = <div id='cookbook-details'>
         <button id='back-to-cb' onClick={()=> setTogDetails(false)}>X</button>
+        <button id='pin-recipe' onClick={handleChangePinnedRecipe}>pin recipe</button>
         <p id='cbd-name'>{recipe.name}</p>
         {recipeImg}
         <p id='cbd-effect'>Additonal Effect: {recipe.category}</p>

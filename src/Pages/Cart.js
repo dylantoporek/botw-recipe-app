@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import CartItem from "../Components/CartItem";
 import rupee from '../Images/rupee.png'
 
-function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser}){
-
+function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser, changePage}){
+  
+  useEffect(()=>{
+    changePage(window.location.href)
+  }, [])
   const rupeeDisplay = <img id='rupee' src={rupee} />
 
     let tallyTotal = 0
