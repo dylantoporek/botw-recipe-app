@@ -360,18 +360,20 @@
 #pinned-recipe-kitchen{
   position: absolute;
   z-index: 4;
-  background-color: white;
+  background-color: black;
   width: 180px;
   height: 160px;
   align-content: center;
   top: 10px;
   left: 50%;
   border-radius: 10%;
+  
 }
 
 #pinned-recipe-cont{
   position: absolute;
   left: 13%;
+  color: white
 }
 
 #pinned-title{
