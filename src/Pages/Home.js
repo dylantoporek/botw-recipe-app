@@ -62,13 +62,18 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
 
     const pinnedRecipeDisplay = pinnedRecipe ? 
     <div id='pinned-recipe-cont'>
+        <p id='pinned-title'>Pinned Recipe</p>
        {pinnedRecipe[0] !== null ? <li>{pinnedRecipe[0]}</li> : null}
        {pinnedRecipe[1] !== null ? <li>{pinnedRecipe[1]}</li> : null}
        {pinnedRecipe[2] !== null ? <li>{pinnedRecipe[2]}</li> : null}
        {pinnedRecipe[3] !== null ? <li>{pinnedRecipe[3]}</li> : null}
        {pinnedRecipe[4] !== null ? <li>{pinnedRecipe[4]}</li> : null}
     </div> 
-    : null
+    : 
+    <div id='pinned-recipe-cont'>
+        <p id='pinned-title'>Pinned Recipe</p>
+        <li>no recipe pinned</li>
+    </div>
 
     function addItemToPot(item, num){
         if (pot.length < 5){

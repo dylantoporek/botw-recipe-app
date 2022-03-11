@@ -364,14 +364,19 @@
   width: 180px;
   height: 160px;
   align-content: center;
-  top: 200px;
+  top: 10px;
+  left: 50%;
   border-radius: 10%;
 }
 
 #pinned-recipe-cont{
   position: absolute;
-  top: 30px;
-  left: 15%;
+  left: 13%;
+}
+
+#pinned-title{
+  font-weight: 500;
+  text-decoration: underline;
 }
 /* PANTRY//////////////////////////////// */
 
@@ -488,7 +493,7 @@
   position: absolute;
   width: 100px;
   height: 50px;
-  top: -50%;
+  top: 350px;
   left: -200%;
   z-index: 100;
   border: none;
