@@ -3,6 +3,7 @@ import Pantry from "../Components/Pantry";
 import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
 import potBackground from '../Images/pot.png'
+import parchV from '../Images/parchV.png'
 
 
 
@@ -60,14 +61,15 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             setUser={setUser}/>
     }) : null
 
+    console.log(pinnedRecipe)
     const pinnedRecipeDisplay = pinnedRecipe ? 
     <div id='pinned-recipe-cont'>
-        <p id='pinned-title'>Pinned Recipe</p>
-       {pinnedRecipe[0] !== null ? <li>{pinnedRecipe[0]}</li> : null}
-       {pinnedRecipe[1] !== null ? <li>{pinnedRecipe[1]}</li> : null}
-       {pinnedRecipe[2] !== null ? <li>{pinnedRecipe[2]}</li> : null}
-       {pinnedRecipe[3] !== null ? <li>{pinnedRecipe[3]}</li> : null}
-       {pinnedRecipe[4] !== null ? <li>{pinnedRecipe[4]}</li> : null}
+        <p id='pinned-title'>{pinnedRecipe.name}</p>
+       {pinnedRecipe.ingredient1 !== null ? <li>{pinnedRecipe.ingredient1}</li> : null}
+       {pinnedRecipe.ingredient2 !== null ? <li>{pinnedRecipe.ingredient2}</li> : null}
+       {pinnedRecipe.ingredient3 !== null ? <li>{pinnedRecipe.ingredient3}</li> : null}
+       {pinnedRecipe.ingredient4 !== null ? <li>{pinnedRecipe.ingredient4}</li> : null}
+       {pinnedRecipe.ingredient5 !== null ? <li>{pinnedRecipe.ingredient5}</li> : null}
     </div> 
     : 
     <div id='pinned-recipe-cont'>
@@ -288,7 +290,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             <div id='pinned-recipe-kitchen'>
                 {pinnedRecipeDisplay}
             </div>
-
+            <img id='pinned-recipe-background' src={parchV}/>
             <div id='home-pot-block'>
                         <div id='pot-items-cont'>
                             {potDisplay}
@@ -314,8 +316,9 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             </div>
 
             <div id='pinned-recipe-kitchen'>
-                {pinnedRecipeDisplay}
+                {pinnedRecipeDisplay} 
             </div>
+            <img id='pinned-recipe-background' src={parchV}/>
         
             <div id='home-pot-block'>
                     <div id='pot-items-cont'>

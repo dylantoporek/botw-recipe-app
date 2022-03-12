@@ -20,7 +20,8 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
     }
 
    function handleChangePinnedRecipe(){
-        let pinnedIngredientList = [recipe.ingredient1, recipe.ingredient2, recipe.ingredient3, recipe.ingredient4, recipe.ingredient5]
+       console.log(recipe)
+        let pinnedIngredientList = recipe
         changePinnedRecipe(pinnedIngredientList)
         alert(`${recipe.name} is now pinned in your Kitchen.`)
         setTogDetails(false)

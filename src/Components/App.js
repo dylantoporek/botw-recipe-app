@@ -53,8 +53,8 @@ function App() {
     setSelectedPage(str)
   }
 
-  function changePinnedRecipe(arr){
-    setPinnedRecipe(arr)
+  function changePinnedRecipe(obj){
+    setPinnedRecipe(obj)
   }
 
 
