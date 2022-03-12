@@ -40,7 +40,7 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
         </div>
         
         <div id='cbd-ing-list-cont'>
-            <h3>Ingredient List:</h3>
+            <p id='ing-list-label'>Ingredient List:</p>
             <div id='cbd-ing-list-ings'>
                 <p id='cbd-ing1'>{recipe.ingredient1}</p>
                 <p id='cbd-ing2'>{recipe.ingredient2}</p>
