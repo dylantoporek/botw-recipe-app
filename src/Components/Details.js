@@ -11,7 +11,7 @@ function Details({ing, setTogDetails, addItemToCart}){
         if (quantity > 1){
             setQuantity((quantity) => quantity - 1)
         } else {
-           return alert('Cannot purchase less than 1')
+           return alert(`You must purchase at least 1 ${ing.name}`)
         }
         
     }
@@ -29,7 +29,7 @@ function Details({ing, setTogDetails, addItemToCart}){
             ...ing,
             quantity: quantity
         }
-        alert('item added to cart')
+        alert(`${ing.name} was added to you cart.`)
         addItemToCart(newCartItem)
         setTogDetails(false)
     }

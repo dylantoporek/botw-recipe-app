@@ -237,7 +237,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
               })
             setPot([])
         } else {
-            alert('That mix is not edible!')
+            alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
             setPot([])
         }
             

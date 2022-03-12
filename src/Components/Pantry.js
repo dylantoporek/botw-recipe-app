@@ -12,9 +12,9 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
             let newQuantity = quantity - 1
             setQuantity(newQuantity)
         } if(quantity === 0){
-            alert(`You are out of ${item.ingredient.name}. Go buy more from the store.`)
+            alert(`You are out of ${item.ingredient.name}. You can purchase more from the store.`)
         } if (pot.length === 5){
-            alert('Pot already full')
+            alert('The pot can only hold 5 ingredients.')
         }
         
     }
@@ -28,7 +28,8 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
             let newQuantity = quantity + 1
             setQuantity(newQuantity)
         } else {
-            alert('nothing to remove from pot')
+            console.log(item)
+            alert(`There is no ${item.ingredient.name} in the pot.`)
         }
         
     }

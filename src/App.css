@@ -313,7 +313,7 @@
 #home-pot-block{
   position: absolute;
   top: 200px;
-  left: 70%;
+  left: 40%;
 }
 
 #home-dish-block{
@@ -364,8 +364,8 @@
   width: 180px;
   height: 160px;
   align-content: center;
-  top: 10px;
-  left: 50%;
+  top: 80px;
+  left: 83%;
   border-radius: 10%;
   
 }
@@ -495,8 +495,8 @@
   position: absolute;
   width: 100px;
   height: 50px;
-  top: 350px;
-  left: -200%;
+  top: 150px;
+  left: 600px;
   z-index: 100;
   border: none;
   border-radius: 10%;
@@ -533,6 +533,8 @@
   font-size: small;
   z-index: 2;
   width: 46%;
+  height: 15px;
+  top: -4%;
   left: 45%;
 }
 

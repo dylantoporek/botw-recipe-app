@@ -51,7 +51,7 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
           //   bank: newBankStatement
           // })
         } else {
-          alert("Not enough money")
+          alert("Transaction declined. Please make sure you have enough money to make your purchase.")
         }
             
     }

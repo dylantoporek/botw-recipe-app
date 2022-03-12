@@ -57,8 +57,6 @@ function App() {
     setPinnedRecipe(arr)
   }
 
-  console.log(pinnedRecipe)
-
 
   function checkPantryItems(item){
     let pantryCheck = pantries.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
