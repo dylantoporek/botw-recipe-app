@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import loginLight from '../Images/loginLight.png'
+import loginDark from '../Images/loginDark.png'
+
 
 function LoginForm({onLogin}){
     const [username, setUsername] = useState("");
@@ -41,11 +44,11 @@ function LoginForm({onLogin}){
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button id='login-form-submit' 
-          onMouseEnter={()=> setIsShown(true)}
-          onMouseLeave={()=> setIsShown(false)} 
+        <button id='login-form-submit'
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}
           type="submit">
-          Login
+         {isShown ? <img id='login-img' src={loginLight}/> : <img id='login-img' src={loginDark}/>}
         </button>
       
         <div className="errors">

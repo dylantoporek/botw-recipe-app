@@ -33,20 +33,18 @@
   min-height: 725px;
   height: fit-content;
   width: 100%;
-  background-color: #F26C50
+}
+
+#brickBack{
+  position: fixed;
 }
 /* LOGIN /////////////////////////////////////////////////////////////////////// */
 
 #tog-login-signup{
   position: relative;
   top: -40px;
-  left: 42%;
-  background-color: white;
-  height: 100px;
-  width: 250px;
-  border-radius: 50%;
-  border: none;
-  font-weight: bold;
+  left: 43%;
+  z-index: 1;
 }
 
 #login-form{
@@ -54,19 +52,20 @@
   display: flex;
   flex-direction: column;
   left: 0%;
-  background-color: #F26C50;
   height: 500px;
   width: 100%;
   top: 100px;
   justify-content: center;
+  z-index: 1;
 }
 
 #username-input{
   position: relative;
   width: 150px;
   height: 30px;
-  left: 45%;
+  left: 44%;
   top: -100px;
+  z-index: 1;
 }
 
 #password-input{
@@ -74,20 +73,29 @@
   width: 150px;
   height: 30px;
   top: -80px;
-  left: 45%;
+  left: 44%;
+  z-index: 1;
 }
 
 #login-form-submit{
   position: relative;
-  width: 75px;
+  width: 100px;
   height: 50px;
   font-size: larger;
-  top: -60px;
-  left: 48%;
-  color: black;
-  background-color: white;
-  border-radius: 10%;
+  top: -30px;
+  left: 46%;
+  z-index: 1;
+  background-color: transparent;
   border: none;
+}
+
+#login-img{
+  width: 100%;
+}
+
+#to-login-signup{
+  width: 200px;
+  z-index: 1;
 }
 
 #signup-form{
@@ -95,19 +103,20 @@
   display: flex;
   flex-direction: column;
   left: 0%;
-  background-color: #F26C50;
   height: 500px;
   width: 100%;
   top: 100px;
   justify-content: center;
+  z-index: 1;
 }
 
 #signup-username{
   position: relative;
   width: 150px;
   height: 30px;
-  left: 45%;
+  left: 44%;
   top: -100px;
+  z-index: 1;
 }
 
 #signup-password{
@@ -115,15 +124,17 @@
   width: 150px;
   height: 30px;
   top: -80px;
-  left: 45%;
+  left: 44%;
+  z-index: 1;
 }
 
 #signup-password_confirmation{
   position: relative;
   width: 150px;
   height: 30px;
-  left: 45%;
+  left: 44%;
   top: -60px;
+  z-index: 1;
 }
 
 #signup-form-submit{
@@ -131,13 +142,24 @@
   width: 100px;
   height: 50px;
   font-size: larger;
-  top: -40px;
-  left: 47%;
+  top: -20px;
+  left: 46%;
   color: black;
-  background-color: white;
   border-radius: 10%;
   border: none;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
 }
+
+#login-signup-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;
+}
+
 
 /* NAVBAR ///////////////////////////////////////////////////////////////////////*/
 #navbar{
@@ -308,18 +330,21 @@
   position: absolute;
   top: 70px;
   left: 5%;
+  z-index: 1;
 }
 
 #home-pot-block{
   position: absolute;
   top: 200px;
   left: 40%;
+  z-index: 1;
 }
 
 #home-dish-block{
   position: absolute;
   left: 5%;
   top: 50px;
+  z-index: 1;
 }
 
 #tog-cont{
@@ -365,6 +390,7 @@
   top: 80px;
   left: 83%;
   border-radius: 10%;
+  z-index: 2;
   
 }
 
@@ -373,6 +399,7 @@
   left: 13%;
   z-index: 10;
   font-size: 14px;
+  z-index: 2;
 }
 
 #pinned-title{
@@ -388,6 +415,7 @@
   height: 200px;
   left: 83%;
   top: 55px;
+  z-index: 1;
 }
 /* PANTRY//////////////////////////////// */
 

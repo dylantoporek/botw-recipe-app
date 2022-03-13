@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import signupLight from '../Images/signupLight.png'
+import signupDark from '../Images/signupDark.png'
+
 
 function SignupForm({onLogin}){
     const [username, setUsername] = useState("");
@@ -6,6 +9,7 @@ function SignupForm({onLogin}){
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [bank, setBank] = useState(100)
     const [errors, setErrors] = useState([]);
+    const [isShown, setIsShown] = useState(false)
 
 
   function handleSubmit(e) {
@@ -57,7 +61,11 @@ function SignupForm({onLogin}){
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button id='signup-form-submit' type="submit">Sign up</button>
+        <button id='signup-form-submit' type="submit"
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+          {isShown ? <img id='login-img' src={signupLight}/> : <img id='login-img' src={signupDark}/>}
+        </button>
       <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>

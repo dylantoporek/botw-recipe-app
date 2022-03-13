@@ -4,6 +4,8 @@ import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
 import potBackground from '../Images/pot.png'
 import parchV from '../Images/parchV.png'
+import brickBackground from '../Images/brickBackground.png'
+import greyBackground from '../Images/greyBackground.png'
 
 
 
@@ -275,59 +277,61 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         return <div id='page-background'>
 
         
-        <div className="comp-cont-1">
-            <div id='tog-cont'>
-                <button id='tog-pantry' style={{backgroundColor: '#F26C50'}} onClick={handlePantryDisplay}>Pantry</button>
-                <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
-            </div>
-            
-            <div id='home-ing-block'>
-                    <div id='pantry-items-cont'>
-                        {pantryDisplay}
-                    </div>
-            </div>
+            <div className="comp-cont-1">
+                <div id='tog-cont'>
+                    <button id='tog-pantry' style={{backgroundColor: '#F26C50'}} onClick={handlePantryDisplay}>Pantry</button>
+                    <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
+                </div>
                 
-            <div id='pinned-recipe-kitchen'>
-                {pinnedRecipeDisplay}
-            </div>
-            <img id='pinned-recipe-background' src={parchV}/>
-            <div id='home-pot-block'>
-                        <div id='pot-items-cont'>
-                            {potDisplay}
-                            <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
-                            <img id='pot-img' src={potBackground}/>
+                <div id='home-ing-block'>
+                        <div id='pantry-items-cont'>
+                            {pantryDisplay}
                         </div>
+                </div>
+                    
+                <div id='pinned-recipe-kitchen'>
+                    {pinnedRecipeDisplay}
+                </div>
+                <img id='pinned-recipe-background' src={parchV}/>
+                <div id='home-pot-block'>
+                            <div id='pot-items-cont'>
+                                {potDisplay}
+                                <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                                <img id='pot-img' src={potBackground}/>
+                            </div>
+                </div>
             </div>
-        </div>
+            <img id='brickBack' src={greyBackground}/>
         </div> 
     } if (togDisplay === true){
         return <div id='page-background'>
 
         
-        <div className="comp-cont-1">
-            <div id='tog-cont'>
-                <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
-                <button id='tog-dishes' style={{backgroundColor: '#F26C50'}} onClick={handleDishDisplay}>Dishes</button>
-            </div>
-            <div id='home-dish-block'>
-                <div id='dish-items-cont'>
-                    {dishDisplay}
+            <div className="comp-cont-1">
+                <div id='tog-cont'>
+                    <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
+                    <button id='tog-dishes' style={{backgroundColor: '#F26C50'}} onClick={handleDishDisplay}>Dishes</button>
                 </div>
-            </div>
-
-            <div id='pinned-recipe-kitchen'>
-                {pinnedRecipeDisplay} 
-            </div>
-            <img id='pinned-recipe-background' src={parchV}/>
-        
-            <div id='home-pot-block'>
-                    <div id='pot-items-cont'>
-                        {potDisplay}
-                        <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
-                        <img id='pot-img' src={potBackground}/>
+                <div id='home-dish-block'>
+                    <div id='dish-items-cont'>
+                        {dishDisplay}
                     </div>
                 </div>
-        </div>
+
+                <div id='pinned-recipe-kitchen'>
+                    {pinnedRecipeDisplay} 
+                </div>
+                <img id='pinned-recipe-background' src={parchV}/>
+            
+                <div id='home-pot-block'>
+                        <div id='pot-items-cont'>
+                            {potDisplay}
+                            <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                            <img id='pot-img' src={potBackground}/>
+                        </div>
+                    </div>
+            </div>
+            <img id='brickBack' src={greyBackground}/>
         </div> 
     }
 }
