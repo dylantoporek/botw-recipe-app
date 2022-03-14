@@ -6,6 +6,7 @@ import toSignupDark from '../Images/toSignupDark.png'
 import toLoginLight from '../Images/toLoginLight.png'
 import toLoginDark from '../Images/toLoginDark.png'
 import wood from '../Images/wood.png'
+import greyBackground from '../Images/greyBackground.png'
 
 function Login({onLogin}){
     const [showLogin, setShowLogin] = useState(true);
@@ -48,7 +49,7 @@ function Login({onLogin}){
                     </div>
                 </div> 
             )}
-        <img id='login-signup-background' src={wood} />
+        <img id='login-signup-background' src={greyBackground} />
         </div>
     )
 }

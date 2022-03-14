@@ -4,8 +4,13 @@ import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
 import potBackground from '../Images/pot.png'
 import parchV from '../Images/parchV.png'
-import brickBackground from '../Images/brickBackground.png'
 import greyBackground from '../Images/greyBackground.png'
+import pantryLight from '../Images/pantryLight.png'
+import pantryDark from '../Images/pantryDark.png'
+import dishLight from '../Images/dishLight.png'
+import dishDark from '../Images/dishDark.png'
+import cookLight from '../Images/cookLight.png'
+import cookDark from '../Images/cookDark.png'
 
 
 
@@ -13,7 +18,10 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
 
     const [pot, setPot] = useState([])
     const [dishes, setDishes] = useState([])
-    const [togDisplay, setTogDisplay] = useState(false) 
+    const [togDisplay, setTogDisplay] = useState(false)
+    const [cookIsShown, setCookIsShown] = useState(false)
+    const [pantryIsShown, setPantryIsShown] = useState(false)
+    const [dishIsShown, setDishIsShown] = useState(false)  
 
 
     useEffect(()=>{
@@ -63,7 +71,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             setUser={setUser}/>
     }) : null
 
-    console.log(pinnedRecipe)
+
     const pinnedRecipeDisplay = pinnedRecipe ? 
     <div id='pinned-recipe-cont'>
         <p id='pinned-title'>{pinnedRecipe.name}</p>
@@ -205,6 +213,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         })
         if (foundRecipe !== undefined){
             let targetedRecipe = recipeList.find((recipe)=> recipe.id === foundRecipe.id)
+            alert(`You made ${targetedRecipe.name}!`)
             let dish = {
                 recipe_id: foundRecipe.id,
                 quantity: 1
@@ -242,6 +251,20 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             setPot([])
         } else {
             alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
+            pantries.forEach((pantryItem)=>{
+                if(pantryItem.quantity === 0){
+                  fetch(`/pantries/${pantryItem.id}`, {
+                      method: 'DELETE',
+                    })
+                    .then((res) => {
+                      if (res.ok) {
+                        console.log("file deleted")
+                      } else {
+                        res.json().then((data)=> console.log(data))
+                      }
+                    })
+                }
+            })
             setPot([])
         }
             
@@ -279,8 +302,16 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         
             <div className="comp-cont-1">
                 <div id='tog-cont'>
-                    <button id='tog-pantry' style={{backgroundColor: '#F26C50'}} onClick={handlePantryDisplay}>Pantry</button>
-                    <button id='tog-dishes' onClick={handleDishDisplay}>Dishes</button>
+                    <div id='tog-pantry' onClick={handlePantryDisplay}
+                    onMouseEnter={()=> setPantryIsShown(true)}
+                    onMouseLeave={()=> setPantryIsShown(false)}>
+                        {pantryIsShown ? <img id='pantry-btn-img' src={pantryLight}/> : <img id='pantry-btn-img' src={pantryDark}/>}
+                    </div>
+                    <div id='tog-dishes' onClick={handleDishDisplay}
+                    onMouseEnter={()=> setDishIsShown(true)}
+                    onMouseLeave={()=> setDishIsShown(false)}>
+                        {dishIsShown ? <img id='dish-btn-img' src={dishLight}/> : <img id='dish-btn-img' src={dishDark}/>}
+                    </div>
                 </div>
                 
                 <div id='home-ing-block'>
@@ -296,7 +327,11 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
                 <div id='home-pot-block'>
                             <div id='pot-items-cont'>
                                 {potDisplay}
-                                <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                                <div id='start-cooking' onClick={startCookingProcess}
+                                onMouseEnter={()=> setCookIsShown(true)}
+                                onMouseLeave={()=> setCookIsShown(false)}>
+                                    {cookIsShown ? <img id='cook-button-img' src={cookLight}/> : <img id='cook-button-img' src={cookDark}/>}
+                                </div>
                                 <img id='pot-img' src={potBackground}/>
                             </div>
                 </div>
@@ -309,8 +344,16 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         
             <div className="comp-cont-1">
                 <div id='tog-cont'>
-                    <button id='tog-pantry' onClick={handlePantryDisplay}>Pantry</button>
-                    <button id='tog-dishes' style={{backgroundColor: '#F26C50'}} onClick={handleDishDisplay}>Dishes</button>
+                    <div id='tog-pantry' onClick={handlePantryDisplay}
+                    onMouseEnter={()=> setPantryIsShown(true)}
+                    onMouseLeave={()=> setPantryIsShown(false)}>
+                        {pantryIsShown ? <img id='pantry-btn-img' src={pantryLight}/> : <img id='pantry-btn-img' src={pantryDark}/>}
+                    </div>
+                    <div id='tog-dishes' onClick={handleDishDisplay}
+                    onMouseEnter={()=> setDishIsShown(true)}
+                    onMouseLeave={()=> setDishIsShown(false)}>
+                        {dishIsShown ? <img id='dish-btn-img' src={dishLight}/> : <img id='dish-btn-img' src={dishDark}/>}
+                    </div>
                 </div>
                 <div id='home-dish-block'>
                     <div id='dish-items-cont'>
@@ -326,7 +369,11 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
                 <div id='home-pot-block'>
                         <div id='pot-items-cont'>
                             {potDisplay}
-                            <button id='start-cooking' onClick={startCookingProcess}>Cook</button>
+                                <div id='start-cooking' onClick={startCookingProcess}
+                                onMouseEnter={()=> setCookIsShown(true)}
+                                onMouseLeave={()=> setCookIsShown(false)}>
+                                    {cookIsShown ? <img id='cook-button-img' src={cookLight}/> : <img id='cook-button-img' src={cookDark}/>}
+                                </div>
                             <img id='pot-img' src={potBackground}/>
                         </div>
                     </div>
