@@ -5,12 +5,6 @@ import Pot from "../Components/Pot";
 import potBackground from '../Images/pot.png'
 import parchV from '../Images/parchV.png'
 import greyBackground from '../Images/greyBackground.png'
-import pantryLight from '../Images/pantryLight.png'
-import pantryDark from '../Images/pantryDark.png'
-import dishLight from '../Images/dishLight.png'
-import dishDark from '../Images/dishDark.png'
-import cookLight from '../Images/cookLight.png'
-import cookDark from '../Images/cookDark.png'
 
 
 
@@ -54,7 +48,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             item={item}
             removeFromPot={removeFromPot} 
             addItemToPot={addItemToPot}/>
-    }) : null
+    }) : <p>Pantry empty.</p>
 
     const potDisplay = pot.length > 0 ? pot.map((item) =>{
        return <Pot 
@@ -69,7 +63,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             sellRecipe={sellRecipe} 
             user={user} 
             setUser={setUser}/>
-    }) : null
+    }) : <p>Dishes empty.</p>
 
 
     const pinnedRecipeDisplay = pinnedRecipe ? 
@@ -296,91 +290,76 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         setTogDisplay(true)
     }
 
-    if (togDisplay === false){
-        return <div id='page-background'>
 
-        
-            <div className="comp-cont-1">
-                <div id='tog-cont'>
-                    <div id='tog-pantry' onClick={handlePantryDisplay}
-                    onMouseEnter={()=> setPantryIsShown(true)}
-                    onMouseLeave={()=> setPantryIsShown(false)}>
-                        {pantryIsShown ? <img id='pantry-btn-img' src={pantryLight}/> : <img id='pantry-btn-img' src={pantryDark}/>}
-                    </div>
-                    <div id='tog-dishes' onClick={handleDishDisplay}
-                    onMouseEnter={()=> setDishIsShown(true)}
-                    onMouseLeave={()=> setDishIsShown(false)}>
-                        {dishIsShown ? <img id='dish-btn-img' src={dishLight}/> : <img id='dish-btn-img' src={dishDark}/>}
-                    </div>
-                </div>
-                
-                <div id='home-ing-block'>
-                        <div id='pantry-items-cont'>
-                            {pantryDisplay}
-                        </div>
-                </div>
-                    
-                <div id='pinned-recipe-kitchen'>
-                    {pinnedRecipeDisplay}
-                </div>
-                <img id='pinned-recipe-background' src={parchV}/>
-                <div id='home-pot-block'>
-                            <div id='pot-items-cont'>
-                                {potDisplay}
-                                <div id='start-cooking' onClick={startCookingProcess}
-                                onMouseEnter={()=> setCookIsShown(true)}
-                                onMouseLeave={()=> setCookIsShown(false)}>
-                                    {cookIsShown ? <img id='cook-button-img' src={cookLight}/> : <img id='cook-button-img' src={cookDark}/>}
-                                </div>
-                                <img id='pot-img' src={potBackground}/>
-                            </div>
-                </div>
+    return <div id='page-background'>
+        <div className="comp-cont-1">
+            <div id='tog-cont'>
+
+                {pantryIsShown ? 
+                <button id='tog-pantry' onClick={handlePantryDisplay}
+                style={{backgroundColor: 'gainsboro'}}
+                onMouseEnter={()=> setPantryIsShown(true)}
+                onMouseLeave={()=> setPantryIsShown(false)}>
+                    Pantry
+                </button> : 
+                <button id='tog-pantry' onClick={handlePantryDisplay}
+                onMouseEnter={()=> setPantryIsShown(true)}
+                onMouseLeave={()=> setPantryIsShown(false)}>
+                    Pantry
+                </button>}
+                {dishIsShown ? 
+                <button id='tog-dishes' onClick={handleDishDisplay}
+                style={{backgroundColor: 'gainsboro'}}
+                onMouseEnter={()=> setDishIsShown(true)}
+                onMouseLeave={()=> setDishIsShown(false)}>
+                    Dish
+                </button> : 
+                <button id='tog-dishes' onClick={handleDishDisplay}
+                onMouseEnter={()=> setDishIsShown(true)}
+                onMouseLeave={()=> setDishIsShown(false)}>
+                    Dish
+                </button>}
             </div>
-            <img id='brickBack' src={greyBackground}/>
-        </div> 
-    } if (togDisplay === true){
-        return <div id='page-background'>
-
-        
-            <div className="comp-cont-1">
-                <div id='tog-cont'>
-                    <div id='tog-pantry' onClick={handlePantryDisplay}
-                    onMouseEnter={()=> setPantryIsShown(true)}
-                    onMouseLeave={()=> setPantryIsShown(false)}>
-                        {pantryIsShown ? <img id='pantry-btn-img' src={pantryLight}/> : <img id='pantry-btn-img' src={pantryDark}/>}
-                    </div>
-                    <div id='tog-dishes' onClick={handleDishDisplay}
-                    onMouseEnter={()=> setDishIsShown(true)}
-                    onMouseLeave={()=> setDishIsShown(false)}>
-                        {dishIsShown ? <img id='dish-btn-img' src={dishLight}/> : <img id='dish-btn-img' src={dishDark}/>}
-                    </div>
-                </div>
-                <div id='home-dish-block'>
-                    <div id='dish-items-cont'>
-                        {dishDisplay}
-                    </div>
-                </div>
-
-                <div id='pinned-recipe-kitchen'>
-                    {pinnedRecipeDisplay} 
-                </div>
-                <img id='pinned-recipe-background' src={parchV}/>
             
-                <div id='home-pot-block'>
-                        <div id='pot-items-cont'>
-                            {potDisplay}
-                                <div id='start-cooking' onClick={startCookingProcess}
-                                onMouseEnter={()=> setCookIsShown(true)}
-                                onMouseLeave={()=> setCookIsShown(false)}>
-                                    {cookIsShown ? <img id='cook-button-img' src={cookLight}/> : <img id='cook-button-img' src={cookDark}/>}
-                                </div>
-                            <img id='pot-img' src={potBackground}/>
-                        </div>
+            {togDisplay ? 
+            <div id='home-dish-block'>
+                <div id='dish-items-cont'>
+                    {dishDisplay}
+                </div>
+            </div> : 
+            <div id='home-ing-block'>
+                    <div id='pantry-items-cont'>
+                        {pantryDisplay}
                     </div>
+            </div>}
+                
+            <div id='pinned-recipe-kitchen'>
+                {pinnedRecipeDisplay}
             </div>
-            <img id='brickBack' src={greyBackground}/>
-        </div> 
-    }
+
+            <img id='pinned-recipe-background' src={parchV}/>
+
+            <div id='home-pot-block'>
+                <div id='pot-items-cont'>
+                    {potDisplay}
+                    {cookIsShown ? 
+                    <button id='start-cooking' onClick={startCookingProcess}
+                    style={{backgroundColor: 'gainsboro'}}
+                    onMouseEnter={()=> setCookIsShown(true)}
+                    onMouseLeave={()=> setCookIsShown(false)}>
+                        Cook!
+                    </button> : 
+                    <button id='start-cooking' onClick={startCookingProcess}
+                    onMouseEnter={()=> setCookIsShown(true)}
+                    onMouseLeave={()=> setCookIsShown(false)}>
+                        Cook!
+                    </button>}
+                    <img id='pot-img' src={potBackground}/>
+                </div>
+            </div>
+        </div>
+        <img id='login-signup-background' src={greyBackground} />
+    </div>  
 }
 
 export default Home

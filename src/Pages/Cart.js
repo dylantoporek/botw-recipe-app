@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import CartItem from "../Components/CartItem";
 import rupee from '../Images/rupee.png'
+import greyBackground from '../Images/greyBackground.png'
 
 function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser, changePage}){
   
@@ -71,6 +72,7 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             <div id="total-cost">Total: {rupeeDisplay}{tallyTotal}</div>
             <button id='checkout' onClick={checkoutItems}>Checkout</button>
         </div>
+        <img id='login-signup-background' src={greyBackground} />
       </div>
         
     )

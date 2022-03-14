@@ -61,11 +61,19 @@ function SignupForm({onLogin}){
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
+        {isShown ? 
+        <button id='signup-form-submit' type="submit"
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+          Sign up
+        </button>
+        :
         <button id='signup-form-submit' type="submit"
         onMouseEnter={()=> setIsShown(true)}
         onMouseLeave={()=> setIsShown(false)}>
-          {isShown ? <img id='login-img' src={signupLight}/> : <img id='login-img' src={signupDark}/>}
-        </button>
+          Sign up
+        </button>}
       <div className='errors'>
         {errors.map((err) => (
           <p key={err}>{err}</p>

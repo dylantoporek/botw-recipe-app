@@ -4,6 +4,9 @@ import darkPantry from '../Images/darkPantry.png'
 
 function Pantry({item, pot, addItemToPot, removeFromPot}){
     const [quantity, setQuantity] = useState(item.quantity)
+    const [addShow, setAddShow] = useState(false)
+    const [minusShow, setMinusShow] = useState(false)
+
     
 
     function addToPot(){
@@ -39,8 +42,38 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
         itemDisplay = <div id='pantry-item'>
                 <p className="pantry-name">{item.ingredient.name}</p>
                 <p className='pantry-quantity'>x{quantity}</p>
-                <button id='adder' onClick={addToPot}>+</button>
-                <button id='minuser' onClick={handleRemoveFromPot}>-</button>
+
+                {addShow ? 
+                <button id='adder' onClick={addToPot}
+                    style={{backgroundColor: 'gainsboro'}}
+                    onMouseEnter={()=> setAddShow(true)}
+                    onMouseLeave={()=> setAddShow(false)}>
+                    +
+                </button>
+                :
+                <button id='adder' onClick={addToPot}
+                    onMouseEnter={()=> setAddShow(true)}
+                    onMouseLeave={()=> setAddShow(false)}>
+                    +
+                </button>}
+                
+                {minusShow ? 
+                <button id='minuser' onClick={handleRemoveFromPot}
+                    style={{backgroundColor: 'gainsboro'}}
+                    onMouseEnter={()=> setMinusShow(true)}
+                    onMouseLeave={()=> setMinusShow(false)}>
+                    -
+                </button>
+                :
+                <button id='minuser' onClick={handleRemoveFromPot}
+                    onMouseEnter={()=> setMinusShow(true)}
+                    onMouseLeave={()=> setMinusShow(false)}>
+                    -
+                </button>}
+                
+                
+
+
                 <img className="pantry-img" src={item.ingredient.image}/>
                 <img className='pantry-background' src={darkPantry}/>
         </div>

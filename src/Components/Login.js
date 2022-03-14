@@ -1,11 +1,6 @@
 import React, {useState} from 'react'
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import toSignupLight from '../Images/toSignupLight.png'
-import toSignupDark from '../Images/toSignupDark.png'
-import toLoginLight from '../Images/toLoginLight.png'
-import toLoginDark from '../Images/toLoginDark.png'
-import wood from '../Images/wood.png'
 import greyBackground from '../Images/greyBackground.png'
 
 function Login({onLogin}){
@@ -18,36 +13,35 @@ function Login({onLogin}){
             {showLogin ? (
                 <div>
                     <LoginForm onLogin={onLogin}/>
-                    <div id='tog-login-signup'
-                     onClick={() => setShowLogin(false)}>
                        {isShown ? 
-                       <img id='to-login-signup' 
+                       <button id='login-signup' onClick={() => setShowLogin(false)} 
+                       style={{backgroundColor: "gainsboro"}}
                        onMouseEnter={()=> setIsShown(true)}
-                       onMouseLeave={()=> setIsShown(false)}
-                       src={toSignupLight}/>
+                       onMouseLeave={()=> setIsShown(false)}>
+                           No account? Sign up.
+                        </button>
                        :
-                       <img id='to-login-signup' 
-                        onMouseEnter={()=> setIsShown(true)}
-                        onMouseLeave={()=> setIsShown(false)}
-                        src={toSignupDark}/>}
+                       <button id='login-signup' onClick={() => setShowLogin(false)} 
+                       onMouseEnter={()=> setIsShown(true)}
+                       onMouseLeave={()=> setIsShown(false)}>
+                           No account? Sign up.
+                        </button>}
                     </div>
-                </div>
             ) : (
                 <div>
                     <SignupForm onLogin={onLogin}/>
-                    <div id='tog-login-signup' onClick={() => setShowLogin(true)}>
                     {isShown ? 
-                       <img id='to-login-signup' 
+                       <button id='login-signup' onClick={() => setShowLogin(true)}
+                       style={{backgroundColor: "gainsboro"}} 
                        onMouseEnter={()=> setIsShown(true)}
                        onMouseLeave={()=> setIsShown(false)}
-                       src={toLoginLight}/>
+                       >Already have an account? Login.</button>
                        :
-                       <img id='to-login-signup' 
-                        onMouseEnter={()=> setIsShown(true)}
-                        onMouseLeave={()=> setIsShown(false)}
-                        src={toLoginDark}/>}
+                       <button id='login-signup' onClick={() => setShowLogin(false)} 
+                       onMouseEnter={()=> setIsShown(true)}
+                       onMouseLeave={()=> setIsShown(false)}
+                       >Already have an account? Login.</button>}
                     </div>
-                </div> 
             )}
         <img id='login-signup-background' src={greyBackground} />
         </div>

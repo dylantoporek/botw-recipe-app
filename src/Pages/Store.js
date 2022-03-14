@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react";
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
 import Details from "../Components/Details";
-
-
+import greyBackground from '../Images/greyBackground.png'
 
 function Store({ingredientList, addItemToCart, changePage}){
     const [categoryFilter, setCategoryFilter] = useState("All")
@@ -52,6 +51,7 @@ function Store({ingredientList, addItemToCart, changePage}){
         />
         {ingredientDisplay}
     </div>
+    <img id='login-signup-background' src={greyBackground} />
         </div>
         
     } else{
@@ -68,6 +68,7 @@ function Store({ingredientList, addItemToCart, changePage}){
         {ingredientDisplay}
         
     </div>
+    <img id='login-signup-background' src={greyBackground} />
         </div>
         
     }

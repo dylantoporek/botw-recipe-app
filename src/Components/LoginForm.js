@@ -44,12 +44,22 @@ function LoginForm({onLogin}){
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {isShown ? 
+        <button id='login-form-submit'
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}
+          type="submit">
+         Login
+        </button>
+        : 
         <button id='login-form-submit'
         onMouseEnter={()=> setIsShown(true)}
         onMouseLeave={()=> setIsShown(false)}
           type="submit">
-         {isShown ? <img id='login-img' src={loginLight}/> : <img id='login-img' src={loginDark}/>}
-        </button>
+         Login
+        </button>}
+        
       
         <div className="errors">
             {errors.map((err) => (

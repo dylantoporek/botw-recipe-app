@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import CookBookNav from "../Components/CookBookNav";
 import Recipe from "../Components/Recipe"
 import CookBookDetails from "../Components/CookBookDetails";
+import greyBackground from '../Images/greyBackground.png'
 
 function Cookbook({recipeList, changePage, changePinnedRecipe}){
     const [categoryFilter, setCategoryFilter] = useState("All")
@@ -62,6 +63,7 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
         />
         {recipeDisplay}
     </div>
+    <img id='login-signup-background' src={greyBackground} />
     </div>
     } if(togDetails){
         return <div id='page-background'>
@@ -79,6 +81,7 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
         {detailsDisplay}
         {recipeDisplay}
     </div>
+    <img id='login-signup-background' src={greyBackground} />
     </div>
     
     } 
