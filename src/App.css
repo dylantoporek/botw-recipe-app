@@ -57,6 +57,7 @@
   border: none;
   border-radius: 5%;
   z-index: 5;
+  cursor: pointer;
 }
 
 #login-form{
@@ -100,6 +101,7 @@
   background-color: white;
   border-radius: 10%;
   border: none;
+  cursor: pointer;
 }
 
 
@@ -159,6 +161,7 @@
   z-index: 1;
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 
 #login-signup-background{
@@ -302,6 +305,7 @@
   background-color: black;
   color: white;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 #user-container-display{
@@ -377,6 +381,7 @@
   z-index: 10;
   font-weight: bold;
   background-color: white;
+  cursor: pointer;
 }
 
 #tog-dishes{
@@ -390,6 +395,7 @@
   z-index: 10;
   font-weight: bold;
   background-color: white;
+  cursor: pointer;
 }
 
 #pinned-recipe-kitchen{
@@ -487,6 +493,7 @@
   border: none;
   background-color: white;
   border-radius: 10%;
+  cursor: pointer;
 }
 
 #minuser{
@@ -499,6 +506,7 @@
   border: none;
   background-color: white;
   border-radius: 10%;
+  cursor: pointer;
 }
 .pantry-background{
   position: relative;
@@ -552,6 +560,7 @@
   background-color: white;
   font-size: larger;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 #cook-button-img{
@@ -634,6 +643,7 @@
   border: none;
   width: 40px;
   height: 30px;
+  cursor: pointer;
 }
 
 #dish-background{
@@ -692,6 +702,7 @@
   z-index: 1;
   height: 200px;
   width: 150px;
+  cursor: pointer;
 }
 
 .recipe-name{
@@ -766,6 +777,7 @@
   border: none;
   border-radius: 10%;
   background-color: white;
+  cursor: pointer;
 }
 
 #pin-recipe{
@@ -778,6 +790,7 @@
   left: 10%;
   height: 30px;
   width: 80px;
+  cursor: pointer;
 }
 
 #cbd-name{
@@ -935,6 +948,7 @@
   height: 25px;
   border: none;
   border-radius: 10%;
+  cursor: pointer;
 }
 
 #search-by-name{
@@ -955,6 +969,7 @@
   height: 25px;
   border: none;
   border-radius: 10%;
+  cursor: pointer;
   
 }
 
@@ -966,6 +981,7 @@
   width: 200px;
   height: 180px;
   z-index: 10;
+  cursor: pointer;
 }
 
 .ing-name{
@@ -1030,6 +1046,7 @@
   border-radius: 10%;
   background-color: white;
   z-index: 150;
+  cursor: pointer;
 }
 
 #details-name{
@@ -1089,6 +1106,7 @@
   left: 10px;
   background-color: whitesmoke;
   border-radius: 10%;
+  cursor: pointer;
 }
 
 #quantity{
@@ -1104,6 +1122,7 @@
   left: 20px;
   background-color: whitesmoke;
   border-radius: 10%;
+  cursor: pointer;
 }
 
 #details-total{
@@ -1122,6 +1141,7 @@
   color: black;
   height: 50px;
   width: 120px;
+  cursor: pointer;
 }
 
 
@@ -1137,15 +1157,16 @@
 
 #checkout{
   position: fixed;
-  top: 45%;
-  left: 86.75%;
-  max-width: 200px;
+  top: 51%;
+  left: 81.8%;
+  width: 120px;
   height: 50px; 
   font-size: medium;
   border: none;
   border-radius: 10%;
   background-color: greenyellow;
   z-index: 5;
+  cursor: pointer;
 }
 
 .cart-comp-cont-2{
@@ -1220,17 +1241,21 @@
   position: absolute;
   left: 60%;
   z-index: 6;
-  
-  
+  border: none;
+  border-radius: 10%;
+  background-color: beige;
+  height: 25px;
+  cursor: pointer;
 }
 
 #total-cost{
+  font-size: larger;
   position: fixed;
   top: 40%;
-  left: 86%;
+  left: 80%;
   background-color: white;
-  height: 100px;
-  width: 100px;
+  height: 175px;
+  width: 175px;
   border-radius: 10%;
   text-align: center;
   z-index: 5;
@@ -1250,8 +1275,8 @@
 
 #empty-cart-text{
   position: relative;
-  top: 20%;
-  left: 44%;
+  top: 30%;
+  left: 38%;
   z-index: 5;
 }
 

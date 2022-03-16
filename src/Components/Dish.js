@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import tabletop from '../Images/tabletop.png'
 import rupee from '../Images/rupee.png'
 
 function Dish({item, sellRecipe, user, setUser}){
+    const [isShown, setIsShown] = useState(false)
     
     let priceRewrite = item.recipe.price
     if (priceRewrite === 0){
@@ -41,7 +42,20 @@ function Dish({item, sellRecipe, user, setUser}){
         <p id='dish-name'>{item.recipe.name}</p>
         <img id='dish-img' src={item.recipe.image}/>
         <p id='dish-value'>{rupeeDisplay} {priceRewrite}</p>
-        <button id='sell-dish' onClick={handleSellItem}>Sell</button>
+        
+        {isShown ? 
+        <button id='sell-dish' onClick={handleSellItem}
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+            Sell
+        </button>
+        : 
+        <button id='sell-dish' onClick={handleSellItem}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+            Sell
+        </button>}
         <img id='dish-background' src={tabletop}/>
     </div>
 

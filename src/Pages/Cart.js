@@ -4,7 +4,7 @@ import rupee from '../Images/rupee.png'
 import greyBackground from '../Images/greyBackground.png'
 
 function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser, changePage}){
-  
+  const [checkShow, setCheckShow] = useState(false)
   useEffect(()=>{
     changePage(window.location.href)
   }, [])
@@ -70,7 +70,21 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             {cartDisplay}
             </div>
             <div id="total-cost">Total: {rupeeDisplay}{tallyTotal}</div>
-            <button id='checkout' onClick={checkoutItems}>Checkout</button>
+            
+            {checkShow ? 
+            <button id='checkout' onClick={checkoutItems}
+            style={{backgroundColor: 'green'}}
+            onMouseEnter={()=> setCheckShow(true)}
+            onMouseLeave={()=> setCheckShow(false)}>
+              Checkout
+            </button>
+            : 
+            <button id='checkout' onClick={checkoutItems}
+            onMouseEnter={()=> setCheckShow(true)}
+            onMouseLeave={()=> setCheckShow(false)}>
+              Checkout
+            </button>}
+            
         </div>
         <img id='login-signup-background' src={greyBackground} />
       </div>

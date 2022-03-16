@@ -4,6 +4,8 @@ import rupee from '../Images/rupee.png'
 import parchH from '../Images/parchH.png'
 
 function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
+    const [showPin, setShowPin] = useState(false)
+    const [isShown, setIsShown] = useState(false)
 
   const rupeeDisplay = <img id='rupee' src={rupee} />
 
@@ -28,8 +30,34 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
     }
 
     const infoDisplay = <div id='cookbook-details'>
-        <button id='back-to-cb' onClick={()=> setTogDetails(false)}>X</button>
-        <button id='pin-recipe' onClick={handleChangePinnedRecipe}>pin recipe</button>
+        {isShown ? 
+        <button id='back-to-cb' onClick={()=> setTogDetails(false)}
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+        X
+        </button>
+        : 
+        <button id='back-to-cb' onClick={()=> setTogDetails(false)}
+        onMouseEnter={()=> setIsShown(true)}
+        onMouseLeave={()=> setIsShown(false)}>
+        X
+        </button>}
+        
+        {showPin ? 
+        <button id='pin-recipe' onClick={handleChangePinnedRecipe}
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setShowPin(true)}
+        onMouseLeave={()=> setShowPin(false)}>
+            pin recipe
+        </button>
+        : 
+        <button id='pin-recipe' onClick={handleChangePinnedRecipe}
+        onMouseEnter={()=> setShowPin(true)}
+        onMouseLeave={()=> setShowPin(false)}>
+            pin recipe
+        </button>}
+        
         <p id='cbd-name'>{recipe.name}</p>
         {recipeImg}
         <p id='cbd-effect'>Additonal Effect: {recipe.category}</p>

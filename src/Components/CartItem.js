@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import rupee from '../Images/rupee.png'
 
 function CartItem({item, deleteItemFromCart}){
+    const [isShown, setIsShown] = useState(false)
 
   const rupeeDisplay = <img id='rupee' src={rupee} />
 
@@ -19,7 +20,20 @@ function CartItem({item, deleteItemFromCart}){
                 <p className="cart-quantity">Quantity: x{item.quantity}</p>
             </div>
             
-            <button id="remove-from-cart" onClick={removeFromCart} value={item.id}>remove from cart</button>
+            {isShown ? 
+            <button id="remove-from-cart" onClick={removeFromCart} value={item.id}
+            style={{backgroundColor: 'gainsboro'}}
+            onMouseEnter={()=> setIsShown(true)}
+            onMouseLeave={()=> setIsShown(false)}>
+                remove from cart
+            </button>
+            : 
+            <button id="remove-from-cart" onClick={removeFromCart} value={item.id}
+            onMouseEnter={()=> setIsShown(true)}
+            onMouseLeave={()=> setIsShown(false)}>
+                remove from cart
+            </button>}
+            
         </div>
     )
 }
