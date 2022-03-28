@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 
 
 function StoreNav({name, category, setNameFilter, setCategoryFilter}){
-
 
     function handleSearchByName(e){
         setNameFilter(e.target.value)
@@ -11,8 +10,6 @@ function StoreNav({name, category, setNameFilter, setCategoryFilter}){
     function handleFilterChange(e){
         setCategoryFilter(e.target.value)
     }
-
-    
 
     return (
         <div id='store-nav'>

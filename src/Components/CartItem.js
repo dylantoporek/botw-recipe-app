@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import rupee from '../Images/rupee.png'
 
 function CartItem({item, deleteItemFromCart}){
+    
     const [isShown, setIsShown] = useState(false)
-
-  const rupeeDisplay = <img id='rupee' src={rupee} />
+    const rupeeDisplay = <img id='rupee' src={rupee} />
 
     function removeFromCart(){
         console.log(item)

@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import backgroundNoHover from "../Images/backgroundNoHover.png"
 import rupee from '../Images/rupee.png'
 
 function Details({ing, setTogDetails, addItemToCart}){
@@ -54,65 +53,62 @@ function Details({ing, setTogDetails, addItemToCart}){
                 X
         </button>}
             
-
-            <p id='details-name'>{ing.name}</p>
-            <p id='details-price'>Price: {rupeeDisplay}{ing.price}</p>
-            <img id='details-img' src={ing.image}/>
-            <p id='description-label'>Description:</p>
-            <p id='details-description'>{ing.description}</p>
+        <p id='details-name'>{ing.name}</p>
+        <p id='details-price'>Price: {rupeeDisplay}{ing.price}</p>
+        <img id='details-img' src={ing.image}/>
+        <p id='description-label'>Description:</p>
+        <p id='details-description'>{ing.description}</p>
             
         
-            <div id='quantity-form-cont'>
-                <p id='quantity'>Qty: x{quantity}</p>
-                <div id='quantity-cont-plus'>
-                    {minusShow ? 
-                    <button id='minus' onClick={removeOne}
-                    style={{backgroundColor: 'gainsboro'}}
-                    onMouseEnter={()=> setMinusShow(true)}
-                    onMouseLeave={()=> setMinusShow(false)}>
-                        -
-                    </button>
-                    : 
-                    <button id='minus' onClick={removeOne}
-                    onMouseEnter={()=> setMinusShow(true)}
-                    onMouseLeave={()=> setMinusShow(false)}>
-                        -
-                    </button>}
-                    {addShow ? 
-                    <button id='add' onClick={addOne}
-                    style={{backgroundColor: 'gainsboro'}}
-                    onMouseEnter={()=> setAddShow(true)}
-                    onMouseLeave={()=> setAddShow(false)}>
-                        +
-                    </button>
-                    : 
-                    <button id='add' onClick={addOne}
-                    onMouseEnter={()=> setAddShow(true)}
-                    onMouseLeave={()=> setAddShow(false)}>
-                        +
-                    </button>}
-                    
-                </div>
+        <div id='quantity-form-cont'>
+            <p id='quantity'>Qty: x{quantity}</p>
+            <div id='quantity-cont-plus'>
+                {minusShow ? 
+                <button id='minus' onClick={removeOne}
+                style={{backgroundColor: 'gainsboro'}}
+                onMouseEnter={()=> setMinusShow(true)}
+                onMouseLeave={()=> setMinusShow(false)}>
+                    -
+                </button>
+                : 
+                <button id='minus' onClick={removeOne}
+                onMouseEnter={()=> setMinusShow(true)}
+                onMouseLeave={()=> setMinusShow(false)}>
+                    -
+                </button>}
+                {addShow ? 
+                <button id='add' onClick={addOne}
+                style={{backgroundColor: 'gainsboro'}}
+                onMouseEnter={()=> setAddShow(true)}
+                onMouseLeave={()=> setAddShow(false)}>
+                    +
+                </button>
+                : 
+                <button id='add' onClick={addOne}
+                onMouseEnter={()=> setAddShow(true)}
+                onMouseLeave={()=> setAddShow(false)}>
+                    +
+                </button>}
                 
-                <p id='details-total'>Total: {rupeeDisplay}{totalPrice}</p>
             </div>
-
             
-            {cartShow ? 
-            <button id='details-add-to-cart' onClick={putInCart}
-            style={{backgroundColor: 'red'}}
-            onMouseEnter={()=> setCartShow(true)}
-            onMouseLeave={()=> setCartShow(false)}>
-                Add to Cart
-            </button>
-            : 
-            <button id='details-add-to-cart' onClick={putInCart}
-            onMouseEnter={()=> setCartShow(true)}
-            onMouseLeave={()=> setCartShow(false)}>
-                Add to Cart
-            </button>}
-            
+            <p id='details-total'>Total: {rupeeDisplay}{totalPrice}</p>
+        </div>
 
+        
+        {cartShow ? 
+        <button id='details-add-to-cart' onClick={putInCart}
+        style={{backgroundColor: 'green'}}
+        onMouseEnter={()=> setCartShow(true)}
+        onMouseLeave={()=> setCartShow(false)}>
+            Add to Cart
+        </button>
+        : 
+        <button id='details-add-to-cart' onClick={putInCart}
+        onMouseEnter={()=> setCartShow(true)}
+        onMouseLeave={()=> setCartShow(false)}>
+            Add to Cart
+        </button>}
         
     </div>
     

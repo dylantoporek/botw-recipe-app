@@ -145,6 +145,12 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
 
     
     function startCookingProcess(){
+        if (pot.length === 0){
+            alert('You must add ingredients to the pot before cooking.')
+        }
+        else{
+
+        
         let foundRecipe
         let recipeIngredientList = recipeList.map((recipe)=>{
             return {
@@ -261,6 +267,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             })
             setPot([])
         }
+    }
             
     }
 

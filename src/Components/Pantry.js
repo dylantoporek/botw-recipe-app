@@ -71,9 +71,6 @@ function Pantry({item, pot, addItemToPot, removeFromPot}){
                     -
                 </button>}
                 
-                
-
-
                 <img className="pantry-img" src={item.ingredient.image}/>
                 <img className='pantry-background' src={darkPantry}/>
         </div>

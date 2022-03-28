@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {NavLink} from "react-router-dom"
+import React from "react";
+import {NavLink, useNavigate} from "react-router-dom"
 import rupee from '../Images/rupee.png'
 import homeIcon from '../Images/homeIcon.png'
 import cookbookIcon from '../Images/cookbookIcon.png'
@@ -7,13 +7,14 @@ import storeIcon from '../Images/storeIcon.png'
 import cartIcon from '../Images/cartIcon.png'
 
 function Navbar({user, setUser, selectedPage}){
-  
+  const navigate = useNavigate()
   function handleLogoutClick() {
       fetch("/logout", { method: "DELETE" }).then((r) => {
         if (r.ok) {
           setUser(null);
         }
       });
+      navigate('/')
   }
 
   const homeDisplay = <img id='homeIcon' src={homeIcon}/> 
@@ -22,7 +23,7 @@ function Navbar({user, setUser, selectedPage}){
   const cartDisplay = <img id='cartIcon' src={cartIcon}/>
   const rupeeDisplay = <img id='rupee' src={rupee} />
 
-
+console.log(selectedPage)
   return <div id='navbar'>  
   <div id='user-container-display'> 
     <p id='user-display'>User: {user.username}</p>
@@ -45,7 +46,10 @@ function Navbar({user, setUser, selectedPage}){
       <NavLink id='selected-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>
       :
       <NavLink id='nav-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>}
-      
+      {selectedPage === 'http://localhost:3000/about' ? 
+      <NavLink id='selected-to-about' to='/about'>About</NavLink>
+      : 
+      <NavLink id='nav-to-about' to='/about'>About</NavLink>}
   </div>
   <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
 </div>

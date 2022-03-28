@@ -295,6 +295,23 @@
   top: 3px;
 }
 
+#nav-to-about{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+#selected-to-about{
+  position: relative;
+  padding-right: 20px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+
 #signout-button{
   position: relative;
   left: 15%;
@@ -458,10 +475,11 @@
 .pantry-name{
   position: relative;
   left: 70%;
+  font-weight: bolder;
+  font-size: small;
   top: 40%;
   max-width: 150px;
   z-index: 1;
-  font-weight: 500;
 }
 
 .pantry-img{
@@ -988,6 +1006,8 @@
   position: relative;
   font-size: 12px;
   background-color: white;
+  border-radius: 10%;
+  font-weight: bold;
   left: 20%;
   width: 120px;
   height: 15px;
@@ -1032,7 +1052,7 @@
   height: 70%;
   z-index: 20;
   border-style: solid;
-  border-color: #F26C50;
+  border-color: transparent;
   background-color: white;
   border-width: 5px;
   opacity: 95%;
@@ -1136,7 +1156,7 @@
   top: -60px;
   left: 42%;
   border-radius: 40%;
-  background-color: #F26C50;
+  background-color: greenyellow;
   font-size: large;
   color: black;
   height: 50px;
@@ -1280,6 +1300,26 @@
   z-index: 5;
 }
 
+/* ABOUT ///////////////////////////////////////////////////////////////////////////////////// */
+
+#about-container{
+  position: relative;
+  font-size: large;
+  font-weight: bold;
+  top: 150px;
+  width: 100%;
+  height: 70%;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+.instruction{
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  left: 2%;
+}
 
 
 

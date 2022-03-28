@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-import loginLight from '../Images/loginLight.png'
-import loginDark from '../Images/loginDark.png'
 
 
 function LoginForm({onLogin}){

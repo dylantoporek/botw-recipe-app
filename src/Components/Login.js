@@ -26,7 +26,7 @@ function Login({onLogin}){
                        onMouseLeave={()=> setIsShown(false)}>
                            No account? Sign up.
                         </button>}
-                    </div>
+                </div>
             ) : (
                 <div>
                     <SignupForm onLogin={onLogin}/>
@@ -40,10 +40,10 @@ function Login({onLogin}){
                        <button id='login-signup' onClick={() => setShowLogin(false)} 
                        onMouseEnter={()=> setIsShown(true)}
                        onMouseLeave={()=> setIsShown(false)}
-                       >Already have an account? Login.</button>}
-                    </div>
+                    >Already have an account? Login.</button>}
+                </div>
             )}
-        <img id='login-signup-background' src={greyBackground} />
+            <img id='login-signup-background' src={greyBackground} />
         </div>
     )
 }

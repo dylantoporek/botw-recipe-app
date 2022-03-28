@@ -15,7 +15,6 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     }
 
     function openDetails(){
-        console.log(recipe.price)
         setTogDetails(true)
         setSpecificRecipe(recipe)
     }
@@ -49,20 +48,18 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
 
     if (isShown){
         recipeDisplay = <div 
-        onClick={openDetails}
-            onMouseEnter={()=> setIsShown(true)}
-            onMouseLeave={()=> setIsShown(false)} 
-            className="recipe">
-        <img id='recipe-background-H' src={brightParch} />
-        <div>
-            <p className="recipe-name">{recipe.name}</p>
-            {recipeImg}
-            <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p>
+            onClick={openDetails}
+                onMouseEnter={()=> setIsShown(true)}
+                onMouseLeave={()=> setIsShown(false)} 
+                className="recipe">
+            <img id='recipe-background-H' src={brightParch} />
+            <div>
+                <p className="recipe-name">{recipe.name}</p>
+                {recipeImg}
+                <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p>
+            </div>
+        
         </div>
-        
-        
-        
-    </div>
     }
 
 

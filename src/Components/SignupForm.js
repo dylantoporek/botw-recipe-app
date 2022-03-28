@@ -1,7 +1,4 @@
 import React, {useState} from 'react'
-import signupLight from '../Images/signupLight.png'
-import signupDark from '../Images/signupDark.png'
-
 
 function SignupForm({onLogin}){
     const [username, setUsername] = useState("");

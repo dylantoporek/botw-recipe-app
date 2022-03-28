@@ -5,8 +5,7 @@ import backgroundNoHover from "../Images/backgroundNoHover.png"
 function Ingredient({ing, setTogDetails, setSpecificIng}){
     const [isShown, setIsShown] = useState(false)
 
-    function putInCart(){
-        
+    function putInCart(){ 
         setSpecificIng(ing)
         setTogDetails(true)
     }
@@ -25,22 +24,18 @@ function Ingredient({ing, setTogDetails, setSpecificIng}){
 
     if (isShown){
         ingDisplay = <div 
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}
-        onClick={putInCart} className='ingredient'>
-    <p className="ing-name">{ing.name}</p>
-    <img className="ing-img" src={ing.image} />
-    <img className='ing-background-H' src={backgroundHover}/>
-</div>
+            onMouseEnter={()=> setIsShown(true)}
+            onMouseLeave={()=> setIsShown(false)}
+            onClick={putInCart} className='ingredient'>
+            <p className="ing-name">{ing.name}</p>
+            <img className="ing-img" src={ing.image} />
+            <img className='ing-background-H' src={backgroundHover}/>
+        </div>
     }
 
-    if(!isShown){
-        return <div>{ingDisplay}</div>
-    } else {
-        return <div>{ingDisplay}</div>
-    }
-    
-    
+    return (
+        <div>{ingDisplay}</div>
+    )
     
 }
 

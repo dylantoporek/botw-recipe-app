@@ -7,6 +7,9 @@ import Home from '../Pages/Home';
 import '../App.css';
 import Login from './Login';
 import Cart from '../Pages/Cart';
+import About from '../Pages/About';
+
+
 
 
 function App() {
@@ -82,7 +85,6 @@ function App() {
         }
       });
       
-      
     } if (pantryCheck.length === 1){
 
      let quantityUpdate = pantryCheck[0].quantity + item.quantity
@@ -105,7 +107,7 @@ function App() {
       } else {
         r.json().catch((data) => console.log(data))
       }
-    });
+      });
     }
   }
 
@@ -145,7 +147,9 @@ function App() {
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
           <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
+          <Route path='/about'element={<About changePage={changePage}/>}/>
           <Route path='/' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+          
         </Routes>
       </div>
     );

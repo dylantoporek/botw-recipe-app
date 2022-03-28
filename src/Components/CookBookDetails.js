@@ -22,7 +22,6 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
     }
 
    function handleChangePinnedRecipe(){
-       console.log(recipe)
         let pinnedIngredientList = recipe
         changePinnedRecipe(pinnedIngredientList)
         alert(`${recipe.name} is now pinned in your Kitchen.`)
@@ -75,10 +74,8 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
                 <p id='cbd-ing3'>{recipe.ingredient3}</p>
                 <p id='cbd-ing4'>{recipe.ingredient4}</p>
                 <p id='cbd-ing5'>{recipe.ingredient5}</p>
-            </div>
-            
+            </div> 
         </div> 
-
         <img id='cbd-background-img' src={parchH}/>
     </div>
 
