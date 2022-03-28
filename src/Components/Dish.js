@@ -13,7 +13,7 @@ function Dish({item, sellRecipe, user, setUser}){
   function handleSellItem(){
     let newBankStatement = user.bank + priceRewrite
     sellRecipe(item)
-    fetch(`/users/${user.id}`, {
+    fetch(`/api/v1/users/${user.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

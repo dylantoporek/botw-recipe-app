@@ -20,7 +20,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
 
     useEffect(()=>{
         // Pantries from DB
-        fetch('/pantries').then((r) => {
+        fetch('/api/v1/pantries').then((r) => {
             if (r.ok) {
             r.json().then((data) => setPantries(data))
             } else{
@@ -28,7 +28,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             }
         })
 
-        fetch('/dishes').then((r) => {
+        fetch('/api/v1/dishes').then((r) => {
             if (r.ok) {
             r.json().then((data) => setDishes(data))
             } else{
@@ -84,7 +84,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
     function addItemToPot(item, num){
         if (pot.length < 5){
             let quantityUpdate = num - 1
-            fetch(`/pantries/${item.id}`, {
+            fetch(`/api/v1/pantries/${item.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
@@ -118,7 +118,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         
         pot.splice(foundIndex, 1)
         let quantityUpdate = num + 1
-            fetch(`/pantries/${item.id}`, {
+            fetch(`/api/v1/pantries/${item.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
@@ -218,7 +218,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
                 recipe_id: foundRecipe.id,
                 quantity: 1
             }
-            fetch('/dishes', {
+            fetch('/api/v1/dishes', {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -236,7 +236,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
               });
               pantries.forEach((pantryItem)=>{
                   if(pantryItem.quantity === 0){
-                    fetch(`/pantries/${pantryItem.id}`, {
+                    fetch(`/api/v1/pantries/${pantryItem.id}`, {
                         method: 'DELETE',
                       })
                       .then((res) => {
@@ -253,7 +253,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
             alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
             pantries.forEach((pantryItem)=>{
                 if(pantryItem.quantity === 0){
-                  fetch(`/pantries/${pantryItem.id}`, {
+                  fetch(`/api/v1/pantries/${pantryItem.id}`, {
                       method: 'DELETE',
                     })
                     .then((res) => {
@@ -277,7 +277,7 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         dishes.splice(foundIndex, 1)
         let newDishArr = [...dishes]
         setDishes(newDishArr)
-        fetch(`/dishes/${item.id}`, {
+        fetch(`/api/v1/dishes/${item.id}`, {
             method: 'DELETE',
           })
           .then((res) => {

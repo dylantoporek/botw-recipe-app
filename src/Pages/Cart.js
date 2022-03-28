@@ -25,7 +25,7 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
       if (user.bank > tallyTotal){
         let newBankStatement = user.bank - tallyTotal
         // UPDATE USER BANK
-        fetch(`/users/${user.id}`, {
+        fetch(`/api/v1/users/${user.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

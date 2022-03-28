@@ -12,6 +12,7 @@ import About from '../Pages/About';
 
 
 
+
 function App() {
   const [user, setUser] = useState(null);
   const [recipeList, setRecipeList] = useState([])
@@ -23,7 +24,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
+    fetch("/api/v1/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       } else{
@@ -32,7 +33,7 @@ function App() {
     });
 
     // ALL Ingredients
-    fetch('/ingredients').then((r) => {
+    fetch('/api/v1/ingredients').then((r) => {
       if (r.ok) {
         r.json().then((data) => setIngredientList(data))
       } else{
@@ -41,7 +42,7 @@ function App() {
     })
 
     // All Recipes
-    fetch('/recipes').then((r) => {
+    fetch('/api/v1/recipes').then((r) => {
       if (r.ok) {
         r.json().then((data) => setRecipeList(data))
       } else{
@@ -71,7 +72,7 @@ function App() {
       }
 
 
-      fetch('/pantries', {
+      fetch('/api/v1/pantries', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,12 +85,12 @@ function App() {
           r.json().catch((data) => console.log(data))
         }
       });
-      
+
     } if (pantryCheck.length === 1){
 
      let quantityUpdate = pantryCheck[0].quantity + item.quantity
      
-     fetch(`/pantries/${pantryCheck[0].id}`, {
+     fetch(`/api/v1/pantries/${pantryCheck[0].id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -12,7 +12,7 @@ function SignupForm({onLogin}){
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch("/signup", {
+    fetch("/api/v1/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
