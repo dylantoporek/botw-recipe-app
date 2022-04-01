@@ -196,13 +196,20 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
                 formula.push(null)
             }
         }
-        
+
+        console.log(formula)
+
         recipeIngredientList.map((recipe)=> {
-            if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){  
+            if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){ 
+                console.log("first layer", recipe)
                 if(recipe.ingredients.includes(formula[1]) && formula.includes(recipe.ingredients[1])){
+                    console.log("second layer", recipe)
                     if(recipe.ingredients.includes(formula[2]) && formula.includes(recipe.ingredients[2])){
+                        console.log("third layer", recipe)
                         if(recipe.ingredients.includes(formula[3]) && formula.includes(recipe.ingredients[3])){
-                            if(recipe.ingredients.includes(formula[4] && formula.includes(recipe.ingredients[4]))){
+                            console.log("last layer", recipe)
+                            if(recipe.ingredients.includes(formula[4]) && formula.includes(recipe.ingredients[4])){
+                                console.log("end result", recipe)
                                 foundRecipe = recipe
                                 console.log(foundRecipe)
                             }

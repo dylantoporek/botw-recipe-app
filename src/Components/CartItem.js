@@ -7,7 +7,6 @@ function CartItem({item, deleteItemFromCart}){
     const rupeeDisplay = <img id='rupee' src={rupee} />
 
     function removeFromCart(){
-        console.log(item)
         alert(`${item.name} removed from your cart.`)
         deleteItemFromCart(item)
     }

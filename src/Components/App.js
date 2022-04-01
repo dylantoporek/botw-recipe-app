@@ -9,10 +9,6 @@ import Login from './Login';
 import Cart from '../Pages/Cart';
 import About from '../Pages/About';
 
-
-
-
-
 function App() {
   const [user, setUser] = useState(null);
   const [recipeList, setRecipeList] = useState([])
