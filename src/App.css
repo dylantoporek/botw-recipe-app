@@ -1306,7 +1306,7 @@
   position: relative;
   font-size: large;
   font-weight: bold;
-  top: 150px;
+  top: 100px;
   width: 100%;
   height: 70%;
   z-index: 100;
@@ -1314,11 +1314,55 @@
   justify-content: center;
 }
 
+#instructions{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 60%;
+  padding: 1%;
+  border-radius: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
 .instruction{
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
-  left: 2%;
+  left: 1%;
+  font-size: 14px;
+  width: 83%;
+  justify-self: flex-start;
+}
+
+.sample-container{
+  display: flex;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+  border-radius: 10%;
+}
+
+.sample-card{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 150px;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+  border-radius: 10%;
+}
+
+.sample-name{
+  position: relative;
+  font-size: 12px;
+  align-self: center;
 }
 
 
