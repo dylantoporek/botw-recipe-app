@@ -1,11 +1,41 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import greyBackground from '../Images/greyBackground.png'
 
-function About({changePage}){
+function About({changePage, recipeList, ingredientList}){
 
+    
     useEffect(()=>{
         changePage(window.location.href)
       }, [])
+
+      const featuredIngredients = 
+        [
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))],
+            ingredientList[(Math.floor(Math.random() * ingredientList.length + 1))]
+        ]
+      const featuredRecipes = 
+            [
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))],
+                recipeList[(Math.floor(Math.random() * recipeList.length + 1))]
+            ]
+        console.log(featuredRecipes)
+        console.log(featuredIngredients)
 
     return (
         <div>

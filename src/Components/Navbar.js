@@ -30,10 +30,14 @@ function Navbar({user, setUser, selectedPage}){
     <p id='user-bank'>{rupeeDisplay}{user.bank}</p> 
   </div>
   <div id='nav-links-cont'>
-     {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/' || selectedPage === 'http://localhost:4000/' ? 
-     <NavLink id='selected-to-home' to='/'>Kitchen{homeDisplay}</NavLink> 
+  {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/' || selectedPage === 'http://localhost:4000/' ? 
+      <NavLink id='selected-to-about' to='/'>Home</NavLink>
+      : 
+      <NavLink id='nav-to-about' to='/'>Home</NavLink>}
+     {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/kitchen' || selectedPage === 'http://localhost:4000/kitchen' ? 
+     <NavLink id='selected-to-home' to='/kitchen'>Kitchen{homeDisplay}</NavLink> 
      : 
-     <NavLink id='nav-to-home' to='/'>Kitchen{homeDisplay}</NavLink>}
+     <NavLink id='nav-to-home' to='/kitchen'>Kitchen{homeDisplay}</NavLink>}
      {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/cookbook' || selectedPage === 'http://localhost:4000/cookbook' ? 
      <NavLink id='selected-to-cookbook' to='/cookbook'>Cookbook{cookbookDisplay}</NavLink>
      :
@@ -46,10 +50,7 @@ function Navbar({user, setUser, selectedPage}){
       <NavLink id='selected-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>
       :
       <NavLink id='nav-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>}
-      {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/about' || selectedPage === 'http://localhost:4000/about' ? 
-      <NavLink id='selected-to-about' to='/about'>About</NavLink>
-      : 
-      <NavLink id='nav-to-about' to='/about'>About</NavLink>}
+      
   </div>
   <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
 </div>

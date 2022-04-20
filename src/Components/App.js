@@ -144,8 +144,8 @@ function App() {
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
           <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
-          <Route path='/about'element={<About changePage={changePage}/>}/>
-          <Route path='/' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+          <Route path='/kitchen' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+          <Route path='/'element={<About recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
           
         </Routes>
       </div>
