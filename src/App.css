@@ -1312,6 +1312,7 @@
   z-index: 100;
   align-items: center;
   justify-content: center;
+  padding: 1%;
 }
 
 #instructions{

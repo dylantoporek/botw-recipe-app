@@ -304,35 +304,39 @@ function Home({pantries, recipeList, setPantries, user, setUser, changePage, pin
         setTogDisplay(true)
     }
 
+    let pantryButtonDisplay = pantryIsShown ? 
+        <button id='tog-pantry' onClick={handlePantryDisplay}
+        style={{backgroundColor: 'gainsboro'}}
+        onMouseEnter={()=> setPantryIsShown(true)}
+        onMouseLeave={()=> setPantryIsShown(false)}>
+            Pantry
+        </button> : 
+        <button id='tog-pantry' onClick={handlePantryDisplay}
+        onMouseEnter={()=> setPantryIsShown(true)}
+        onMouseLeave={()=> setPantryIsShown(false)}>
+            Pantry
+        </button>
+
+        let dishButtonDisplay = dishIsShown ? 
+            <button id='tog-dishes' onClick={handleDishDisplay}
+            style={{backgroundColor: 'gainsboro'}}
+            onMouseEnter={()=> setDishIsShown(true)}
+            onMouseLeave={()=> setDishIsShown(false)}>
+                Dish
+            </button> : 
+            <button id='tog-dishes' onClick={handleDishDisplay}
+            onMouseEnter={()=> setDishIsShown(true)}
+            onMouseLeave={()=> setDishIsShown(false)}>
+                Dish
+            </button>
+
 
     return <div id='page-background'>
         <div className="comp-cont-1">
             <div id='tog-cont'>
-
-                {pantryIsShown ? 
-                <button id='tog-pantry' onClick={handlePantryDisplay}
-                style={{backgroundColor: 'gainsboro'}}
-                onMouseEnter={()=> setPantryIsShown(true)}
-                onMouseLeave={()=> setPantryIsShown(false)}>
-                    Pantry
-                </button> : 
-                <button id='tog-pantry' onClick={handlePantryDisplay}
-                onMouseEnter={()=> setPantryIsShown(true)}
-                onMouseLeave={()=> setPantryIsShown(false)}>
-                    Pantry
-                </button>}
-                {dishIsShown ? 
-                <button id='tog-dishes' onClick={handleDishDisplay}
-                style={{backgroundColor: 'gainsboro'}}
-                onMouseEnter={()=> setDishIsShown(true)}
-                onMouseLeave={()=> setDishIsShown(false)}>
-                    Dish
-                </button> : 
-                <button id='tog-dishes' onClick={handleDishDisplay}
-                onMouseEnter={()=> setDishIsShown(true)}
-                onMouseLeave={()=> setDishIsShown(false)}>
-                    Dish
-                </button>}
+                {pantryButtonDisplay}
+                {dishButtonDisplay}
+                
             </div>
             
             {togDisplay ? 
