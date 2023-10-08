@@ -8,6 +8,7 @@ import '../App.css';
 import Login from './Login';
 import Cart from '../Pages/Cart';
 import About from '../Pages/About';
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -138,7 +139,9 @@ function App() {
     return <Login onLogin={setUser} user={user} />;
   } else {
     return (
+      <ChakraProvider>
       <div id='app-contianer'>
+
         <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
@@ -148,7 +151,10 @@ function App() {
           <Route path='/'element={<About recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
           
         </Routes>
+
       </div>
+      </ChakraProvider>
+
     );
   }
 }
