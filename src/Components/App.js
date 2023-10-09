@@ -3,11 +3,11 @@ import {Route, Routes} from "react-router-dom"
 import Navbar from './Navbar';
 import Store from '../Pages/Store';
 import Cookbook from '../Pages/Cookbook';
-import Home from '../Pages/Home';
+import Kitchen from '../Pages/Kitchen';
 import '../App.css';
 import Login from './Login';
 import Cart from '../Pages/Cart';
-import About from '../Pages/About';
+import Home from '../Pages/Home';
 import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
@@ -139,7 +139,6 @@ function App() {
     return <Login onLogin={setUser} user={user} />;
   } else {
     return (
-      <ChakraProvider>
       <div id='app-contianer'>
 
         <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
@@ -147,13 +146,12 @@ function App() {
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
           <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
           <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
-          <Route path='/kitchen' element={<Home user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
-          <Route path='/'element={<About recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
+          <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+          <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
           
         </Routes>
 
       </div>
-      </ChakraProvider>
 
     );
   }
