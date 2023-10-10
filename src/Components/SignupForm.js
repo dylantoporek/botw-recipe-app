@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Stack, Flex, Text, Button, Input, FormControl } from '@chakra-ui/react'
 
 function SignupForm({onLogin}){
     const [username, setUsername] = useState("");
@@ -33,50 +34,49 @@ function SignupForm({onLogin}){
   }
 
   return (
-    <form id='signup-form' onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="signup-username"
-          autoComplete="off"
-          placeholder='username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          id="signup-password"
-          placeholder='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
-        />
-        <input
-          type="password"
-          id="signup-password_confirmation"
-          placeholder='password confirmation'
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-        {isShown ? 
-        <button id='signup-form-submit' type="submit"
-        style={{backgroundColor: 'gainsboro'}}
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}>
-          Sign up
-        </button>
-        :
-        <button id='signup-form-submit' type="submit"
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}>
-          Sign up
-        </button>}
-      <div className='errors'>
+
+<Flex flexDir={'column'}>
+<FormControl onSubmit={handleSubmit}>
+    <Input
+      id={'username'}
+      type="text"
+      autoComplete="off"
+      placeholder='username'
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+    <Input
+     id={'password'}
+      type="password"
+      placeholder='password'
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+    <Input
+     id={'password-confirmation'}
+      type="password"
+      placeholder='password confirmation'
+      value={passwordConfirmation}
+      onChange={(e) => setPasswordConfirmation(e.target.value)}
+    />
+    <Button
+       marginLeft={'10%'}
+       minW={'80%'}
+       onClick={(e) => handleSubmit(e)}
+       mt={5}
+       borderRadius={'5em'}
+       style={{backgroundColor: 'orange'}}
+       type="submit"
+      >
+       Signup
+    </Button>
+    <Flex>
         {errors.map((err) => (
-          <p key={err}>{err}</p>
+        <Text key={err}>{err}</Text>
         ))}
-      </div>
-    </form>
+    </Flex>
+</FormControl>
+</Flex>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Stack, Flex, Text, Button, Input, FormControl } from '@chakra-ui/react'
 
 
 function LoginForm({onLogin}){
@@ -25,47 +26,45 @@ function LoginForm({onLogin}){
       }
 
     return (
-    <form id='login-form'  onSubmit={handleSubmit}>
-        <input
+    <Flex flexDir={'column'}>
+    <FormControl onSubmit={handleSubmit}>
+        <Input
+         id={'username'}
           type="text"
-          id="username-input"
           autoComplete="off"
           placeholder='username'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <Input
+         id={'password'}
           type="password"
-          id="password-input"
           autoComplete="current-password"
           placeholder='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {isShown ? 
-        <button id='login-form-submit'
-        style={{backgroundColor: 'gainsboro'}}
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}
-          type="submit">
-         Login
-        </button>
-        : 
-        <button id='login-form-submit'
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}
-          type="submit">
-         Login
-        </button>}
-        
-      
-        <div className="errors">
+
+        <Button
+          onClick={(e) => handleSubmit(e)}
+          marginLeft={'10%'}
+          minW={'80%'}
+          mt={5}
+          borderRadius={'5em'}
+          style={{backgroundColor: 'orange'}}
+          type="submit"
+          >
+           Login
+        </Button>
+        <Flex>
             {errors.map((err) => (
-            <p key={err}>{err}</p>
+            <Text key={err}>{err}</Text>
             ))}
-        </div>
-    </form>
-  );
+        </Flex>
+    </FormControl>
+    </Flex>
+
+  )
 }
 
 export default LoginForm
