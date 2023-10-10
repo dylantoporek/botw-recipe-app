@@ -136,11 +136,15 @@ function App() {
 
 
   if (!user){
-    return <Login onLogin={setUser} user={user} />;
+
+    return(
+      <ChakraProvider>
+        <Login onLogin={setUser} user={user} />
+      </ChakraProvider>
+    ) 
   } else {
     return (
-      <div id='app-contianer'>
-
+      <ChakraProvider>
         <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
         <Routes>
           <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
@@ -150,9 +154,7 @@ function App() {
           <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
           
         </Routes>
-
-      </div>
-
+      </ChakraProvider>
     );
   }
 }

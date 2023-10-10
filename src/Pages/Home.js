@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import greyBackground from '../Images/greyBackground.png'
+import {Stack, Flex, Text, Button, Image } from '@chakra-ui/react'
 
 function Home({changePage, recipeList, ingredientList}){
 
@@ -19,11 +20,11 @@ function Home({changePage, recipeList, ingredientList}){
         ]
       const featuredRecipes = 
             [
-                recipeList[67],
-                recipeList[134],
+                recipeList[0],
                 recipeList[10],
+                recipeList[15],
                 recipeList[12],
-                recipeList[253],
+                recipeList[2],
                 
             ]
     const featuredRecipeDisplay = featuredRecipes[0] !== undefined ? featuredRecipes.map((recipe)=>{
@@ -34,25 +35,49 @@ function Home({changePage, recipeList, ingredientList}){
     }) : null
 
     const featuredIngredientDisplay = featuredIngredients[0] !== undefined ? featuredIngredients.map((ingredient)=>{
-            return <div className="sample-card">
-                <p className="sample-name">{ingredient.name}</p>
-                <img className="pantry-img" src={ingredient.image}/>
-            </div>
+            return <Flex flexDir={'column'} alignItems={'center'}>
+                <Text>{ingredient.name}</Text>
+                <Image maxW={'70px'} src={ingredient.image}/>
+            </Flex>
     }) : null
 
     console.log(featuredRecipes)
     console.log(featuredIngredients)
     return (
-        <div>
+        <Stack maxW={'100vw'} backgroundColor={'grey'}>
+            <Flex flexDir={'column'} p={10}>
+                <Text fontWeight={'bold'}>Instructions</Text>
+                <Flex fontSize={14} flexDir={'column'}>
+                    <Text>Find a recipe you would like to create in the cookbook.</Text>
+                    <Text>Go to the shop and purchase any required ingredients to create the recipe.</Text>
+                    <Text>Place the ingredients into the pot and press the cook button. If you used the right combination of ingredients, you will have made the dish!</Text>
+                    <Text>Finally, you can sell the dishes you cook to make back the money you used to purchase ingredients.</Text>
+                </Flex>
+            </Flex>
+            <Flex>
+                <Text>Featured Recipes:</Text>
+                <Flex backgroundColor={'white'}>
+                    {featuredRecipeDisplay}
+                </Flex>
+                
+            </Flex>
+            <Flex>
+                <Text>Featured Ingredients:</Text>
+                <Flex backgroundColor={'white'} gap={10} p={5}>
+                    {featuredIngredientDisplay}
+                </Flex>
+            </Flex>
+        </Stack>
+    )
+}
+
+export default Home
+
+{/* <div>
             <div id='about-container'>
                 <div id='instructions'>
                     <h3>Instructions:</h3>
-                    <li className="instruction">Find a recipe you would like to create in the cookbook.</li>
-                    <li className="instruction">Use the pin recipe button to save that recipe as reference in your kitchen.</li>
-                    <li className="instruction">Go to the shop and purchase any required ingredients to create the recipe.</li>
-                    <li className="instruction">Checkout your items from the cart. Make sure you have the required funds.</li>
-                    <li className="instruction">Place the ingredients into the pot and press the cook button. If you used the right combination of ingredients, you will have made the dish!</li>
-                    <li className="instruction">Finally, you can sell the dishes you cook to make back the money you used to purchase ingredients.</li>
+   
                 </div>
 
                 <div>
@@ -71,9 +96,5 @@ function Home({changePage, recipeList, ingredientList}){
 
             </div>
             <img id='login-signup-background' src={greyBackground} />
-        </div>
+        </div> */}
         
-    )
-}
-
-export default Home
