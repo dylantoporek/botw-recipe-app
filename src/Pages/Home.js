@@ -1,70 +1,45 @@
 import React, {useState, useEffect} from "react";
-import greyBackground from '../Images/greyBackground.png'
-import {Stack, Flex, Text, Button, Image } from '@chakra-ui/react'
+import {Stack, Flex, Text, Button, Image, useMediaQuery } from '@chakra-ui/react'
+import FeaturedItems from "../Components/FeaturedItems";
 
 function Home({changePage, recipeList, ingredientList}){
-
+    const [isMobile] = useMediaQuery("(max-width: 768px)", {
+        ssr: true,
+        fallback: false,
+    })
+    console.log(ingredientList)
     
-    useEffect(()=>{
+    useEffect(() => {
         changePage(window.location.href)
       }, [])
 
-      const featuredIngredients = 
-        [
-            ingredientList[12],
-            ingredientList[20],
-            ingredientList[26],
-            ingredientList[31],
-            ingredientList[47],
-          
-        ]
-      const featuredRecipes = 
-            [
-                recipeList[0],
-                recipeList[10],
-                recipeList[15],
-                recipeList[12],
-                recipeList[2],
-                
-            ]
-    const featuredRecipeDisplay = featuredRecipes[0] !== undefined ? featuredRecipes.map((recipe)=>{
-            return <div className="sample-card">
-                <p className="sample-name">{recipe.name}</p>
-                <img className="pantry-img" src={recipe.image}/>
-            </div>
-    }) : null
 
-    const featuredIngredientDisplay = featuredIngredients[0] !== undefined ? featuredIngredients.map((ingredient)=>{
-            return <Flex flexDir={'column'} alignItems={'center'}>
-                <Text>{ingredient.name}</Text>
-                <Image maxW={'70px'} src={ingredient.image}/>
-            </Flex>
-    }) : null
-
-    console.log(featuredRecipes)
-    console.log(featuredIngredients)
     return (
-        <Stack maxW={'100vw'} backgroundColor={'grey'}>
-            <Flex flexDir={'column'} p={10}>
+        <Stack maxW={'100vw'} mt={isMobile ? '50px':'80px'} bgImage={"url('./4607759.jpg')"} bgGradient={'linear(to-b, orange 0%, transparent 100%)'}>
+            {/* <Flex flexDir={'column'} p={10}>
                 <Text fontWeight={'bold'}>Instructions</Text>
                 <Flex fontSize={14} flexDir={'column'}>
-                    <Text>Find a recipe you would like to create in the cookbook.</Text>
-                    <Text>Go to the shop and purchase any required ingredients to create the recipe.</Text>
+                    <Text>Find a recipe you would like to create in the Cookbook.</Text>
+                    <Text>Go to the Store and purchase any required ingredients to create the recipe.</Text>
                     <Text>Place the ingredients into the pot and press the cook button. If you used the right combination of ingredients, you will have made the dish!</Text>
                     <Text>Finally, you can sell the dishes you cook to make back the money you used to purchase ingredients.</Text>
                 </Flex>
-            </Flex>
-            <Flex>
-                <Text>Featured Recipes:</Text>
-                <Flex backgroundColor={'white'}>
-                    {featuredRecipeDisplay}
+            </Flex> */}
+            <Flex flexDir={'column'} p={0}>
+                <Flex p={10}>
+                    <Text mt={5} ml={5} fontWeight={'bold'}>Featured Recipes</Text>
                 </Flex>
                 
+                <Flex>
+                    <FeaturedItems props={recipeList}/>
+                </Flex>
             </Flex>
-            <Flex>
-                <Text>Featured Ingredients:</Text>
-                <Flex backgroundColor={'white'} gap={10} p={5}>
-                    {featuredIngredientDisplay}
+            <Flex flexDir={'column'} p={0}>
+                <Flex p={10}>
+                    <Text mt={5} ml={5} fontWeight={'bold'}>Featured Ingredients</Text>
+                </Flex>
+                <Flex>
+                    <FeaturedItems props={ingredientList}/>
                 </Flex>
             </Flex>
         </Stack>
@@ -72,29 +47,4 @@ function Home({changePage, recipeList, ingredientList}){
 }
 
 export default Home
-
-{/* <div>
-            <div id='about-container'>
-                <div id='instructions'>
-                    <h3>Instructions:</h3>
-   
-                </div>
-
-                <div>
-                    <h4>Sample Recipes:</h4>
-                    <div className="sample-container">
-                    {featuredRecipeDisplay}
-                    </div>
-                </div>
-
-                <div>
-                    <h4>Sample Ingredients:</h4>
-                    <div className="sample-container">
-                    {featuredIngredientDisplay}
-                    </div>
-                </div>
-
-            </div>
-            <img id='login-signup-background' src={greyBackground} />
-        </div> */}
         

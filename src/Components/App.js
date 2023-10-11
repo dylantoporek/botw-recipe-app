@@ -8,7 +8,7 @@ import '../App.css';
 import Login from './Login';
 import Cart from '../Pages/Cart';
 import Home from '../Pages/Home';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Flex, useMediaQuery } from '@chakra-ui/react'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -145,15 +145,14 @@ function App() {
   } else {
     return (
       <ChakraProvider>
-        <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
-        <Routes>
-          <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
-          <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
-          <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
-          <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
-          <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
-          
-        </Routes>
+          <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
+          <Routes>
+            <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
+            <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
+            <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
+            <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+            <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
+          </Routes>
       </ChakraProvider>
     );
   }

@@ -5,7 +5,7 @@ import kitchenIcon from '../Images/kitchenIcon.png'
 import cookbookIcon from '../Images/cookbookIcon.png'
 import storeIcon from '../Images/storeIcon.png'
 import cartIcon from '../Images/cartIcon.png'
-import {Stack, Flex, Text, Button, Image, useMediaQuery } from '@chakra-ui/react'
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import {motion} from 'framer-motion'
 
@@ -47,25 +47,30 @@ function Navbar({user, setUser, selectedPage}){
 
   function handleNavigate(string){
     if (string === 'Home'){
+      setExpandNav(false)
       navigate('/')
     }
     if (string === 'Kitchen'){
+      setExpandNav(false)
       navigate('/kitchen')
     }
     if (string === 'Cookbook'){
+      setExpandNav(false)
       navigate('/cookbook')
     }
     if (string === 'Store'){
+      setExpandNav(false)
       navigate('/store')
     }
     if (string === 'Cart'){
+      setExpandNav(false)
       navigate('/cart')
     }
   }
  const variants = {
    open: { 
      opacity: 1, 
-     x: 150, 
+     x: 350, 
      transition: {
       x: {stiffness: 100}
     } 
@@ -94,7 +99,15 @@ function Navbar({user, setUser, selectedPage}){
   }
  if (isMobile){
   return (
-    <Stack flexDir={'row'} maxW={'100vw'} p={5} justifyContent={'space-between'}>
+    <Stack 
+     flexDir={'row'} 
+     minW={'100vw'} 
+     p={5} 
+     justifyContent={'space-between'} 
+     position={'fixed'} 
+     top={0}
+     zIndex={1}
+     backgroundColor={'white'}>
       <motion.div
        initial={{opacity: 0}}
        animate={{opacity: 1}}>
@@ -107,9 +120,6 @@ function Navbar({user, setUser, selectedPage}){
           </Flex>
           <Flex gap={1}>
             <Image cursor={'pointer'} onClick={() => setExpandAccount(true)} src={'./account_circle.svg'}/>
-            <Text>
-              {user.username}
-            </Text>
           </Flex>
         </Flex>
         <motion.div
@@ -123,7 +133,7 @@ function Navbar({user, setUser, selectedPage}){
           height: '300px',
           width: '150px',
           top: 0,
-          left: -150,
+          left: -350,
           padding: 10,
           borderBottomRightRadius: '.5em',
           borderTopRightRadius: '.5em',
@@ -131,13 +141,20 @@ function Navbar({user, setUser, selectedPage}){
          }}
          >
           <Flex alignSelf={'flex-end'}>
-            <CloseIcon cursor={'pointer'} onClick={() => setExpandNav(false)}/>
+            <CloseIcon maxW={'10px'} mr={2} mt={1} cursor={'pointer'} onClick={() => setExpandNav(false)}/>
           </Flex>
-          <Flex flexDir={'column'} mt={10} gap={2}>
+          <Flex flexDir={'column'} alignItems={'center'} mt={10} gap={2}>
             {navbarOptions.map((item) => {
-              return <Text alignSelf={'center'} cursor={'pointer'} onClick={() => handleNavigate(item)}>
-                {item}
-              </Text>
+              return <motion.div
+              key={item}
+              whileHover={{scale: 1.1, color: 'orange'}}
+              whileTap={{scale: .9}}>
+               <Flex justifyItems={'center'}>
+                 <Text cursor={'pointer'} onClick={() => handleNavigate(item)}>
+                   {item}
+                 </Text>
+               </Flex> 
+             </motion.div>
             })}
           </Flex>
         </motion.div>
@@ -168,32 +185,51 @@ function Navbar({user, setUser, selectedPage}){
     </Stack>
   )
  } else return (
-    <Stack flexDir={'row'} maxW={'100vw'} p={5} justifyContent={'space-between'}> 
+    <Stack 
+      flexDir={'row'} 
+      minW={'100vw'} 
+      p={5} 
+      justifyContent={'space-between'} 
+      position={'fixed'} 
+      top={0}
+      zIndex={1}
+      backgroundColor={'white'}> 
         <motion.div
          style={{
-          display: 'flex'
+          display: 'flex',
+          alignItems: 'center'
          }}
          initial={{opacity: 0}}
          animate={{opacity: 1}}>
           {navbarOptions.map((item) => {
             return (
-              <Flex mr={5}>
-                <Text cursor={'pointer'} onClick={() => handleNavigate(item)}>
-                  {item}
-                </Text>
-              </Flex>
+              <motion.div
+               key={item}
+               whileHover={{scale: 1.1, color: 'orange'}}
+               whileTap={{scale: .9}}>
+                <Flex mr={10} alignItems={'center'}>
+                  <Text cursor={'pointer'} onClick={() => handleNavigate(item)}>
+                    {item}
+                  </Text>
+                </Flex> 
+              </motion.div>
             )
           })}
         </motion.div>
-        <Flex gap={5}>
-          <Flex gap={1}>
-            <Image maxW={'10px'} src={rupee}/>
-            <Text>{user.bank}</Text>
+        <motion.div
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}>
+          <Flex gap={10}>
+            <Flex gap={1}>
+              <Image maxW={'10px'} src={rupee}/>
+              <Text>{user.bank}</Text>
+            </Flex>
+            <Flex gap={1}>
+              <Image cursor={'pointer'} src={'./account_circle.svg'} onClick={() => setExpandAccount(true)}/>
+            </Flex>
           </Flex>
-          <Flex gap={1}>
-            <Image cursor={'pointer'} src={'./account_circle.svg'} onClick={() => setExpandAccount(true)}/>
-          </Flex>
-        </Flex>
+        </motion.div>
+        
         <motion.div
         initial={{opcaity: 0}}
         animate={expandAccount ? 'openRight' : 'closeRight'}
@@ -222,36 +258,4 @@ function Navbar({user, setUser, selectedPage}){
   )
   
 }
-
 export default Navbar
-
-// return <div id='navbar'>  
-// <div id='user-container-display'> 
-//   <p id='user-display'>User: {user.username}</p>
-//   <p id='user-bank'>{rupeeDisplay}{user.bank}</p> 
-// </div>
-// <div id='nav-links-cont'>
-// {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/' || selectedPage === 'http://localhost:4000/' ? 
-//     <NavLink id='selected-to-about' to='/'>Home</NavLink>
-//     : 
-//     <NavLink id='nav-to-about' to='/'>Home</NavLink>}
-//    {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/kitchen' || selectedPage === 'http://localhost:4000/kitchen' ? 
-//    <NavLink id='selected-to-home' to='/kitchen'>Kitchen{homeDisplay}</NavLink> 
-//    : 
-//    <NavLink id='nav-to-home' to='/kitchen'>Kitchen{homeDisplay}</NavLink>}
-//    {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/cookbook' || selectedPage === 'http://localhost:4000/cookbook' ? 
-//    <NavLink id='selected-to-cookbook' to='/cookbook'>Cookbook{cookbookDisplay}</NavLink>
-//    :
-//    <NavLink id='nav-to-cookbook' to='/cookbook'>Cookbook{cookbookDisplay}</NavLink>}
-//    {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/store' || selectedPage === 'http://localhost:4000/store' ? 
-//    <NavLink id='selected-to-store' to='/store'>Store{storeDisplay}</NavLink>
-//    :
-//    <NavLink id='nav-to-store' to='/store'>Store{storeDisplay}</NavLink>}
-//     {selectedPage === 'https://obscure-scrubland-39099.herokuapp.com/cart' || selectedPage === 'http://localhost:4000/cart' ? 
-//     <NavLink id='selected-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>
-//     :
-//     <NavLink id='nav-to-cart' to='/cart'>Cart{cartDisplay}</NavLink>}
-    
-// </div>
-// <button id='signout-button' onClick={handleLogoutClick}>Sign Out</button>
-// </div>
