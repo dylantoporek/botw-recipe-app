@@ -10,16 +10,17 @@ function Login({onLogin}){
 
 
     return (
-        <Stack maxW={'100vw'} minH={'100vh'} backgroundColor={'#F0F6F6'}>
+        <Stack maxW={'100vw'} minH={'100vh'} justifyContent={'center'} alignItems={'center'}>
+            <Flex minH={'80vh'} borderRadius={'5em'} border={'1px solid black'}>
             {showLogin ? 
             <Flex 
              flexDir={'column'} 
-             maxW={'500px'} 
+             maxW={'350px'} 
              alignSelf={'center'} 
              alignItems={'center'} 
              p={10}>
                 <Flex flexDir={'column'} gap={2} mb={10}>
-                    <Text>Welcome to the Breath of the Wild Cooking App</Text>
+                    <Text mb={5} textAlign={'center'}>Welcome</Text>
                     <Text>Please Login or Signup to continue to the applciation</Text>
                 </Flex>
                 <LoginForm onLogin={onLogin}/>
@@ -35,12 +36,12 @@ function Login({onLogin}){
                 :
                 <Flex 
                     flexDir={'column'} 
-                    maxW={'500px'} 
+                    maxW={'350px'} 
                     alignSelf={'center'} 
                     alignItems={'center'} 
                     p={10}>
                      <Flex flexDir={'column'} gap={2} mb={10}>
-                        <Text>Welcome to the Breath of the Wild Cooking App</Text>
+                        <Text mb={5} textAlign={'center'}>Welcome</Text>
                         <Text>Please Login or Signup to continue to the applciation</Text>
                     </Flex>
                     <SignupForm onLogin={onLogin}/>
@@ -53,6 +54,8 @@ function Login({onLogin}){
                         </Text>
                     </Flex>
                 </Flex>}
+            </Flex>
+            
         </Stack>
 
         // <div>
