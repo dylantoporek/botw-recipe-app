@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useRef} from "react";
 import {Stack, Flex, Text, Button, Image, useMediaQuery} from '@chakra-ui/react'
 import {motion} from 'framer-motion'
-import {ArrowBackIcon, ArrowForwardIcon} from '@chakra-ui/icons'
+import {ChevronLeftIcon, ChevronRightIcon} from '@chakra-ui/icons'
+import FeaturedItemDisplay from "./FeaturedItemDisplay";
 
 function FeaturedItems({props}) {
 
@@ -24,19 +25,15 @@ function FeaturedItems({props}) {
     useEffect(() => {
 
         if (!reset){
-            console.log("running useEffect");
             interval.current = setInterval(increment, 5000)
         }
         if (reset){
-            console.log('cleared')
             clearInterval(interval.current)
 
             setTimeout(() => {
                 setReset(false)
             }, 500)
         }
-
-
     }, [reset]);
 
     function increment() {
@@ -73,64 +70,66 @@ function FeaturedItems({props}) {
          }, 
     }
 
-
     const targetedItem = filteredProps?.find(( item, i ) => {
         if (i === currentIndex){
             return item
         }
     })
 
-    const itemDisplay = <motion.div 
-            animate={itemSwitch ? 'open' : 'close'}
-            variants={variants}>
-                <Flex justifyContent={'center'} h={'70vh'}>
-                    <Flex
-                     p={5} 
-                     flexDir={'column'} 
-                     minH={'40vh'} 
-                     w={isMobile ? '80vw' : '60vw'}
-                     gap={5} 
-                     alignItems={'center'} 
-                     justifyContent={'center'}>
-                        <Image w={'150px'} h={'150px'} src={targetedItem?.image}/>
-                        <Text>{targetedItem?.name}</Text>
-                        <Text>{targetedItem?.description}</Text>
-                    </Flex>
-                </Flex>
-        </motion.div>
-
     return (
-        <Stack maxW={'100vw'}>
+        <Stack maxW={'100vw'} style={{
+            WebkitTapHighlightColor: 'transparent'
+        }}>
                 <Flex alignItems={'center'} w={'100vw'} justifyContent={'center'}> 
-                    <motion.div 
-                     whileHover={{scale: 1.1}}
-                     whileTap={{scale: .9}}>
-                        <Flex p={2} borderRadius={'50%'}>
-                            <ArrowBackIcon 
+                        <motion.div
+                        whileHover={{scale: 1.2}}
+                        whileTap={{scale: .9}}
+                        style={{
+                            zIndex: 1,
+                            position: 'relative',
+                            right: isMobile ? -25 : -55,
+                            p: 2,
+                            borderRadius: '50%',
+                            ml: 5,
+                            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        }}
+                         >
+                            <ChevronLeftIcon
+                                WebkitTapHighlightColor={'transparent'}
+                                boxSize={10}
                                 cursor={'pointer'}
                                 onClick={() => {
                                 setReset(true)
                                 reduce()
                             }}/>
-                        </Flex>
-                    </motion.div> 
-                    
-                    {itemDisplay}
+                        </motion.div>
+                    <Flex backgroundColor={'rgba(255, 255, 255, .3)'} borderRadius={'1em'}>
+                        <FeaturedItemDisplay variants={variants} targetedItem={targetedItem} isMobile={isMobile} itemSwitch={itemSwitch} />
+                    </Flex>
+                     
 
-                    <motion.div
-                     whileHover={{scale: 1.1}}
-                     whileTap={{scale: .9}}>
-                        <Flex p={2} borderRadius={'50%'}>
-                            <ArrowForwardIcon 
+                        <motion.div 
+                        style={{
+                         zIndex: 1,
+                         position: 'relative', 
+                         left: isMobile ? -25 : -55,
+                         p: 2,
+                         borderRadius: '50%',
+                         mr: 5, 
+                         backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                        }}
+                        whileHover={{scale: 1.2}}
+                        whileTap={{scale: .9}}>
+                            <ChevronRightIcon 
+                                WebkitTapHighlightColor={'transparent'}
+                                boxSize={10}
                                 cursor={'pointer'}
                                 onClick={() => {
                                 setReset(true)
                                 increment()
                                 }}/
                             >
-                        </Flex>
-                        
-                    </motion.div>
+                        </motion.div>
                     
                 </Flex>
         </Stack>

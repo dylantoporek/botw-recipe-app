@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
-import {Stack, Flex, Text, Button, Image, useMediaQuery } from '@chakra-ui/react'
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui/react'
 import FeaturedItems from "../Components/FeaturedItems";
+import {ArrowForwardIcon} from '@chakra-ui/icons'
+import '../App.css'
+import {motion} from 'framer-motion'
 
 function Home({changePage, recipeList, ingredientList}){
     const [isMobile] = useMediaQuery("(max-width: 768px)", {
@@ -15,7 +18,19 @@ function Home({changePage, recipeList, ingredientList}){
 
 
     return (
-        <Stack maxW={'100vw'} mt={isMobile ? '50px':'80px'} bgImage={"url('./4607759.jpg')"} bgGradient={'linear(to-b, orange 0%, transparent 100%)'}>
+        <Stack 
+        //  backgroundImage={'./158544.jpg'}
+        //  backgroundSize={'cover'}
+        //  backgroundRepeat={'repeat-y'}
+         maxW={'100vw'} 
+         mt={isMobile ? '50px':'80px'} 
+         >
+            <Stack style={{
+                // background: 'linear-gradient(#E7DECD, white)',
+                background: '#E7DECD'
+            }}>
+
+
             {/* <Flex flexDir={'column'} p={10}>
                 <Text fontWeight={'bold'}>Instructions</Text>
                 <Flex fontSize={14} flexDir={'column'}>
@@ -25,23 +40,59 @@ function Home({changePage, recipeList, ingredientList}){
                     <Text>Finally, you can sell the dishes you cook to make back the money you used to purchase ingredients.</Text>
                 </Flex>
             </Flex> */}
-            <Flex flexDir={'column'} p={0}>
-                <Flex p={10}>
-                    <Text mt={5} ml={5} fontWeight={'bold'}>Featured Recipes</Text>
+            <Flex flexDir={'column'}>
+            <Flex
+                    flexDir={isMobile ? 'column' : 'row'} 
+                    p={10} 
+                    alignItems={isMobile ? 'flex-start':'center'} 
+                    alignSelf={'center'} 
+                    w={isMobile ? '100%' : '50%'} 
+                    justifyContent={'space-between'}>
+                    <Text fontWeight={'bold'}>Featured Recipes</Text>
+                    <Link href={'/cookbook'}>
+                        
+                        <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
+                            <Text>View All</Text>
+                            <motion.div 
+                                whileHover={{scale: 1.2}}
+                                whileTap={{scale: .9}}>
+                            <ArrowForwardIcon color={'#DC602E'} boxSize={5}/>
+                            </motion.div>
+                        </Flex>
+
+                        
+                    </Link>
                 </Flex>
                 
                 <Flex>
                     <FeaturedItems props={recipeList}/>
                 </Flex>
             </Flex>
-            <Flex flexDir={'column'} p={0}>
-                <Flex p={10}>
-                    <Text mt={5} ml={5} fontWeight={'bold'}>Featured Ingredients</Text>
+            <Flex flexDir={'column'} mt={20} mb={10}>
+                <Flex
+                    flexDir={isMobile ? 'column' : 'row'} 
+                    p={10} 
+                    alignItems={isMobile ? 'flex-start':'center'} 
+                    alignSelf={'center'} 
+                    w={isMobile ? '100%' : '50%'} 
+                    justifyContent={'space-between'}>
+                    <Text fontWeight={'bold'}>Featured Ingredients</Text>
+                    <Link href={'/store'}>
+                        <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
+                            <Text>Shop All</Text>
+                            <motion.div 
+                                whileHover={{scale: 1.2}}
+                                whileTap={{scale: .9}}>
+                            <ArrowForwardIcon color={'#DC602E'} boxSize={5}/>
+                            </motion.div>
+                        </Flex>
+                    </Link>
                 </Flex>
                 <Flex>
                     <FeaturedItems props={ingredientList}/>
                 </Flex>
             </Flex>
+            </Stack>
         </Stack>
     )
 }
