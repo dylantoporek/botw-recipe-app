@@ -84,8 +84,8 @@ function Navbar({user, setUser, selectedPage}){
       } 
     }, 
     openRight: { 
-      opacity: [0, 1], 
-      y: isMobile ? 100 : 130, 
+      opacity: [0, 0, 0, 1], 
+      y: isMobile ? 100 : 120, 
       transition: {
        y: {stiffness: 100}
      } 
@@ -109,7 +109,7 @@ function Navbar({user, setUser, selectedPage}){
      justifyContent={'space-between'} 
      position={'fixed'} 
      top={0}
-     zIndex={1}
+     zIndex={2}
      backgroundColor={'white'}>
       <motion.div
        initial={{opacity: 0}}
@@ -136,6 +136,7 @@ function Navbar({user, setUser, selectedPage}){
           animate={expandNav ? 'open' : 'close'}
           variants={variants}
          style={{
+          zIndex: 10,
           position: 'fixed',
           display: 'flex',
           flexDirection: 'column',
@@ -149,7 +150,7 @@ function Navbar({user, setUser, selectedPage}){
           backgroundColor: 'white'
          }}
          >
-          <Flex alignSelf={'flex-end'}>
+          <Flex alignSelf={'flex-end'} zIndex={100}>
             <CloseIcon maxW={'10px'} mr={2} mt={1} cursor={'pointer'} onClick={() => setExpandNav(false)}/>
           </Flex>
           <Flex flexDir={'column'} alignItems={'center'} mt={10} gap={2}>
@@ -163,7 +164,7 @@ function Navbar({user, setUser, selectedPage}){
               whileHover={{scale: 1.1, color: 'orange'}}
               whileTap={{scale: .9}}>
                <Flex justifyItems={'center'}>
-                 <Text cursor={'pointer'} onClick={() => handleNavigate(item)}>
+                 <Text cursor={'pointer'} zIndex={100} onClick={() => handleNavigate(item)}>
                    {item}
                  </Text>
                </Flex> 
@@ -182,8 +183,8 @@ function Navbar({user, setUser, selectedPage}){
           top: -50,
           right: 0,
           padding: 10,
-          borderBottomRightRadius: '.5em',
-          borderTopRightRadius: '.5em',
+          borderBottomLeftRadius: '.5em',
+          borderTopLeftRadius: '.5em',
           backgroundColor: 'white'
          }}>
           <Flex alignItems={'center'} flexDir={'column'} gap={5}>
@@ -284,8 +285,7 @@ function Navbar({user, setUser, selectedPage}){
           top: -50,
           right: 0,
           padding: 10,
-          borderBottomRightRadius: '.5em',
-          borderTopRightRadius: '.5em',
+          borderBottomLeftRadius: '.5em',
           backgroundColor: 'white'
          }}>
          <Flex alignItems={'center'} flexDir={'column'} gap={5}>

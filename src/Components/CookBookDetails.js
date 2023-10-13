@@ -1,9 +1,13 @@
 import React, {useState} from "react";
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Input } from '@chakra-ui/react'
+import {motion} from 'framer-motion'
 import noImg from '../Images/noImg.png'
 import rupee from '../Images/rupee.png'
 import parchH from '../Images/parchH.png'
+import {ArrowBackIcon} from '@chakra-ui/icons'
 
 function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
+    console.log(recipe)
     const [showPin, setShowPin] = useState(false)
     const [isShown, setIsShown] = useState(false)
 
@@ -80,7 +84,38 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
     </div>
 
     return (
-        <div className="comp-cont-1">{infoDisplay}</div>
+        <motion.div
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         style={{
+            position: 'fixed',
+            top: '10%',
+            left: '320px',
+            width: '70vw',
+            height: '610px',
+            backgroundColor: 'white'
+         }}>
+            <Stack p={10}>
+                <Flex gap={5} alignItems={'center'} cursor={'pointer'} onClick={() => setTogDetails(false)}>
+                    <ArrowBackIcon/>
+                    <Text>
+                        Back To Recipes
+                    </Text>
+                </Flex>
+                <Flex p={5} backgroundColor={'red'} flexDir={'column'} alignItems={'center'}>
+                    <Text>
+                        {recipe.name}
+                    </Text>
+                    <Image maxW={'300px'} src={recipe.image}/>
+                    <Text>{recipe.description}</Text>
+                    <Text>{recipe.price}</Text>
+                </Flex>
+
+
+                
+                
+            </Stack>
+        </motion.div>
     )
 }
 

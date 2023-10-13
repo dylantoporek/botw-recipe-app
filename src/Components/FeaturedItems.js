@@ -25,7 +25,7 @@ function FeaturedItems({props}) {
     useEffect(() => {
 
         if (!reset){
-            interval.current = setInterval(increment, 5000)
+            interval.current = setInterval(increment, 7000)
         }
         if (reset){
             clearInterval(interval.current)

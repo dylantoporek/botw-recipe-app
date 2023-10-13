@@ -3,11 +3,16 @@ import parchV from '../Images/parchV.png'
 import brightParch from '../Images/brightParch.png'
 import noImg from '../Images/noImg.png'
 import rupee from '../Images/rupee.png'
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Input } from '@chakra-ui/react'
+import {motion} from 'framer-motion'
 
 function Recipe({recipe, setTogDetails, setSpecificRecipe}){
     const [isShown, setIsShown] = useState(false)
-
-  const rupeeDisplay = <img id='rupee' src={rupee} />
+    const [isMobile] = useMediaQuery("(max-width: 768px)", {
+        ssr: true,
+        fallback: false,
+    })
+    // const rupeeDisplay = <img id='rupee' src={rupee} />
 
     let priceRewrite = recipe.price
     if (recipe.price === 0){
@@ -19,52 +24,27 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
         setSpecificRecipe(recipe)
     }
 
-    let recipeImg
-    if (recipe.image !== null){
-        recipeImg = <img className="recipe-img" src={recipe.image}/>
-    } else {
-        recipeImg = <img className="noImg-recipe-img" src={noImg}/>
-    }
-
-
- 
-
-    let recipeDisplay
-    if (recipe.name !== null){
-        recipeDisplay = <div 
-            onClick={openDetails}
-                onMouseEnter={()=> setIsShown(true)}
-                onMouseLeave={()=> setIsShown(false)} 
-                className="recipe">
-                <img id='recipe-background-nH' src={parchV} />
-                <div>
-                    <p className="recipe-name">{recipe.name}</p>
-                    {recipeImg}
-                    <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p> 
-                </div>
-                  
-        </div>
-    }
-
-    if (isShown){
-        recipeDisplay = <div 
-            onClick={openDetails}
-                onMouseEnter={()=> setIsShown(true)}
-                onMouseLeave={()=> setIsShown(false)} 
-                className="recipe">
-            <img id='recipe-background-H' src={brightParch} />
-            <div>
-                <p className="recipe-name">{recipe.name}</p>
-                {recipeImg}
-                <p className="recipe-value">{rupeeDisplay}{priceRewrite}</p>
-            </div>
-        
-        </div>
-    }
-
-
     return(
-        <div>{recipeDisplay}</div>
+        <motion.div
+         whileHover={{scale: 1.1}}>
+            <Flex 
+             flexDir={'column'} 
+             alignItems={'center'} 
+             backgroundColor={'rgba(255, 255, 255, .9)'}
+             w={isMobile ? '150px':'200px'}
+             h={'200px'}
+             onClick={() => openDetails()}>
+                
+                <Image mt={5} w={'100px'} h={'80px'} src={recipe.image}/>
+                <Text textAlign={'center'} mt={5} fontSize={isMobile ? 12 : 14}>
+                    {recipe.name}
+                </Text>
+                <Flex gap={1}>
+                    <Image w={'10px'} src={rupee}/>
+                    <Text>{recipe.price}</Text>
+                </Flex>
+            </Flex>
+        </motion.div>
     ) 
 }
 

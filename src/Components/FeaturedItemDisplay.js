@@ -22,7 +22,7 @@ export default function FeaturedItemDisplay({targetedItem, variants, itemSwitch,
                     WebkitTapHighlightColor={'transparent'}>
                         <Image  w={'150px'} h={'150px'} src={targetedItem?.image}/>
                         <Text mb={2}>{targetedItem?.name}</Text>
-                        <Text maxW={isMobile ? '100%':'60%'}>{targetedItem?.description}</Text>
+                        <Text maxW={isMobile ? '100%':'100%'}>{targetedItem?.description}</Text>
                     </Flex>
                 </Flex>
         </motion.div>

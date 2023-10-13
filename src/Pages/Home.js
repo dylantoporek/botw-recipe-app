@@ -18,6 +18,7 @@ function Home({changePage, recipeList, ingredientList}){
 
 
     return (
+
         <Stack 
         //  backgroundImage={'./158544.jpg'}
         //  backgroundSize={'cover'}
@@ -29,7 +30,7 @@ function Home({changePage, recipeList, ingredientList}){
                 // background: 'linear-gradient(#E7DECD, white)',
                 background: '#E7DECD'
             }}>
-
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
 
             {/* <Flex flexDir={'column'} p={10}>
                 <Text fontWeight={'bold'}>Instructions</Text>
@@ -92,8 +93,10 @@ function Home({changePage, recipeList, ingredientList}){
                     <FeaturedItems props={ingredientList}/>
                 </Flex>
             </Flex>
+            </motion.div>
             </Stack>
         </Stack>
+
     )
 }
 
