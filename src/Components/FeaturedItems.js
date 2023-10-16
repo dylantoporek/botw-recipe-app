@@ -78,7 +78,8 @@ function FeaturedItems({props}) {
 
     return (
         <Stack maxW={'100vw'} style={{
-            WebkitTapHighlightColor: 'transparent'
+            WebkitTapHighlightColor: 'transparent',
+            color: 'black'
         }}>
                 <Flex alignItems={'center'} w={'100vw'} justifyContent={'center'}> 
                         <motion.div
@@ -87,7 +88,7 @@ function FeaturedItems({props}) {
                         style={{
                             zIndex: 1,
                             position: 'relative',
-                            right: isMobile ? -25 : -55,
+                            right: isMobile ? -55 : -55,
                             p: 2,
                             borderRadius: '50%',
                             ml: 5,
@@ -103,7 +104,7 @@ function FeaturedItems({props}) {
                                 reduce()
                             }}/>
                         </motion.div>
-                    <Flex backgroundColor={'rgba(255, 255, 255, .3)'} borderRadius={'1em'}>
+                    <Flex backgroundColor={'#F3F3F3'}  boxShadow={'0px 1px 2px 2px rgba(54,54,54,.5)'}  borderRadius={'1em'} color={'black'}>
                         <FeaturedItemDisplay variants={variants} targetedItem={targetedItem} isMobile={isMobile} itemSwitch={itemSwitch} />
                     </Flex>
                      
@@ -112,7 +113,7 @@ function FeaturedItems({props}) {
                         style={{
                          zIndex: 1,
                          position: 'relative', 
-                         left: isMobile ? -25 : -55,
+                         left: isMobile ? -55 : -55,
                          p: 2,
                          borderRadius: '50%',
                          mr: 5, 

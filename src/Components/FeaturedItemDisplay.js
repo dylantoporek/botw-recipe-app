@@ -10,7 +10,7 @@ export default function FeaturedItemDisplay({targetedItem, variants, itemSwitch,
             }} 
             animate={itemSwitch ? 'open' : 'close'}
             variants={variants}>
-                <Flex justifyContent={'center'} h={'60vh'}>
+                <Flex justifyContent={'center'} h={isMobile ? '70vh':'60vh'} borderRadius={'1em'}>
                     <Flex
                     p={5} 
                     flexDir={'column'} 

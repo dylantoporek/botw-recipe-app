@@ -1,29 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Stack, Flex, Text, Button, Image, useMediaQuery, Input } from '@chakra-ui/react'
-import {motion} from 'framer-motion'
+import { motion} from 'framer-motion'
 import noImg from '../Images/noImg.png'
 import rupee from '../Images/rupee.png'
 import parchH from '../Images/parchH.png'
 import {ArrowBackIcon} from '@chakra-ui/icons'
+import { useLockBodyScroll } from "@uidotdev/usehooks";
 
-function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
-    console.log(recipe)
+function CookBookDetails({togDetails, recipe, setTogDetails, changePinnedRecipe}){
+ useLockBodyScroll()
+ console.log(recipe)
     const [showPin, setShowPin] = useState(false)
-    const [isShown, setIsShown] = useState(false)
-
-  const rupeeDisplay = <img id='rupee' src={rupee} />
-
-    let priceRewrite = recipe.price
-    if(priceRewrite === 0){
-        priceRewrite = 25
-    }
-
-    let recipeImg
-    if (recipe.image !== null){
-        recipeImg = <img id="cbd-img" src={recipe.image}/>
-    } else {
-        recipeImg = <img id="cbd-img" src={noImg}/>
-    }
+    const [isShown, setIsShown] = useState(true)
+    const [isMobile] = useMediaQuery("(max-width: 768px)", {
+        ssr: true,
+        fallback: false,
+    })
 
    function handleChangePinnedRecipe(){
         let pinnedIngredientList = recipe
@@ -31,89 +23,63 @@ function CookBookDetails({recipe, setTogDetails, changePinnedRecipe}){
         alert(`${recipe.name} is now pinned in your Kitchen.`)
         setTogDetails(false)
     }
-
-    const infoDisplay = <div id='cookbook-details'>
-        {isShown ? 
-        <button id='back-to-cb' onClick={()=> setTogDetails(false)}
-        style={{backgroundColor: 'gainsboro'}}
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}>
-        X
-        </button>
-        : 
-        <button id='back-to-cb' onClick={()=> setTogDetails(false)}
-        onMouseEnter={()=> setIsShown(true)}
-        onMouseLeave={()=> setIsShown(false)}>
-        X
-        </button>}
-        
-        {showPin ? 
-        <button id='pin-recipe' onClick={handleChangePinnedRecipe}
-        style={{backgroundColor: 'gainsboro'}}
-        onMouseEnter={()=> setShowPin(true)}
-        onMouseLeave={()=> setShowPin(false)}>
-            pin recipe
-        </button>
-        : 
-        <button id='pin-recipe' onClick={handleChangePinnedRecipe}
-        onMouseEnter={()=> setShowPin(true)}
-        onMouseLeave={()=> setShowPin(false)}>
-            pin recipe
-        </button>}
-        
-        <p id='cbd-name'>{recipe.name}</p>
-        {recipeImg}
-        <p id='cbd-effect'>Additonal Effect: {recipe.category}</p>
-        <p id='cbd-price'>Value: {rupeeDisplay}{priceRewrite}</p>
-        <div id='cbd-description-cont'>
-            <p id='cookbook-description-label'>Description:</p>
-            <p id='cookbook-description'>{recipe.description}</p>
-        </div>
-        
-        <div id='cbd-ing-list-cont'>
-            <p id='ing-list-label'>Ingredient List:</p>
-            <div id='cbd-ing-list-ings'>
-                <p id='cbd-ing1'>{recipe.ingredient1}</p>
-                <p id='cbd-ing2'>{recipe.ingredient2}</p>
-                <p id='cbd-ing3'>{recipe.ingredient3}</p>
-                <p id='cbd-ing4'>{recipe.ingredient4}</p>
-                <p id='cbd-ing5'>{recipe.ingredient5}</p>
-            </div> 
-        </div> 
-        <img id='cbd-background-img' src={parchH}/>
-    </div>
+    const variants = {
+        open: { 
+          opacity: 1, 
+       },
+        close: { 
+          opacity: 0, 
+         }, 
+    }
 
     return (
         <motion.div
          initial={{opacity: 0}}
-         animate={{opacity: 1}}
+         animate={isShown ? 'open' : 'close'}
+         variants={variants}
          style={{
+            display: 'flex',
+            flexDirection: 'column',
             position: 'fixed',
-            top: '10%',
-            left: '320px',
-            width: '70vw',
-            height: '610px',
-            backgroundColor: 'white'
+            zIndex: 1,
+            top: isMobile ? '9%':'10%',
+            left: '0px',
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: '#20606F'
          }}>
-            <Stack p={10}>
-                <Flex gap={5} alignItems={'center'} cursor={'pointer'} onClick={() => setTogDetails(false)}>
+            <Stack p={10} w={isMobile ? '100vw':'90vw'} alignSelf={'center'}>
+                <motion.div whileHover={{scale: 1.1, x: 0}} whileTap={{scale: .9, x: 0}}>
+                <Flex color={'white'} gap={5} alignItems={'center'} cursor={'pointer'} onClick={() => {
+                    setIsShown(false)
+                    setTimeout(() => {
+                        setTogDetails(false)
+                    }, 200)
+                }}>
                     <ArrowBackIcon/>
                     <Text>
                         Back To Recipes
                     </Text>
                 </Flex>
-                <Flex p={5} backgroundColor={'red'} flexDir={'column'} alignItems={'center'}>
+                </motion.div>
+                
+                <Flex 
+                 boxShadow={'0px 1px 2px 2px rgba(54,54,54,.5)'}
+                 p={5} 
+                 backgroundColor={'rgba(255, 255, 255, .8)'} 
+                 flexDir={'column'} 
+                 alignItems={'center'}>
                     <Text>
                         {recipe.name}
                     </Text>
                     <Image maxW={'300px'} src={recipe.image}/>
                     <Text>{recipe.description}</Text>
-                    <Text>{recipe.price}</Text>
+                    <Flex gap={1} mt={2}>
+                        <Image w={'10px'} src={rupee}/>
+                        <Text>{recipe.price}</Text>
+                    </Flex>
+                    
                 </Flex>
-
-
-                
-                
             </Stack>
         </motion.div>
     )

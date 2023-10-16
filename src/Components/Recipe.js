@@ -30,9 +30,11 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
             <Flex 
              flexDir={'column'} 
              alignItems={'center'} 
-             backgroundColor={'rgba(255, 255, 255, .9)'}
+             backgroundColor={'rgba(255, 255, 255, .8)'}
+             boxShadow={'0px 1px 2px 2px rgba(54,54,54,.5)'}
              w={isMobile ? '150px':'200px'}
              h={'200px'}
+             mb={5}
              onClick={() => openDetails()}>
                 
                 <Image mt={5} w={'100px'} h={'80px'} src={recipe.image}/>

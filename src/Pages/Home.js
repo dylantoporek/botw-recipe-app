@@ -24,11 +24,13 @@ function Home({changePage, recipeList, ingredientList}){
         //  backgroundSize={'cover'}
         //  backgroundRepeat={'repeat-y'}
          maxW={'100vw'} 
-         mt={isMobile ? '50px':'80px'} 
+         mt={isMobile ? '50px':'70px'}
+         overflowY={'scroll'} 
          >
             <Stack style={{
                 // background: 'linear-gradient(#E7DECD, white)',
-                background: '#E7DECD'
+                background: '#20606F',
+                color: 'white'
             }}>
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
 
@@ -57,7 +59,7 @@ function Home({changePage, recipeList, ingredientList}){
                             <motion.div 
                                 whileHover={{scale: 1.2}}
                                 whileTap={{scale: .9}}>
-                            <ArrowForwardIcon color={'#DC602E'} boxSize={5}/>
+                            <ArrowForwardIcon boxSize={5}/>
                             </motion.div>
                         </Flex>
 
@@ -84,7 +86,7 @@ function Home({changePage, recipeList, ingredientList}){
                             <motion.div 
                                 whileHover={{scale: 1.2}}
                                 whileTap={{scale: .9}}>
-                            <ArrowForwardIcon color={'#DC602E'} boxSize={5}/>
+                            <ArrowForwardIcon boxSize={5}/>
                             </motion.div>
                         </Flex>
                     </Link>

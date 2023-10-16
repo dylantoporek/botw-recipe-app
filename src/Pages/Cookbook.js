@@ -46,16 +46,20 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
         }
     })
 
-    console.log(togDetails)
     return (
             <Stack 
              flexDir={'row'}
-             minH={'90vh'}
              maxW={'100vw'} 
              mt={isMobile ? '55px':'65px'} 
              p={isMobile ? 0:10}
-             backgroundColor={'#E7DECD'}>
+             backgroundColor={'#20606F'}
+             minH={'90.5vh'}
+             justifyContent={isMobile ? 'center':'flex-end'}>
                 <motion.div 
+                 style={{
+                    display: 'flex',
+                    flexDirection: 'row'
+                 }}
                  initial={{opacity: 0}}
                  animate={{opacity: 1}}>
                     <Flex>
@@ -69,28 +73,28 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
                     </Flex>
                    
                      <Flex
-                       maxW={isMobile ? '100vw':'75vw'}
+                       w={isMobile ? '100vw':'70vw'}
                        p={0}
-                       overflowY={'scroll'}
-                       maxH={'80vh'}
                        position={'relative'}
                        flexWrap={'wrap'} 
-                       top={isMobile ? '200px': 0} 
-                       marginBottom={10}
+                       top={isMobile ? '180px': 0} 
+                       paddingY={10}
                        gap={5}
                        zIndex={0}
-                       left={isMobile ? 0 : '250px'}
+                       left={isMobile ? 0 : 0}
                        ml={isMobile ? 0:'3vw'}
                        mr={isMobile ? 0:'1vw'}
-                       justifyContent={isMobile ? 'center' : 'flex-start'}>
+                       justifyContent={isMobile ? 'center' : 'center'}
+                       backgroundColor={'#20606F'}>
                         {filteredByName.map((recipe) => 
                          <Recipe 
+                          key={recipe.id}
                           recipe={recipe} 
                           setTogDetails={setTogDetails} 
                           setSpecificRecipe={setSpecificRecipe}/>)}
                      </Flex> 
                      <Flex>
-                        {togDetails ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe} /> : null}
+                        {togDetails ? <CookBookDetails togDetails={togDetails} recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe} /> : null}
                     </Flex> 
                 </motion.div>
                 

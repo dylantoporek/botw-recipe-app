@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate} from "react-router-dom"
 import rupee from '../Images/rupee.png'
 import kitchenIcon from '../Images/kitchenIcon.png'
@@ -12,6 +12,7 @@ import '../App.css'
 
 function Navbar({user, setUser, selectedPage}){
   const navigate = useNavigate()
+
   function handleLogoutClick() {
     fetch("/api/v1/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -110,7 +111,8 @@ function Navbar({user, setUser, selectedPage}){
      position={'fixed'} 
      top={0}
      zIndex={2}
-     backgroundColor={'white'}>
+     backgroundColor={'white'}
+     boxShadow={'0px 1px 2px 2px rgba(54,54,54,.2)'}>
       <motion.div
        initial={{opacity: 0}}
        animate={{opacity: 1}}>
@@ -147,7 +149,8 @@ function Navbar({user, setUser, selectedPage}){
           padding: 10,
           borderBottomRightRadius: '.5em',
           borderTopRightRadius: '.5em',
-          backgroundColor: 'white'
+          backgroundColor: 'white',
+          boxShadow: '-1px 0px 2px 2px rgba(54,54,54,.5)'
          }}
          >
           <Flex alignSelf={'flex-end'} zIndex={100}>
@@ -204,8 +207,9 @@ function Navbar({user, setUser, selectedPage}){
       justifyContent={'space-between'} 
       position={'fixed'} 
       top={0}
-      zIndex={1}
-      backgroundColor={'white'}> 
+      zIndex={2}
+      backgroundColor={'white'}
+      boxShadow={'0px 1px 2px 2px rgba(54,54,54,.2)'}> 
         <motion.div
          style={{
           display: 'flex',
