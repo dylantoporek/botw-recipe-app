@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui/react'
+import {motion} from 'framer-motion'
 import CookBookNav from "../Components/CookBookNav";
 import Recipe from "../Components/Recipe"
 import CookBookDetails from "../Components/CookBookDetails";
@@ -10,17 +12,19 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
     const [typeFilter, setTypeFilter] = useState("All")
     const [togDetails, setTogDetails] = useState(false)
     const [specificRecipe, setSpecificRecipe] = useState(null)
+    const [isMobile] = useMediaQuery("(max-width: 768px)", {
+        ssr: true,
+        fallback: false,
+    })
 
-    useEffect(()=>{
-        changePage(window.location.href)
-      }, [])
 
+    console.log(recipeList)
     const filteredByCategory = recipeList.filter((recipe)=>{
         if (categoryFilter === "All" && recipe.category !== 'Elixer' && !recipe.name.includes('Monster')){
             return recipe
         }
         if (categoryFilter !== "All" && recipe.category !== 'Elixer'){
-            return recipe.category === categoryFilter
+            return recipe.category.includes(categoryFilter)
         }
     })
 
@@ -42,49 +46,60 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
         }
     })
 
-    const recipeDisplay = filteredByName.map((recipe)=>{
-        return <Recipe key={recipe.id} recipe={recipe} setTogDetails={setTogDetails} setSpecificRecipe={setSpecificRecipe}/> 
-    })
-
-    const detailsDisplay = specificRecipe ? <CookBookDetails recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe}/> : null
-
-    if (!togDetails){
-        return <div id='page-background'>
-
-        
-        <div className="cookbook-comp-cont-1">
-        <CookBookNav 
-            name={nameFilter}
-            category={categoryFilter}
-            typeFilter={typeFilter}
-            setCategoryFilter={setCategoryFilter}
-            setNameFilter={setNameFilter} 
-            setTypeFilter={setTypeFilter}
-        />
-        {recipeDisplay}
-    </div>
-    <img id='login-signup-background' src={greyBackground} />
-    </div>
-    } if(togDetails){
-        return <div id='page-background'>
-
-        
-        <div className="cookbook-comp-cont-1">
-        <CookBookNav 
-            name={nameFilter}
-            category={categoryFilter}
-            typeFilter={typeFilter}
-            setCategoryFilter={setCategoryFilter}
-            setNameFilter={setNameFilter} 
-            setTypeFilter={setTypeFilter}
-        />
-        {detailsDisplay}
-        {recipeDisplay}
-    </div>
-    <img id='login-signup-background' src={greyBackground} />
-    </div>
-    
-    } 
+    return (
+            <Stack 
+             flexDir={'row'}
+             maxW={'100vw'} 
+             mt={isMobile ? '55px':'65px'} 
+             p={isMobile ? 0:10}
+             backgroundColor={'#20606F'}
+             minH={'90.5vh'}
+             justifyContent={isMobile ? 'center':'flex-end'}>
+                <motion.div 
+                 style={{
+                    display: 'flex',
+                    flexDirection: 'row'
+                 }}
+                 initial={{opacity: 0}}
+                 animate={{opacity: 1}}>
+                    <Flex>
+                    <CookBookNav 
+                     name={nameFilter} 
+                     category={categoryFilter}
+                     typeFilter={typeFilter}
+                     setNameFilter={setNameFilter}
+                     setCategoryFilter={setCategoryFilter}
+                     setTypeFilter={setTypeFilter}/>
+                    </Flex>
+                   
+                     <Flex
+                       w={isMobile ? '100vw':'70vw'}
+                       p={0}
+                       position={'relative'}
+                       flexWrap={'wrap'} 
+                       top={isMobile ? '180px': 0} 
+                       paddingY={10}
+                       gap={5}
+                       zIndex={0}
+                       left={isMobile ? 0 : 0}
+                       ml={isMobile ? 0:'3vw'}
+                       mr={isMobile ? 0:'1vw'}
+                       justifyContent={isMobile ? 'center' : 'center'}
+                       backgroundColor={'#20606F'}>
+                        {filteredByName.map((recipe) => 
+                         <Recipe 
+                          key={recipe.id}
+                          recipe={recipe} 
+                          setTogDetails={setTogDetails} 
+                          setSpecificRecipe={setSpecificRecipe}/>)}
+                     </Flex> 
+                     <Flex>
+                        {togDetails ? <CookBookDetails togDetails={togDetails} recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe} /> : null}
+                    </Flex> 
+                </motion.div>
+                
+            </Stack>
+    )
     
 }
 
