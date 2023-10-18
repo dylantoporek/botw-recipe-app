@@ -161,7 +161,7 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
         let formula = []
         let potIngredients = pot.map((item)=> item.ingredient.name)
         potIngredients.forEach((str)=>{
-            console.log(str)
+            // console.log(str)
             let checkX2 = str + ' x2'
             let checkX3 = str + ' x3'
             let checkX4 = str + ' x4'
@@ -198,7 +198,7 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
             }
         }
 
-        console.log(formula)
+        // console.log(formula)
 
         recipeIngredientList.map((recipe)=> {
             if (recipe.ingredients.includes(formula[0]) && formula.includes(recipe.ingredients[0])){ 

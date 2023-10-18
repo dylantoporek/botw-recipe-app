@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Stack, Flex, Text, Button, Image, useMediaQuery, Input, Checkbox, transition } from '@chakra-ui/react'
-import {motion} from 'framer-motion'
-import {ChevronDownIcon, TriangleDownIcon, SmallCloseIcon} from '@chakra-ui/icons'
+import {motion, transform} from 'framer-motion'
+import {ChevronDownIcon, ChevronUpIcon, SmallCloseIcon} from '@chakra-ui/icons'
 
 
 function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilter, setTypeFilter}){
@@ -17,7 +17,6 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
     }
 
     function handleFilterChange(e){
-        console.log(category === e.target.innerText)
         if(category === e.target.innerText){
             setCategoryFilter('All')
         } else setCategoryFilter(e.target.innerText)
@@ -61,7 +60,6 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
 
       };
 
-     console.log(showTypeMenu)
     return (
         <motion.div
         initial={{opacity: 0}}
@@ -97,13 +95,17 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
                         <motion.div>
                             <Flex
                             borderBottom={'1px solid black'}
+                            cursor={isMobile ? 'pointer' : 'edge'}
                             mr={isMobile ? 5:0} 
                             marginBottom={5}
                             alignItems={'center'}>
                                 <Text>
                                     Filter Recipes
                                 </Text>
-                                <ChevronDownIcon/>
+                                <motion.div 
+                                 whileTap={{scale: isMobile ? [1.1, .9] : 1 }}>
+                                    <ChevronDownIcon boxSize={5}/>
+                                </motion.div>
                             </Flex>
                         </motion.div>
                     { isMobile &&
@@ -116,6 +118,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
                             exit={{opacity: 0}}>
                             <Flex flexDir={'row'} flexWrap={'wrap'} gap={2} mt={0} justifyContent={'center'}>
                                 {typesArr.map((type) => <motion.div
+                                key={type}
                                 whileTap={{scale: .9}}
                                  style={{
                                     transition: 'height .2s ease-in-out',
@@ -174,6 +177,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
                             maxWidth: '200px',
                             gap: 5 }}>
                             {typesArr.map((type) => <motion.div
+                                key={type}
                                 whileHover={{scale: 1.1, x:0}}
                                 whileTap={{scale: .9}}>
                             <Flex>   

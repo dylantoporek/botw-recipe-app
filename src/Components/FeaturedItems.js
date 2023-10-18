@@ -78,7 +78,6 @@ function FeaturedItems({props}) {
 
     return (
         <Stack maxW={'100vw'} style={{
-            WebkitTapHighlightColor: 'transparent',
             color: 'black'
         }}>
                 <Flex alignItems={'center'} w={'100vw'} justifyContent={'center'}> 
@@ -96,7 +95,6 @@ function FeaturedItems({props}) {
                         }}
                          >
                             <ChevronLeftIcon
-                                WebkitTapHighlightColor={'transparent'}
                                 boxSize={10}
                                 cursor={'pointer'}
                                 onClick={() => {
@@ -122,7 +120,6 @@ function FeaturedItems({props}) {
                         whileHover={{scale: 1.2}}
                         whileTap={{scale: .9}}>
                             <ChevronRightIcon 
-                                WebkitTapHighlightColor={'transparent'}
                                 boxSize={10}
                                 cursor={'pointer'}
                                 onClick={() => {
