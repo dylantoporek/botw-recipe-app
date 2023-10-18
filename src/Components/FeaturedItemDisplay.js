@@ -16,9 +16,9 @@ export default function FeaturedItemDisplay({targetedItem, variants, itemSwitch,
                     gap={5} 
                     alignItems={'center'} 
                     justifyContent={'center'}>
-                        <Image  w={'150px'} h={'150px'} src={targetedItem?.image}/>
-                        <Text mb={2}>{targetedItem?.name}</Text>
-                        <Text maxW={isMobile ? '100%':'100%'}>{targetedItem?.description}</Text>
+                        <Image  w={isMobile ? '100px':'120px'} h={isMobile ? '100px':'120px'} src={targetedItem?.image}/>
+                        <Text mb={isMobile ? 5:2}>{targetedItem?.name}</Text>
+                        <Text maxW={isMobile ? '100%':'80%'}>{targetedItem?.description}</Text>
                     </Flex>
                 </Flex>
         </motion.div>

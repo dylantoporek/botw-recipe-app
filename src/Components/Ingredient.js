@@ -16,47 +16,22 @@ function Ingredient({ing, setTogDetails, setSpecificIng}){
         setTogDetails(true)
     }
 
-    // let ingDisplay
-    // if (ing.name !==null){
-    //     ingDisplay = <div 
-    //             onMouseEnter={()=> setIsShown(true)}
-    //             onMouseLeave={()=> setIsShown(false)}
-    //             onClick={putInCart} className='ingredient'>
-    //         <p className="ing-name">{ing.name}</p>
-    //         <img className="ing-img" src={ing.image} />
-    //         <img className='ing-background-noH' src={backgroundNoHover}/>
-    //     </div>
-    // }
-
-    // if (isShown){
-    //     ingDisplay = <div 
-    //         onMouseEnter={()=> setIsShown(true)}
-    //         onMouseLeave={()=> setIsShown(false)}
-    //         onClick={putInCart} className='ingredient'>
-    //         <p className="ing-name">{ing.name}</p>
-    //         <img className="ing-img" src={ing.image} />
-    //         <img className='ing-background-H' src={backgroundHover}/>
-    //     </div>
-    // }
-
-    // return (
-    //     <div>{ingDisplay}</div>
-    // )
     return(
         <motion.div
          whileHover={{scale: 1.1}}>
             <Flex 
              cursor={'pointer'}
+             gap={1}
              flexDir={'column'} 
              alignItems={'center'} 
              backgroundColor={'rgba(255, 255, 255, .8)'}
              boxShadow={'0px 1px 2px 2px rgba(54,54,54,.5)'}
              w={isMobile ? '150px':'200px'}
              h={'200px'}
-             mb={5}
+             mb={0}
              onClick={() => openDetails()}>
                 
-                <Image mt={5} w={'60px'} h={'60px'} src={ing.image}/>
+                <Image mt={8} w={'60px'} h={'60px'} src={ing.image}/>
                 <Text textAlign={'center'} mt={5} fontSize={isMobile ? 12 : 14}>
                     {ing.name}
                 </Text>

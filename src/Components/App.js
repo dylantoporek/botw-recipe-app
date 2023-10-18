@@ -151,8 +151,8 @@ function App() {
       <ChakraProvider>
           <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
           <Routes>
-            <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
-            <Route path='/cookbook' element={<Cookbook ingredientList={ingredientList} recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
+            <Route path='/shop' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
+            <Route path='/recipes' element={<Cookbook ingredientList={ingredientList} recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
             <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
             <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
             <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>

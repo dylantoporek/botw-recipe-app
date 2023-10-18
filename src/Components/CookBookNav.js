@@ -64,7 +64,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
         initial={{opacity: 0}}
         animate={{opacity: 1}}> 
             <Stack
-             minH={isMobile ? '40px':'90vh'}
+             minH={isMobile ? '40px':'100vh'}
              minW={isMobile ? '100vw' : '10vw'}
              top={isMobile ? 55 : 65}
              left={0}

@@ -28,6 +28,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
         <motion.div
          whileHover={{scale: 1.1}}>
             <Flex 
+             gap={1}
              cursor={'pointer'}
              flexDir={'column'} 
              alignItems={'center'} 
@@ -38,7 +39,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
              mb={5}
              onClick={() => openDetails()}>
                 
-                <Image mt={5} w={'100px'} h={'80px'} src={recipe.image}/>
+                <Image mt={6} w={'100px'} h={'80px'} src={recipe.image}/>
                 <Text textAlign={'center'} mt={5} fontSize={isMobile ? 12 : 14}>
                     {recipe.name}
                 </Text>
