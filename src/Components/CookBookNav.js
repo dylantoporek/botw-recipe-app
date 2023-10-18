@@ -15,6 +15,7 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
     function handleSearchByName(e){
         setNameFilter(e.target.value)
     }
+    
 
     function handleFilterChange(e){
         if(category === e.target.innerText){
@@ -49,16 +50,14 @@ function CookBookNav({name, category, typeFilter, setNameFilter, setCategoryFilt
         setTimeout(() => {
             setAnimationTrigger(true)
         }, 500)
-
-      };
+    };
     
-      const handleMouseLeave = () => {
+    const handleMouseLeave = () => {
         setAnimationTrigger(false)
         setTimeout(() =>{
             setShowTypeMenu(false)
         }, 500)
-
-      };
+    };
 
     return (
         <motion.div
