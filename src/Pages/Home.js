@@ -19,29 +19,15 @@ function Home({changePage, recipeList, ingredientList}){
     return (
 
         <Stack 
-        //  backgroundImage={'./158544.jpg'}
-        //  backgroundSize={'cover'}
-        //  backgroundRepeat={'repeat-y'}
          maxW={'100vw'} 
          mt={isMobile ? '50px':'70px'}
          overflowY={'scroll'} 
          >
             <Stack style={{
-                // background: 'linear-gradient(#E7DECD, white)',
                 background: '#20606F',
                 color: 'white'
             }}>
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
-
-            {/* <Flex flexDir={'column'} p={10}>
-                <Text fontWeight={'bold'}>Instructions</Text>
-                <Flex fontSize={14} flexDir={'column'}>
-                    <Text>Find a recipe you would like to create in the Cookbook.</Text>
-                    <Text>Go to the Store and purchase any required ingredients to create the recipe.</Text>
-                    <Text>Place the ingredients into the pot and press the cook button. If you used the right combination of ingredients, you will have made the dish!</Text>
-                    <Text>Finally, you can sell the dishes you cook to make back the money you used to purchase ingredients.</Text>
-                </Flex>
-            </Flex> */}
             <Flex flexDir={'column'}>
             <Flex
                     flexDir={isMobile ? 'column' : 'row'} 
@@ -51,8 +37,7 @@ function Home({changePage, recipeList, ingredientList}){
                     w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
                     <Heading fontWeight={300}>Featured Recipes</Heading>
-                    <Link href={'/cookbook'}>
-                        
+                    <Link href={'/recipes'}>
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
                             <Text>View All</Text>
                             <motion.div 
@@ -61,8 +46,6 @@ function Home({changePage, recipeList, ingredientList}){
                             <ArrowForwardIcon boxSize={5}/>
                             </motion.div>
                         </Flex>
-
-                        
                     </Link>
                 </Flex>
                 
@@ -79,7 +62,7 @@ function Home({changePage, recipeList, ingredientList}){
                     w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
                     <Heading fontWeight={300}>Featured Ingredients</Heading>
-                    <Link href={'/store'}>
+                    <Link href={'/shop'}>
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
                             <Text>Shop All</Text>
                             <motion.div 

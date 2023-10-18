@@ -60,18 +60,18 @@ function CookBookDetails({togDetails, recipe, setTogDetails, changePinnedRecipe,
             flexDirection: 'column',
             position: 'fixed',
             zIndex: 1,
-            top: isMobile ? '9%':'10%',
+            top: isMobile ? '9vh':'10vh',
             left: '0px',
             overflowY: isMobile ? 'scroll':'hidden',
             width: '100vw',
-            height: '95vh',
+            height: isMobile ? '91vh':'90vh',
             backgroundColor: '#20606F'
          }}>
-            {showPin ? <Alert position={'absolute'} top={0}>
+            {showPin ? <Alert position={'fixed'} top={'10vh'}>
                 <AlertIcon/>
                 <AlertTitle>{`${recipe.name} is now pinned in your Kitchen.`}</AlertTitle>
             </Alert>:null}
-            <Stack p={10} w={isMobile ? '100vw':'800px'} alignSelf={'center'}>
+            <Stack p={10} mt={5} w={isMobile ? '100vw':'800px'} alignSelf={'center'}>
                 <motion.div whileHover={{scale: 1.1, x: 0}} whileTap={{scale: .9, x: 0}}>
                 <Flex color={'white'} gap={5} alignItems={'center'} cursor={'pointer'} onClick={() => {
                     setIsShown(false)

@@ -27,25 +27,7 @@ function Navbar({user, setUser, selectedPage}){
     ssr: true,
     fallback: false,
 })
- const navbarOptions = ['Home', 'Kitchen', 'Cookbook', 'Store', 'Cart']
- 
- function iconPicker(string){
-  if (string === 'Home'){
-    return null
-  }
-  if (string === 'Kitchen'){
-    return kitchenIcon
-  }
-  if (string === 'Cookbook'){
-    return cookbookIcon
-  }
-  if (string === 'Store'){
-    return storeIcon
-  }
-  if (string === 'Cart'){
-    return cartIcon
-  }
- }
+ const navbarOptions = ['Home', 'Kitchen', 'Recipes', 'Shop']
 
   function handleNavigate(string){
     if (string === 'Home'){
@@ -56,13 +38,13 @@ function Navbar({user, setUser, selectedPage}){
       setExpandNav(false)
       navigate('/kitchen')
     }
-    if (string === 'Cookbook'){
+    if (string === 'Recipes'){
       setExpandNav(false)
-      navigate('/cookbook')
+      navigate('/recipes')
     }
-    if (string === 'Store'){
+    if (string === 'Shop'){
       setExpandNav(false)
-      navigate('/store')
+      navigate('/shop')
     }
     if (string === 'Cart'){
       setExpandNav(false)
@@ -124,6 +106,16 @@ function Navbar({user, setUser, selectedPage}){
             <Image maxW={'10px'} maxH={'25px'} src={rupee}/>
             <Text>{user.bank}</Text>
           </Flex>
+          <motion.div
+            whileHover={{scale: 1.2}}
+            whileTap={{scale: .9}}>
+              <Image 
+              onClick={() => {
+                navigate('/cart')
+              }} 
+              maxW={'25px'} 
+              src={'/cart.svg'}/>
+            </motion.div>
           <Flex gap={1}>
             <motion.div
              whileHover={{scale: 1.2}}
@@ -142,7 +134,7 @@ function Navbar({user, setUser, selectedPage}){
           position: 'fixed',
           display: 'flex',
           flexDirection: 'column',
-          height: '300px',
+          height: '100vh',
           width: '150px',
           top: 0,
           left: -350,
@@ -156,7 +148,7 @@ function Navbar({user, setUser, selectedPage}){
           <Flex alignSelf={'flex-end'} zIndex={100}>
             <CloseIcon maxW={'10px'} mr={2} mt={1} cursor={'pointer'} onClick={() => setExpandNav(false)}/>
           </Flex>
-          <Flex flexDir={'column'} alignItems={'center'} mt={10} gap={2}>
+          <Flex flexDir={'column'} alignItems={'center'} mt={'20vh'} gap={10}>
             {navbarOptions.map((item) => {
               return <motion.div
               style={{
@@ -265,11 +257,21 @@ function Navbar({user, setUser, selectedPage}){
          }}
          initial={{opacity: 0}}
          animate={{opacity: 1}}>
-          <Flex gap={10}>
+          <Flex gap={10} alignItems={'center'}>
             <Flex gap={1}>
               <Image maxW={'10px'} src={rupee}/>
               <Text>{user.bank}</Text>
             </Flex>
+            <motion.div
+            whileHover={{scale: 1.2}}
+            whileTap={{scale: .9}}>
+              <Image 
+               onClick={() => {
+                navigate('/cart')
+              }} 
+              maxW={'25px'} 
+              src={'/cart.svg'}/>
+            </motion.div>
             <motion.div
             whileHover={{scale: 1.2}}
             whileTap={{scale: .9}}>

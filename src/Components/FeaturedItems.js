@@ -86,8 +86,9 @@ function FeaturedItems({props}) {
                         whileTap={{scale: .9}}
                         style={{
                             zIndex: 1,
+                            top: isMobile ? -10:0, 
                             position: 'relative',
-                            right: isMobile ? -55 : -55,
+                            right: isMobile ? -45 : -55,
                             p: 2,
                             borderRadius: '50%',
                             ml: 5,
@@ -110,8 +111,9 @@ function FeaturedItems({props}) {
                         <motion.div 
                         style={{
                          zIndex: 1,
-                         position: 'relative', 
-                         left: isMobile ? -55 : -55,
+                         position: 'relative',
+                         top: isMobile ? -10:0, 
+                         left: isMobile ? -45 : -55,
                          p: 2,
                          borderRadius: '50%',
                          mr: 5, 

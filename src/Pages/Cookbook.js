@@ -4,6 +4,7 @@ import {motion} from 'framer-motion'
 import CookBookNav from "../Components/CookBookNav";
 import Recipe from "../Components/Recipe"
 import CookBookDetails from "../Components/CookBookDetails";
+import { useLockBodyScroll } from "@uidotdev/usehooks";
 
 function Cookbook({ingredientList ,recipeList, changePage, changePinnedRecipe}){
     const [categoryFilter, setCategoryFilter] = useState("All")
@@ -15,7 +16,6 @@ function Cookbook({ingredientList ,recipeList, changePage, changePinnedRecipe}){
         ssr: true,
         fallback: false,
     })
-
 
     const filteredByCategory = recipeList.filter((recipe)=>{
         if (categoryFilter === "All" && recipe.category !== 'Elixer' && !recipe.name.includes('Monster')){
@@ -46,17 +46,20 @@ function Cookbook({ingredientList ,recipeList, changePage, changePinnedRecipe}){
 
     return (
             <Stack 
+             overflowY={'hidden'}
              flexDir={'row'}
              maxW={'100vw'} 
-             mt={isMobile ? '55px':'65px'} 
+             maxH={'100vh'}
              p={isMobile ? 0:10}
              backgroundColor={'#20606F'}
-             minH={'90.5vh'}
              justifyContent={isMobile ? 'center':'flex-end'}>
                 <motion.div 
                  style={{
+                    overflowY: 'scroll',
+                    height: isMobile ? '92vh':'80vh',
                     display: 'flex',
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    marginTop: isMobile ? '55px' : '55px',
                  }}
                  initial={{opacity: 0}}
                  animate={{opacity: 1}}>
@@ -71,8 +74,7 @@ function Cookbook({ingredientList ,recipeList, changePage, changePinnedRecipe}){
                     </Flex>
                    
                      <Flex
-                       overflow={togDetails ? 'hidden' : 'unset'}
-                       h={togDetails ? '100vh' : '100%'}
+                       h={'100%'}
                        transition={'height .2s ease-in-out'}
                        w={isMobile ? '100vw':'70vw'}
                        p={0}

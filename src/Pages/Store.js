@@ -3,6 +3,7 @@ import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui
 import {motion} from 'framer-motion'
 import Ingredient from "../Components/Ingredient";
 import StoreNav from "../Components/StoreNav";
+import StoreDetails from "../Components/StoreDetails";
 import Details from "../Components/Details";
 import greyBackground from '../Images/greyBackground.png'
 
@@ -79,17 +80,21 @@ function Store({ingredientList, addItemToCart, changePage}){
 //     }
 return (
     <Stack
+     overflowY={'hidden'}
      flexDir={'row'}
      maxW={'100vw'} 
-     mt={isMobile ? '55px':'65px'} 
+
      p={isMobile ? 0:10}
      backgroundColor={'#20606F'}
-     minH={'90.5vh'}
+     maxH={'100vh'}
      justifyContent={isMobile ? 'center':'flex-end'}>
         <motion.div
         style={{
+            overflowY: 'scroll',
+            height: isMobile ? '92vh':'80vh',
             display: 'flex',
-            flexDirection: 'row'
+            flexDirection: 'row',
+            marginTop: isMobile ? '55px' : '55px',
          }}
          initial={{opacity: 0}}
          animate={{opacity: 1}}>
@@ -125,6 +130,9 @@ return (
                         setTogDetails={setTogDetails} 
                         setSpecificIng={setSpecificIng}/> : null)}
             </Flex> 
+            <Flex>
+                {togDetails ? <StoreDetails ing={specificIng} togDetails={togDetails} addItemToCart={addItemToCart} setTogDetails={setTogDetails}/> : null}
+            </Flex>
         </motion.div>
     </Stack>
 )
