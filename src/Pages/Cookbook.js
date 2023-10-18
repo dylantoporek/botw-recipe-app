@@ -4,9 +4,8 @@ import {motion} from 'framer-motion'
 import CookBookNav from "../Components/CookBookNav";
 import Recipe from "../Components/Recipe"
 import CookBookDetails from "../Components/CookBookDetails";
-import greyBackground from '../Images/greyBackground.png'
 
-function Cookbook({recipeList, changePage, changePinnedRecipe}){
+function Cookbook({ingredientList ,recipeList, changePage, changePinnedRecipe}){
     const [categoryFilter, setCategoryFilter] = useState("All")
     const [nameFilter, setNameFilter] = useState("")
     const [typeFilter, setTypeFilter] = useState("All")
@@ -18,7 +17,6 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
     })
 
 
-    console.log(recipeList)
     const filteredByCategory = recipeList.filter((recipe)=>{
         if (categoryFilter === "All" && recipe.category !== 'Elixer' && !recipe.name.includes('Monster')){
             return recipe
@@ -73,6 +71,9 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
                     </Flex>
                    
                      <Flex
+                       overflow={togDetails ? 'hidden' : 'unset'}
+                       h={togDetails ? '100vh' : '100%'}
+                       transition={'height .2s ease-in-out'}
                        w={isMobile ? '100vw':'70vw'}
                        p={0}
                        position={'relative'}
@@ -94,7 +95,7 @@ function Cookbook({recipeList, changePage, changePinnedRecipe}){
                           setSpecificRecipe={setSpecificRecipe}/>)}
                      </Flex> 
                      <Flex>
-                        {togDetails ? <CookBookDetails togDetails={togDetails} recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe} /> : null}
+                        {togDetails ? <CookBookDetails ingredientList={ingredientList} togDetails={togDetails} recipe={specificRecipe} setTogDetails={setTogDetails} changePinnedRecipe={changePinnedRecipe} /> : null}
                     </Flex> 
                 </motion.div>
                 

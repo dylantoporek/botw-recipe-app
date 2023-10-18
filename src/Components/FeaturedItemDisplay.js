@@ -5,9 +5,6 @@ import {motion} from 'framer-motion'
 export default function FeaturedItemDisplay({targetedItem, variants, itemSwitch, isMobile}){
     return (
         <motion.div
-            style={{
-                WebkitTapHighlightColor: 'transparent',
-            }} 
             animate={itemSwitch ? 'open' : 'close'}
             variants={variants}>
                 <Flex justifyContent={'center'} h={isMobile ? '70vh':'60vh'} borderRadius={'1em'}>
@@ -18,8 +15,7 @@ export default function FeaturedItemDisplay({targetedItem, variants, itemSwitch,
                     w={isMobile ? '80vw' : '60vw'}
                     gap={5} 
                     alignItems={'center'} 
-                    justifyContent={'center'}
-                    WebkitTapHighlightColor={'transparent'}>
+                    justifyContent={'center'}>
                         <Image  w={'150px'} h={'150px'} src={targetedItem?.image}/>
                         <Text mb={2}>{targetedItem?.name}</Text>
                         <Text maxW={isMobile ? '100%':'100%'}>{targetedItem?.description}</Text>

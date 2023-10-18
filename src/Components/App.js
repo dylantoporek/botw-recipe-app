@@ -18,6 +18,7 @@ function App() {
   const [pantries, setPantries] = useState([])
   const [selectedPage, setSelectedPage] = useState(null)
   const [pinnedRecipe, setPinnedRecipe] = useState(null)
+  const [pinnedIngredients, setPinnedIngredients] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -57,6 +58,9 @@ function App() {
   function changePinnedRecipe(obj){
     setPinnedRecipe(obj)
   }
+
+  
+  
 
 
   function checkPantryItems(item){
@@ -148,7 +152,7 @@ function App() {
           <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
           <Routes>
             <Route path='/store' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
-            <Route path='/cookbook' element={<Cookbook recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
+            <Route path='/cookbook' element={<Cookbook ingredientList={ingredientList} recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
             <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
             <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
             <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>

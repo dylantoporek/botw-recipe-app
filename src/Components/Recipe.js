@@ -28,6 +28,7 @@ function Recipe({recipe, setTogDetails, setSpecificRecipe}){
         <motion.div
          whileHover={{scale: 1.1}}>
             <Flex 
+             cursor={'pointer'}
              flexDir={'column'} 
              alignItems={'center'} 
              backgroundColor={'rgba(255, 255, 255, .8)'}

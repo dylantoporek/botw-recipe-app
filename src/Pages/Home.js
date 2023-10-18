@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui/react'
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Link, Heading } from '@chakra-ui/react'
 import FeaturedItems from "../Components/FeaturedItems";
 import {ArrowForwardIcon} from '@chakra-ui/icons'
 import '../App.css'
@@ -10,7 +10,6 @@ function Home({changePage, recipeList, ingredientList}){
         ssr: true,
         fallback: false,
     })
-    console.log(ingredientList)
     
     useEffect(() => {
         changePage(window.location.href)
@@ -49,9 +48,9 @@ function Home({changePage, recipeList, ingredientList}){
                     p={10} 
                     alignItems={isMobile ? 'flex-start':'center'} 
                     alignSelf={'center'} 
-                    w={isMobile ? '100%' : '50%'} 
+                    w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
-                    <Text fontWeight={'bold'}>Featured Recipes</Text>
+                    <Heading fontWeight={300}>Featured Recipes</Heading>
                     <Link href={'/cookbook'}>
                         
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
@@ -77,9 +76,9 @@ function Home({changePage, recipeList, ingredientList}){
                     p={10} 
                     alignItems={isMobile ? 'flex-start':'center'} 
                     alignSelf={'center'} 
-                    w={isMobile ? '100%' : '50%'} 
+                    w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
-                    <Text fontWeight={'bold'}>Featured Ingredients</Text>
+                    <Heading fontWeight={300}>Featured Ingredients</Heading>
                     <Link href={'/store'}>
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
                             <Text>Shop All</Text>
