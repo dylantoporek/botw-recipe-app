@@ -8,19 +8,13 @@ import cartIcon from '../Images/cartIcon.png'
 import {Stack, Flex, Text, Button, Image, useMediaQuery, Link } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon, ArrowRightIcon } from '@chakra-ui/icons'
 import {motion} from 'framer-motion'
+import AccountSettings from "./AccountSettings";
 import '../App.css'
 
-function Navbar({user, setUser, selectedPage}){
+function Navbar({user, setUser, selectedPage, cart}){
   const navigate = useNavigate()
 
-  function handleLogoutClick() {
-    fetch("/api/v1/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
-    navigate('/')
-  }
+ 
   const [expandNav, setExpandNav] = useState(false)
   const [expandAccount, setExpandAccount] = useState(false)
   const [isMobile] = useMediaQuery("(max-width: 768px)", {
@@ -67,20 +61,21 @@ function Navbar({user, setUser, selectedPage}){
       } 
     }, 
     openRight: { 
-      opacity: [0, 0, 0, 1], 
-      y: isMobile ? 100 : 120, 
+      opacity: 1, 
+      x: 0, 
       transition: {
-       y: {stiffness: 100}
+       x: {stiffness: 100}
      } 
    },
    closeRight: { 
-    opacity: [1, 0], 
-    y: -100, 
+    opacity:  0, 
+    x: 100, 
     transition: {
-     y: {stiffness: 100}
+     x: {stiffness: 100}
    } 
  }
   }
+    // Mobile Display
  if (isMobile){
   return (
     <Stack 
@@ -98,8 +93,10 @@ function Navbar({user, setUser, selectedPage}){
       <motion.div
        initial={{opacity: 0}}
        animate={{opacity: 1}}>
-        <Image id='triforce' cursor={'pointer'} maxW={'25px'} maxH={'50px'} onClick={() => setExpandNav(true)} src={'./triforce.svg'}/>
-        {/* <HamburgerIcon cursor={'pointer'} onClick={() => setExpandNav(true)}/> */}
+        <Image id='triforce' cursor={'pointer'} maxW={'25px'} maxH={'50px'} onClick={() => {
+          setExpandNav(true)
+          setExpandAccount(false)
+        }} src={'./triforce.svg'}/>
       </motion.div>
       <Flex gap={10} alignItems={'center'}>
           <Flex gap={1}>
@@ -109,22 +106,38 @@ function Navbar({user, setUser, selectedPage}){
           <motion.div
             whileHover={{scale: 1.2}}
             whileTap={{scale: .9}}>
+              <Flex>
               <Image 
+              cursor={'pointer'}
               onClick={() => {
                 navigate('/cart')
+                setExpandNav(false)
+                setExpandAccount(false)
               }} 
               maxW={'25px'} 
               src={'/cart.svg'}/>
+                <Flex w={'10px'} h={'10px'} backgroundColor={cart.length > 0 ? 'red' : 'transparent'} borderRadius={'50%'} p={0}>
+                  <Text color={'white'}>
+                    {/* {cart.length > 0 ? cart.length : null} */}
+                  </Text>
+                </Flex>
+              </Flex>
+             
             </motion.div>
           <Flex gap={1}>
             <motion.div
              whileHover={{scale: 1.2}}
              whileTap={{scale: .9}}>
-              <Image cursor={'pointer'} onClick={() => setExpandAccount(!expandAccount)} src={'./account_circle.svg'}/>
+              <Image cursor={'pointer'} onClick={() => {
+                setExpandAccount(!expandAccount)
+                setExpandNav(false)
+              }} 
+                src={'./account_circle.svg'}/>
             </motion.div>
             
           </Flex>
         </Flex>
+        {/* Left sliding nav for Mobile */}
         <motion.div
           initial={{opcaity: 0}}
           animate={expandNav ? 'open' : 'close'}
@@ -167,30 +180,31 @@ function Navbar({user, setUser, selectedPage}){
             })}
           </Flex>
         </motion.div>
+        {/* Right sliding account options */}
         <motion.div
-        initial={{opcaity: 0}}
+        initial={false}
         animate={expandAccount ? 'openRight' : 'closeRight'}
         variants={variants}
         style={{
           position: 'fixed',
           display: 'flex',
           flexDirection: 'column',
-          top: -50,
+          top: 60,
           right: 0,
           padding: 10,
           borderBottomLeftRadius: '.5em',
           borderTopLeftRadius: '.5em',
           backgroundColor: 'white'
          }}>
-          <Flex alignItems={'center'} flexDir={'column'} gap={5}>
-            <Text>{user.username}</Text>
-            <Button fontSize={'12px'} onClick={() => handleLogoutClick()}>
-              Signout
-            </Button>
-          </Flex>
-        </motion.div>
+        <AccountSettings 
+       expandAccount={expandAccount} 
+       variants={variants} 
+       user={user}
+       setUser={setUser}/>
+       </motion.div>
     </Stack>
   )
+  // Desktop Display
  } else return (
     <Stack 
       flexDir={'row'} 
@@ -226,7 +240,10 @@ function Navbar({user, setUser, selectedPage}){
                    src={'./triforce.svg'} 
                    cursor={'pointer'} 
                    maxW={'30px'}
-                   onClick={() => handleNavigate(item)}/>
+                   onClick={() => {
+                    handleNavigate(item)
+                    setExpandAccount(false)
+                    }}/>
                 </Flex> 
               </motion.div>
               )
@@ -242,7 +259,10 @@ function Navbar({user, setUser, selectedPage}){
                whileHover={{scale: 1.1, color: 'orange'}}
                whileTap={{scale: .9}}>
                 <Flex mr={10} alignItems={'center'}>
-                  <Text cursor={'pointer'} onClick={() => handleNavigate(item)}>
+                  <Text cursor={'pointer'} onClick={() => {
+                    handleNavigate(item)
+                    setExpandAccount(false)
+                    }}>
                     {item}
                   </Text>
                 </Flex> 
@@ -265,12 +285,23 @@ function Navbar({user, setUser, selectedPage}){
             <motion.div
             whileHover={{scale: 1.2}}
             whileTap={{scale: .9}}>
-              <Image 
-               onClick={() => {
-                navigate('/cart')
-              }} 
-              maxW={'25px'} 
-              src={'/cart.svg'}/>
+              <Flex>
+                <Image 
+                cursor={'pointer'}
+                onClick={() => {
+                  navigate('/cart')
+                  setExpandNav(false)
+                  setExpandAccount(false)
+                }} 
+                maxW={'25px'} 
+                src={'/cart.svg'}/>
+                <Flex w={'10px'} h={'10px'} backgroundColor={cart.length > 0 ? 'red' : 'transparent'} borderRadius={'50%'} p={0}>
+                  <Text color={'white'}>
+                    {/* {cart.length > 0 ? cart.length : null} */}
+                  </Text>
+                </Flex>
+              </Flex>
+              
             </motion.div>
             <motion.div
             whileHover={{scale: 1.2}}
@@ -279,28 +310,28 @@ function Navbar({user, setUser, selectedPage}){
             </motion.div>
           </Flex>
         </motion.div>
-        
+        {/* Right sliding account options */}
         <motion.div
-        initial={{opcaity: 0}}
+        initial={false}
         animate={expandAccount ? 'openRight' : 'closeRight'}
         variants={variants}
         style={{
           position: 'fixed',
           display: 'flex',
           flexDirection: 'column',
-          top: -50,
+          top: 70,
           right: 0,
           padding: 10,
           borderBottomLeftRadius: '.5em',
+          borderTopLeftRadius: '.5em',
           backgroundColor: 'white'
          }}>
-         <Flex alignItems={'center'} flexDir={'column'} gap={5}>
-            <Text>{user.username}</Text>
-            <Button fontSize={'12px'} onClick={() => handleLogoutClick()}>
-              Signout
-            </Button>
-          </Flex>
-        </motion.div>
+        <AccountSettings 
+       expandAccount={expandAccount} 
+       variants={variants} 
+       user={user}
+       setUser={setUser}/>
+       </motion.div>
     </Stack>
   )
   

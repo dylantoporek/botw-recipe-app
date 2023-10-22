@@ -122,13 +122,15 @@ function App() {
     let newCart = [...cart, newItem]
     setCart(newCart)
     } if (cartCheck.length === 1){
+      let index = cart.findIndex((cartItem) => cartItem.id === item.id)
       let filteredCart = cart.filter((cartItem) => cartItem.id !== item.id)
       let updatedItem = {
         ...item,
-        quantity: item.quantity + cartCheck[0].quantity
+        quantity: parseInt(item.quantity) + parseInt(cartCheck[0].quantity)
       }
-      let newCart = [...filteredCart, updatedItem]
-      setCart(newCart)
+      let updatedCart = [...filteredCart]
+      updatedCart.splice(index, 0, updatedItem)
+      setCart(updatedCart)
     }
   }
 
@@ -149,7 +151,7 @@ function App() {
   } else {
     return (
       <ChakraProvider>
-          <Navbar user={user} setUser={setUser} selectedPage={selectedPage}/>
+          <Navbar cart={cart} user={user} setUser={setUser} selectedPage={selectedPage}/>
           <Routes>
             <Route path='/shop' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
             <Route path='/recipes' element={<Cookbook ingredientList={ingredientList} recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
