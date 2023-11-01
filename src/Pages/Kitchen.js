@@ -1,22 +1,32 @@
 import React, {useState, useEffect} from "react";
+import {Stack, Flex, Text, Button, Image, useMediaQuery, Link, Grid, GridItem, AlertIcon, AlertTitle, Alert } from '@chakra-ui/react'
+import {motion} from 'framer-motion'
 import Pantry from "../Components/Pantry";
 import Dish from "../Components/Dish";
 import Pot from "../Components/Pot";
-import potBackground from '../Images/pot.png'
-import parchV from '../Images/parchV.png'
-import greyBackground from '../Images/greyBackground.png'
+import KitchenNav from "../Components/KitchenNav";
+import PinnedRecipe from "../Components/PinnedRecipe";
 
 
 
-function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, pinnedRecipe}){
-
-    const [pot, setPot] = useState([])
+function Kitchen({
+     pantries, 
+     recipeList, 
+     setPantries, 
+     user, 
+     setUser, 
+     changePage, 
+     pinnedRecipe, 
+     ingredientList, 
+     pot, 
+     setPot}){
     const [dishes, setDishes] = useState([])
     const [togDisplay, setTogDisplay] = useState(false)
-    const [cookIsShown, setCookIsShown] = useState(false)
-    const [pantryIsShown, setPantryIsShown] = useState(false)
-    const [dishIsShown, setDishIsShown] = useState(false)  
-
+    const [refetch, setRefetch] = useState(false)
+    const [isMobile] = useMediaQuery("(max-width: 768px)", {
+        ssr: true,
+        fallback: false,
+    })
 
     useEffect(()=>{
         // Pantries from DB
@@ -36,50 +46,49 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
             }
         })
 
-        changePage(window.location.href)
-    }, [])
-
-    
-
-    const pantryDisplay = pantries.length > 0 ? pantries.map((item)=>{
-       return <Pantry 
-            key={item.ingredient.id}
-            pot={pot} 
-            item={item}
-            removeFromPot={removeFromPot} 
-            addItemToPot={addItemToPot}/>
-    }) : <p>Pantry empty.</p>
-
-    const potDisplay = pot.length > 0 ? pot.map((item) =>{
-       return <Pot 
-            item={item} 
-            pot={pot} 
-            startCookingProcess={startCookingProcess}/>
-    }) : null
-
-    const dishDisplay = dishes.length > 0 ? dishes.map((item)=> {
-       return <Dish 
-            item={item} 
-            sellRecipe={sellRecipe} 
-            user={user} 
-            setUser={setUser}/>
-    }) : <p>Dishes empty.</p>
+        // changePage(window.location.href)
+    }, [refetch])
 
 
-    const pinnedRecipeDisplay = pinnedRecipe ? 
-    <div id='pinned-recipe-cont'>
-        <p id='pinned-title'>{pinnedRecipe.name}</p>
-       {pinnedRecipe.ingredient1 !== null ? <li>{pinnedRecipe.ingredient1}</li> : null}
-       {pinnedRecipe.ingredient2 !== null ? <li>{pinnedRecipe.ingredient2}</li> : null}
-       {pinnedRecipe.ingredient3 !== null ? <li>{pinnedRecipe.ingredient3}</li> : null}
-       {pinnedRecipe.ingredient4 !== null ? <li>{pinnedRecipe.ingredient4}</li> : null}
-       {pinnedRecipe.ingredient5 !== null ? <li>{pinnedRecipe.ingredient5}</li> : null}
-    </div> 
-    : 
-    <div id='pinned-recipe-cont'>
-        <p id='pinned-title'>Pinned Recipe</p>
-        <li>no recipe pinned</li>
-    </div>
+    // const pantryDisplay = pantries.length > 0 ? pantries.map((item)=>{
+    //    return <Pantry 
+    //         key={item.ingredient.id}
+    //         pot={pot} 
+    //         item={item}
+    //         removeFromPot={removeFromPot} 
+    //         addItemToPot={addItemToPot}/>
+    // }) : <p>Pantry empty.</p>
+
+    // const potDisplay = pot.length > 0 ? pot.map((item) =>{
+    //    return <Pot 
+    //         item={item} 
+    //         pot={pot} 
+    //         startCookingProcess={startCookingProcess}/>
+    // }) : null
+
+    // const dishDisplay = dishes.length > 0 ? dishes.map((item)=> {
+    //    return <Dish 
+    //         item={item} 
+    //         sellRecipe={sellRecipe} 
+    //         user={user} 
+    //         setUser={setUser}/>
+    // }) : <p>Dishes empty.</p>
+
+
+    // const pinnedRecipeDisplay = pinnedRecipe ? 
+    // <div id='pinned-recipe-cont'>
+    //     <p id='pinned-title'>{pinnedRecipe.name}</p>
+    //    {pinnedRecipe.ingredient1 !== null ? <li>{pinnedRecipe.ingredient1}</li> : null}
+    //    {pinnedRecipe.ingredient2 !== null ? <li>{pinnedRecipe.ingredient2}</li> : null}
+    //    {pinnedRecipe.ingredient3 !== null ? <li>{pinnedRecipe.ingredient3}</li> : null}
+    //    {pinnedRecipe.ingredient4 !== null ? <li>{pinnedRecipe.ingredient4}</li> : null}
+    //    {pinnedRecipe.ingredient5 !== null ? <li>{pinnedRecipe.ingredient5}</li> : null}
+    // </div> 
+    // : 
+    // <div id='pinned-recipe-cont'>
+    //     <p id='pinned-title'>Pinned Recipe</p>
+    //     <li>no recipe pinned</li>
+    // </div>
 
     function addItemToPot(item, num){
         if (pot.length < 5){
@@ -242,7 +251,8 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
                   r.json().catch((data) => console.log(data))
                 }
               });
-              pantries.forEach((pantryItem)=>{
+              let newPantry = [...pantries]
+              newPantry.map((pantryItem)=>{
                   if(pantryItem.quantity === 0){
                     fetch(`/api/v1/pantries/${pantryItem.id}`, {
                         method: 'DELETE',
@@ -255,24 +265,31 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
                         }
                       })
                   }
+                newPantry.filter((pantryItem) => pantryItem.quantity > 0)
+                setPantries(newPantry)
               })
+            setRefetch(!refetch)
             setPot([])
         } else {
             alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
-            pantries.forEach((pantryItem)=>{
-                if(pantryItem.quantity === 0){
-                  fetch(`/api/v1/pantries/${pantryItem.id}`, {
-                      method: 'DELETE',
-                    })
-                    .then((res) => {
-                      if (res.ok) {
-                        console.log("file deleted")
-                      } else {
-                        res.json().then((data)=> console.log(data))
-                      }
-                    })
-                }
+            let newPantry = [...pantries]
+              newPantry.map((pantryItem)=>{
+                  if(pantryItem.quantity === 0){
+                    fetch(`/api/v1/pantries/${pantryItem.id}`, {
+                        method: 'DELETE',
+                      })
+                      .then((res) => {
+                        if (res.ok) {
+                          console.log("file deleted")
+                        } else {
+                          res.json().then((data)=> console.log(data))
+                        }
+                      })
+                  }
+                newPantry.filter((pantryItem) => pantryItem.quantity > 0)
+                setPantries(newPantry)
             })
+            setRefetch(!refetch)
             setPot([])
         }
     }
@@ -297,88 +314,127 @@ function Kitchen({pantries, recipeList, setPantries, user, setUser, changePage, 
           })
     }
 
-    function handlePantryDisplay(){
-        setTogDisplay(false)
+    function handlePantryOrDish(){
+        setTogDisplay(!togDisplay)
     }
 
-    function handleDishDisplay(){
-        setTogDisplay(true)
-    }
+    // let pantryButtonDisplay = pantryIsShown ? 
+    //     <button id='tog-pantry' onClick={handlePantryDisplay}
+    //     style={{backgroundColor: 'gainsboro'}}
+    //     onMouseEnter={()=> setPantryIsShown(true)}
+    //     onMouseLeave={()=> setPantryIsShown(false)}>
+    //         Pantry
+    //     </button> : 
+    //     <button id='tog-pantry' onClick={handlePantryDisplay}
+    //     onMouseEnter={()=> setPantryIsShown(true)}
+    //     onMouseLeave={()=> setPantryIsShown(false)}>
+    //         Pantry
+    //     </button>
 
-    let pantryButtonDisplay = pantryIsShown ? 
-        <button id='tog-pantry' onClick={handlePantryDisplay}
-        style={{backgroundColor: 'gainsboro'}}
-        onMouseEnter={()=> setPantryIsShown(true)}
-        onMouseLeave={()=> setPantryIsShown(false)}>
-            Pantry
-        </button> : 
-        <button id='tog-pantry' onClick={handlePantryDisplay}
-        onMouseEnter={()=> setPantryIsShown(true)}
-        onMouseLeave={()=> setPantryIsShown(false)}>
-            Pantry
-        </button>
-
-        let dishButtonDisplay = dishIsShown ? 
-            <button id='tog-dishes' onClick={handleDishDisplay}
-            style={{backgroundColor: 'gainsboro'}}
-            onMouseEnter={()=> setDishIsShown(true)}
-            onMouseLeave={()=> setDishIsShown(false)}>
-                Dish
-            </button> : 
-            <button id='tog-dishes' onClick={handleDishDisplay}
-            onMouseEnter={()=> setDishIsShown(true)}
-            onMouseLeave={()=> setDishIsShown(false)}>
-                Dish
-            </button>
+        // let dishButtonDisplay = dishIsShown ? 
+        //     <button id='tog-dishes' onClick={handleDishDisplay}
+        //     style={{backgroundColor: 'gainsboro'}}
+        //     onMouseEnter={()=> setDishIsShown(true)}
+        //     onMouseLeave={()=> setDishIsShown(false)}>
+        //         Dish
+        //     </button> : 
+        //     <button id='tog-dishes' onClick={handleDishDisplay}
+        //     onMouseEnter={()=> setDishIsShown(true)}
+        //     onMouseLeave={()=> setDishIsShown(false)}>
+        //         Dish
+        //     </button>
 
 
-    return <div id='page-background'>
-        <div className="comp-cont-1">
-            <div id='tog-cont'>
-                {pantryButtonDisplay}
-                {dishButtonDisplay}
+    // return <div id='page-background'>
+    //     <div className="comp-cont-1">
+    //         <div id='tog-cont'>
+    //             {pantryButtonDisplay}
+    //             {dishButtonDisplay}
                 
-            </div>
+    //         </div>
             
-            {togDisplay ? 
-            <div id='home-dish-block'>
-                <div id='dish-items-cont'>
-                    {dishDisplay}
-                </div>
-            </div> : 
-            <div id='home-ing-block'>
-                    <div id='pantry-items-cont'>
-                        {pantryDisplay}
-                    </div>
-            </div>}
+    //         {togDisplay ? 
+    //         <div id='home-dish-block'>
+    //             <div id='dish-items-cont'>
+    //                 {dishDisplay}
+    //             </div>
+    //         </div> : 
+    //         <div id='home-ing-block'>
+    //                 <div id='pantry-items-cont'>
+    //                     {pantryDisplay}
+    //                 </div>
+    //         </div>}
                 
-            <div id='pinned-recipe-kitchen'>
-                {pinnedRecipeDisplay}
-            </div>
+    //         <div id='pinned-recipe-kitchen'>
+    //             {pinnedRecipeDisplay}
+    //         </div>
 
-            <img id='pinned-recipe-background' src={parchV}/>
+    //         <img id='pinned-recipe-background' src={parchV}/>
 
-            <div id='home-pot-block'>
-                <div id='pot-items-cont'>
-                    {potDisplay}
-                    {cookIsShown ? 
-                    <button id='start-cooking' onClick={startCookingProcess}
-                    style={{backgroundColor: 'gainsboro'}}
-                    onMouseEnter={()=> setCookIsShown(true)}
-                    onMouseLeave={()=> setCookIsShown(false)}>
-                        Cook!
-                    </button> : 
-                    <button id='start-cooking' onClick={startCookingProcess}
-                    onMouseEnter={()=> setCookIsShown(true)}
-                    onMouseLeave={()=> setCookIsShown(false)}>
-                        Cook!
-                    </button>}
-                    <img id='pot-img' src={potBackground}/>
-                </div>
-            </div>
-        </div>
-        <img id='login-signup-background' src={greyBackground} />
-    </div>  
+    //         <div id='home-pot-block'>
+    //             <div id='pot-items-cont'>
+    //                 {potDisplay}
+    //                 {cookIsShown ? 
+    //                 <button id='start-cooking' onClick={startCookingProcess}
+    //                 style={{backgroundColor: 'gainsboro'}}
+    //                 onMouseEnter={()=> setCookIsShown(true)}
+    //                 onMouseLeave={()=> setCookIsShown(false)}>
+    //                     Cook!
+    //                 </button> : 
+    //                 <button id='start-cooking' onClick={startCookingProcess}
+    //                 onMouseEnter={()=> setCookIsShown(true)}
+    //                 onMouseLeave={()=> setCookIsShown(false)}>
+    //                     Cook!
+    //                 </button>}
+    //                 <img id='pot-img' src={potBackground}/>
+    //             </div>
+    //         </div>
+    //     </div>
+    //     <img id='login-signup-background' src={greyBackground} />
+    // </div>  
+
+    return (
+        <Stack 
+         flexDir={'row'}
+         backgroundColor={'#20606F'} 
+         color={'white'} 
+         mt={isMobile ? '55px':'70px'} 
+         maxW={'100vw'}
+         minH={'92vh'}>
+            <KitchenNav 
+             togDisplay={togDisplay} 
+             handlePantryOrDish={handlePantryOrDish} 
+             pantries={pantries}
+             dishes={dishes}
+             pot={pot}
+             addItemToPot={addItemToPot}
+             removeFromPot={removeFromPot}
+             sellRecipe={sellRecipe}
+             user={user}
+             setUser={setUser}/>
+            <Flex
+             p={2}
+             mt={isMobile ? '170px': '0px'}
+             maxH={'80vh'}
+             justifyContent={isMobile ? 'center':'space-around'}
+             w={isMobile ? '100vw' : '75vw'}
+             ml={isMobile ? '-8px':'35vw'}>
+                <Flex mt={'0px'} flexDir={'column'} gap={10} alignItems={'center'}>
+                   <PinnedRecipe pinnedRecipe={pinnedRecipe} ingredientList={ingredientList}/>
+                   <Button
+                    position={'fixed'}
+                    bottom={isMobile ? '10vh':'30vh'}
+                    isDisabled={pot.length < 1}
+                    onClick={() => startCookingProcess()}>
+                        Cook
+                    </Button>
+                </Flex>
+                <Flex mt={'0px'}>
+                    <Pot pot={pot}/>
+                </Flex>
+            </Flex>
+        </Stack>
+    )
 }
 
 export default Kitchen

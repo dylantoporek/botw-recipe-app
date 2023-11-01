@@ -88,7 +88,7 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             <AlertTitle>{`${deletedItem.name} has been removed from your cart.`}</AlertTitle>
           </Alert>:null}
           {showCheckout ? 
-         <Alert status='success' position={'fixed'} top={isMobile ? '20.5vh': '22.5vh'} h={'80px'} maxW={'80vw'}>
+         <Alert status='success' position={'fixed'} top={isMobile ? '20.5vh': '22.5vh'} h={isMobile ? '120px':'100px'} maxW={'80vw'}>
             <AlertIcon/>
             <AlertTitle>{'Transaction Approved! Happy Cooking.'}</AlertTitle>
           </Alert>:null}

@@ -83,7 +83,6 @@ return (
      overflowY={'hidden'}
      flexDir={'row'}
      maxW={'100vw'} 
-
      p={isMobile ? 0:10}
      backgroundColor={'#20606F'}
      maxH={'100vh'}

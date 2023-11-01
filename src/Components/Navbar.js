@@ -81,7 +81,7 @@ function Navbar({user, setUser, selectedPage, cart}){
     <Stack 
      transition={'all ease-in'}
      flexDir={'row'} 
-     minW={'100vw'} 
+     w={'100vw'} 
      maxH={'60px'}
      p={5} 
      justifyContent={'space-between'} 
@@ -208,7 +208,7 @@ function Navbar({user, setUser, selectedPage, cart}){
  } else return (
     <Stack 
       flexDir={'row'} 
-      minW={'100vw'} 
+      w={'100vw'} 
       p={5} 
       justifyContent={'space-between'} 
       position={'fixed'} 

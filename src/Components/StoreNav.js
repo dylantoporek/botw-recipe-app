@@ -10,17 +10,6 @@ function StoreNav({nameFilter, category, setNameFilter, setCategoryFilter}){
         fallback: false,
     })
     const typesArr = ['Vegetable', 'Mushroom', 'Poultry', 'Fruit', 'Herb', 'Fish', 'Red Meat',  'Crab', 'Snail', 'Misc']
-
-    //             <option value="Fruit">Fruits</option>
-    //             <option value="Vegetable">Vegetables</option>
-    //             <option value="Mushroom">Mushrooms</option>
-    //             <option value="Herb">Herbs</option>
-    //             <option value="Fish">Fish</option>
-    //             <option value="Red Meat">Meat</option>
-    //             <option value="Poultry">Poultry</option>
-    //             <option value="Misc">Misc</option>
-    //             <option value="Crab">Crabs</option>
-    //             <option value="Snail">Snails</option>
     const [showTypeMenu, setShowTypeMenu] = useState(false)
     const [animationTrigger, setAnimationTrigger] = useState(false)
     function handleSearchByName(e){
@@ -63,16 +52,6 @@ function StoreNav({nameFilter, category, setNameFilter, setCategoryFilter}){
          }, 
     }
 
-    // return (
-    //     <div id='store-nav'>
-    //         <input id='search-by-name' placeholder="Search" type="text" value={name} onChange={handleSearchByName}></input>
-    //         <select id='search-by-type' value={category} onChange={handleFilterChange}>
-    //            
-    //         </select>
-            
-    //     </div>
-    // )
-    console.log(nameFilter)
     return (
         <motion.div
         initial={{opacity: 0}}
