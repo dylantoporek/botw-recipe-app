@@ -4,7 +4,6 @@ import {motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
 
 export default function AccountSettings({expandAccount, variants, user, setUser}){
-    console.log(user)
     const navigate = useNavigate()
     function handleLogoutClick() {
         fetch("/api/v1/logout", { method: "DELETE" }).then((r) => {

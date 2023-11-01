@@ -15,6 +15,7 @@ function App() {
   const [recipeList, setRecipeList] = useState([])
   const [ingredientList, setIngredientList] = useState([])
   const [cart, setCart] = useState([])
+  const [pot, setPot] = useState([])
   const [pantries, setPantries] = useState([])
   const [selectedPage, setSelectedPage] = useState(null)
   const [pinnedRecipe, setPinnedRecipe] = useState(null)
@@ -64,7 +65,9 @@ function App() {
 
 
   function checkPantryItems(item){
+    // console.log('pantry check ', item)
     let pantryCheck = pantries.filter((pantryItem)=> pantryItem.ingredient.id === item.id)
+    // console.log('pantry check' , pantryCheck)
     if (pantryCheck.length === 0){
 
       let pantry = {
@@ -89,7 +92,7 @@ function App() {
 
     } if (pantryCheck.length === 1){
 
-     let quantityUpdate = pantryCheck[0].quantity + item.quantity
+     let quantityUpdate = parseInt(pantryCheck[0].quantity) + parseInt(item.quantity)
      
      fetch(`/api/v1/pantries/${pantryCheck[0].id}`, {
       method: "PATCH",
@@ -102,8 +105,15 @@ function App() {
       }).then((r) => {
       if (r.ok) {
         r.json().then((data)=> {
-          let filteredPantry = pantries.filter((pantryItem)=> pantryItem.id !== data.id)
-          let updatedPantry = [...filteredPantry, data]
+          let index
+          let filteredPantry = pantries.filter((pantryItem, i) => {
+            if (pantryItem.id === data.id){
+              index = i
+            }
+           return pantryItem.id !== data.id
+          })
+          let updatedPantry = [...filteredPantry]
+          updatedPantry.splice(index, 0, data)
           setPantries(updatedPantry)
         })
       } else {
@@ -153,10 +163,44 @@ function App() {
       <ChakraProvider>
           <Navbar cart={cart} user={user} setUser={setUser} selectedPage={selectedPage}/>
           <Routes>
-            <Route path='/shop' element={<Store ingredientList={ingredientList} addItemToCart={addItemToCart} changePage={changePage}/>}/>
-            <Route path='/recipes' element={<Cookbook ingredientList={ingredientList} recipeList={recipeList} changePage={changePage} changePinnedRecipe={changePinnedRecipe}/>}/>
-            <Route path='/cart' element={<Cart user={user} cart={cart} setUser={setUser} setCart={setCart} deleteItemFromCart={deleteItemFromCart} checkPantryItems={checkPantryItems} changePage={changePage}/>}/>
-            <Route path='/kitchen' element={<Kitchen user={user} setUser={setUser} pantries={pantries} setPantries={setPantries} recipeList={recipeList} changePage={changePage} pinnedRecipe={pinnedRecipe}/>}/>
+            <Route path='/shop' 
+             element={
+             <Store 
+              ingredientList={ingredientList} 
+              addItemToCart={addItemToCart} 
+              changePage={changePage}/>
+              }/>
+            <Route path='/recipes' 
+            element={
+            <Cookbook 
+             ingredientList={ingredientList} 
+             recipeList={recipeList} 
+             changePage={changePage} 
+             changePinnedRecipe={changePinnedRecipe}/>
+             }/>
+            <Route path='/cart' 
+            element={
+            <Cart 
+            user={user} 
+            cart={cart} 
+            setUser={setUser} 
+            setCart={setCart} 
+            deleteItemFromCart={deleteItemFromCart} 
+            checkPantryItems={checkPantryItems} 
+            changePage={changePage}/>}/>
+            <Route path='/kitchen' 
+            element={
+            <Kitchen
+            pot={pot}
+            setPot={setPot}
+            ingredientList={ingredientList}
+            user={user} 
+            setUser={setUser} 
+            pantries={pantries} 
+            setPantries={setPantries} 
+            recipeList={recipeList} 
+            changePage={changePage} 
+            pinnedRecipe={pinnedRecipe}/>}/>
             <Route path='/'element={<Home recipeList={recipeList} ingredientList={ingredientList} changePage={changePage}/>}/>
           </Routes>
       </ChakraProvider>
