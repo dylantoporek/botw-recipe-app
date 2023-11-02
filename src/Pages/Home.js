@@ -4,13 +4,15 @@ import FeaturedItems from "../Components/FeaturedItems";
 import {ArrowForwardIcon} from '@chakra-ui/icons'
 import '../App.css'
 import {motion} from 'framer-motion'
+import Instrucitons from "../Components/Instructions";
+import { useNavigate } from "react-router-dom";
 
 function Home({changePage, recipeList, ingredientList}){
     const [isMobile] = useMediaQuery("(max-width: 768px)", {
         ssr: true,
         fallback: false,
     })
-    
+    const navigate = useNavigate()
     useEffect(() => {
         changePage(window.location.href)
       }, [])
@@ -29,6 +31,19 @@ function Home({changePage, recipeList, ingredientList}){
             }}>
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
             <Flex flexDir={'column'}>
+            {/* <Flex
+            flexDir={'column'}
+            alignSelf={'center'} 
+            w={isMobile ? '100%' : '65%'} 
+            justifyContent={'space-between'} 
+            p={10}>
+            <Heading fontWeight={300}>Become a master chef!</Heading>
+            <Flex>
+            <Instrucitons/>
+            </Flex>
+            </Flex> */}
+            
+            
             <Flex
                     flexDir={isMobile ? 'column' : 'row'} 
                     p={10} 
@@ -37,7 +52,7 @@ function Home({changePage, recipeList, ingredientList}){
                     w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
                     <Heading fontWeight={300}>Featured Recipes</Heading>
-                    <Link href={'/recipes'}>
+                    <Link onClick={() => navigate('/recipes')}>
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
                             <Text>View All</Text>
                             <motion.div 
@@ -62,7 +77,7 @@ function Home({changePage, recipeList, ingredientList}){
                     w={isMobile ? '100%' : '65%'} 
                     justifyContent={'space-between'}>
                     <Heading fontWeight={300}>Featured Ingredients</Heading>
-                    <Link href={'/shop'}>
+                    <Link onClick={() => navigate('/shop')}>
                         <Flex alignItems={'center'} justifyItems={'flex-start'} gap={2}>
                             <Text>Shop All</Text>
                             <motion.div 

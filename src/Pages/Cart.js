@@ -3,8 +3,10 @@ import CartItem from "../Components/CartItem";
 import rupee from '../Images/rupee.png'
 import {Stack, Flex, Text, Button, Image, useMediaQuery, Link, Grid, GridItem, AlertIcon, AlertTitle, Alert } from '@chakra-ui/react'
 import {motion} from 'framer-motion'
+import { useNavigate } from "react-router-dom";
 
 function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUser, changePage}){
+  const navigate = useNavigate()
   const [showCheckout, setShowCheckout] = useState(false)
   const [showRemove, setShowRemove] = useState(false)
   const [deletedItem, setDeletedItem] = useState(null)
@@ -88,10 +90,23 @@ function Cart({user, cart, deleteItemFromCart, checkPantryItems, setCart, setUse
             <AlertTitle>{`${deletedItem.name} has been removed from your cart.`}</AlertTitle>
           </Alert>:null}
           {showCheckout ? 
-         <Alert status='success' position={'fixed'} top={isMobile ? '20.5vh': '22.5vh'} h={isMobile ? '120px':'100px'} maxW={'80vw'}>
+          <Stack gap={5} p={5} bgColor={'rgba(255, 255, 255)'} position={'fixed'} top={isMobile ? '20.5vh': '22.5vh'}  w={'80vw'}>
+         <Alert status='success'>
             <AlertIcon/>
-            <AlertTitle>{'Transaction Approved! Happy Cooking.'}</AlertTitle>
-          </Alert>:null}
+            <AlertTitle>
+              {'Transaction Approved!'}
+              </AlertTitle>
+          </Alert>
+          <Flex gap={1} p={1} flexDir={isMobile ? 'column':'row'}>
+            <Text>Try cooking in the</Text>
+            <Link fontWeight={'bold'} cursor={'pointer'} onClick={() => navigate('/kitchen')}>Kitchen</Link>
+          </Flex>
+          <Flex gap={1} p={1} flexDir={isMobile ? 'column':'row'}>
+            <Text>Need more ingredients?</Text>
+            <Link fontWeight={'bold'} cursor={'pointer'} onClick={() => navigate('/shop')}>Shop</Link>
+          </Flex>
+         </Stack>
+          :null}
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
         {/* cart itmes containter */}
         <Flex

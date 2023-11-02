@@ -23,6 +23,11 @@ function Kitchen({
     const [dishes, setDishes] = useState([])
     const [togDisplay, setTogDisplay] = useState(false)
     const [refetch, setRefetch] = useState(false)
+    const [dishSuccess, setDishSuccess] = useState(false)
+    const [dishFailure, setDishFailure] = useState(false)
+    const [dishMade, setDishMade] = useState(null)
+  
+
     const [isMobile] = useMediaQuery("(max-width: 768px)", {
         ssr: true,
         fallback: false,
@@ -230,7 +235,8 @@ function Kitchen({
         })
         if (foundRecipe !== undefined){
             let targetedRecipe = recipeList.find((recipe)=> recipe.id === foundRecipe.id)
-            alert(`You made ${targetedRecipe.name}!`)
+            setDishSuccess(true)
+            setDishMade(targetedRecipe)
             let dish = {
                 recipe_id: foundRecipe.id,
                 quantity: 1
@@ -270,8 +276,14 @@ function Kitchen({
               })
             setRefetch(!refetch)
             setPot([])
+            setTimeout(() => {
+              setDishSuccess(false)
+              setDishMade(null)
+            },1500)
+            
         } else {
-            alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
+            setDishFailure(true)
+            // alert('That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.')
             let newPantry = [...pantries]
               newPantry.map((pantryItem)=>{
                   if(pantryItem.quantity === 0){
@@ -291,6 +303,9 @@ function Kitchen({
             })
             setRefetch(!refetch)
             setPot([])
+            setTimeout(() => {
+              setDishFailure(false)
+            }, 1500)
         }
     }
             
@@ -419,8 +434,36 @@ function Kitchen({
              justifyContent={isMobile ? 'center':'space-around'}
              w={isMobile ? '100vw' : '75vw'}
              ml={isMobile ? '-8px':'35vw'}>
-                <Flex mt={'0px'} flexDir={'column'} gap={10} alignItems={'center'}>
-                   <PinnedRecipe pinnedRecipe={pinnedRecipe} ingredientList={ingredientList}/>
+            {dishSuccess && dishMade? 
+            <Alert 
+             maxW={isMobile ? '100vw':'60vw'} 
+             status='success' 
+             color={'black'} 
+             position={'fixed'} 
+             top={isMobile ? '37vh': '12vh'}>
+            <AlertIcon/>
+            <AlertTitle>
+              {`You made ${dishMade.name}!`}
+              </AlertTitle>
+          </Alert>
+          :null}
+          {dishFailure ? 
+            <Alert 
+             maxW={isMobile ? '100vw':'60vw'} 
+             status='error' color={'black'} 
+             position={'fixed'} 
+             top={isMobile ? '37vh': '12vh'}>
+            <AlertIcon/>
+            <AlertTitle>
+              {'That recipe does not exist! Please refer to the Cookbook for a list of viable recipes.'}
+              </AlertTitle>
+          </Alert>
+          :null}
+                <Flex mt={'20px'} flexDir={'column'} gap={10} alignItems={'center'}>
+                  <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
+                    <PinnedRecipe pinnedRecipe={pinnedRecipe} ingredientList={ingredientList}/>
+                  </motion.div>
+                   <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
                    <Button
                     position={'fixed'}
                     bottom={isMobile ? '10vh':'30vh'}
@@ -428,9 +471,14 @@ function Kitchen({
                     onClick={() => startCookingProcess()}>
                         Cook
                     </Button>
+                   </motion.div>
+                   
                 </Flex>
-                <Flex mt={'0px'}>
+                <Flex mt={'50px'}>
+                  <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
                     <Pot pot={pot}/>
+                  </motion.div>
+                    
                 </Flex>
             </Flex>
         </Stack>

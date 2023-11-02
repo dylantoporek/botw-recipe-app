@@ -22,7 +22,7 @@ function Pot({pot}){
              gap={isMobile ? '1px' : '5px'}
              flexWrap={'wrap'}
              maxW={isMobile ? '100px' : '130px'}
-             left={isMobile ? '70px' : '120px'}
+             left={isMobile ? '50px' : '120px'}
              position={'relative'}
              top={isMobile ? '-110px' : '-140px'}>
                 {pot.map((item) => {
