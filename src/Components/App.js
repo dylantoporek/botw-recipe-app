@@ -20,6 +20,7 @@ function App() {
   const [selectedPage, setSelectedPage] = useState(null)
   const [pinnedRecipe, setPinnedRecipe] = useState(null)
   const [pinnedIngredients, setPinnedIngredients] = useState(null)
+  const [dishSold, setDishSold] = useState(false)
 
   useEffect(() => {
     // auto-login

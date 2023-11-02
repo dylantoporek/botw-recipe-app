@@ -21,7 +21,7 @@ function Navbar({user, setUser, selectedPage, cart}){
     ssr: true,
     fallback: false,
 })
- const navbarOptions = ['Home', 'Kitchen', 'Recipes', 'Shop']
+ const navbarOptions = ['Home', 'Recipes', 'Shop', 'Kitchen',]
 
   function handleNavigate(string){
     if (string === 'Home'){

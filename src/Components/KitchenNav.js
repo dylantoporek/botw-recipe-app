@@ -89,9 +89,12 @@ export default function KitchenNav({togDisplay, handlePantryOrDish, pantries, po
                  flexWrap={isMobile ? 'wrap' : 'nowrap'}
                  overflowY={'scroll'}
                  gap={isMobile ? 5:3}>
-                    {pantries.map((pantryItem) => {
+                    {pantries.length > 0 ? pantries.map((pantryItem) => {
                         return <Pantry key={pantryItem.id} item={pantryItem} pot={pot} addItemToPot={addItemToPot} removeFromPot={removeFromPot}/>
-                    })}
+                    }) : 
+                    <Flex>
+                        <Text>Empty</Text>
+                    </Flex>}
                 </Flex>
                 :
                 <Flex
@@ -103,9 +106,12 @@ export default function KitchenNav({togDisplay, handlePantryOrDish, pantries, po
                  flexWrap={isMobile ? 'wrap' : 'nowrap'}
                  overflowY={'scroll'}
                  gap={isMobile ? 5:3}>
-                    {dishes.map((dishItem) => {
+                    {dishes.length > 0 ? dishes.map((dishItem) => {
                         return <Dish key={dishItem.id} item={dishItem} user={user} setUser={setUser} sellRecipe={sellRecipe}/>
-                    })}
+                    }):
+                    <Flex>
+                        <Text>Empty</Text>
+                    </Flex>}
                 </Flex>}
             </Stack>
         </motion.div>
